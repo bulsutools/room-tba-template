@@ -76,7 +76,7 @@
     "@astrojs/svelte": "^9.1.2",
     "@astrojs/vercel": "^11.0.20",
     "@aws-sdk/client-s3": "^3.1164.0",
-    "@datadog/browser-rum": "^7.17.0",
+    "@datadog/browser-rum": "^7.17.1",
     "@electric-sql/pglite": "^0.5.15",
     "@esri/wayback-core": "^1.2.0",
     "@lucide/svelte": "^1.70.0",
