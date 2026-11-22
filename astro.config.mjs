@@ -194,7 +194,7 @@ export default defineConfig({
       manifest: {
         name: "Room TBA",
         description:
-          "An open-source website built to help UPLB students find their rooms across the Los Baños campus",
+          "An open-source website that helps students find their rooms across campus",
         theme_color: "#a30e00",
         icons: [
           {
@@ -232,8 +232,8 @@ export default defineConfig({
   redirects: {
     "/contribute": "/?contribute=1",
     // The money report moved to the org site; keep both old paths alive.
-    "/wiki/transparency": "https://www.uplb.tools/transparency",
-    "/transparency": "https://www.uplb.tools/transparency",
+    "/wiki/transparency": "https://www.campus.tools/transparency",
+    "/transparency": "https://www.campus.tools/transparency",
     "/discord": campusCommunity.discordUrl,
     "/messenger": MESSENGER_CONTRIBUTE_TARGET,
     "/messenger/contribute": MESSENGER_CONTRIBUTE_TARGET,
@@ -355,7 +355,7 @@ export default defineConfig({
         context: "server",
         optional: true,
       }),
-      // From address, e.g. "Room TBA <digest@uplbtools.me>".
+      // From address, e.g. "Room TBA <digest@campus-tools.me>".
       RESEND_FROM_EMAIL: envField.string({
         access: "secret",
         context: "server",

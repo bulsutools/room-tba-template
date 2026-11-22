@@ -73,11 +73,11 @@ export function gradesimTakeUrl(plan: PlannerPlan): string | null {
   ];
   if (codes.length === 0) return null;
   const take = codes.map(encodeURIComponent).join(",");
-  return `https://gradesim.uplb.tools/?take=${take}&term=${plan.termId}#planner`;
+  return `https://gradesim.campus.tools/?take=${take}&term=${plan.termId}#planner`;
 }
 
 /**
- * Refs from another app (GradeSim reading AMIS) may leave out the type, or
+ * Refs from another app (GradeSim reading portal) may leave out the type, or
  * the section too. A ref with no type takes every class in its section, and
  * a ref with no section takes the course's first offering.
  */

@@ -1,16 +1,16 @@
 import { render, screen, within } from "@testing-library/svelte";
 import { flushSync } from "svelte";
 import { beforeEach, describe, expect, test } from "vitest";
-import { MAKILING_TRAIL_ID, SIPIT_TRAIL_ID } from "@constants/makiling-trail";
+import { SUMMIT_TRAIL_ID, RIDGE_TRAIL_ID } from "@constants/summit-trail";
 import { mapToolsStore, sidePanelStore, trailStore } from "@lib/store.svelte";
-import { getTrailStops } from "@lib/makiling-trail";
+import { getTrailStops } from "@lib/summit-trail";
 import TrailControl from "../TrailControl.svelte";
 import TrailPanel from "./TrailPanel.svelte";
 
 describe("TrailPanel", () => {
   beforeEach(() => {
     trailStore.disable();
-    trailStore.selectTrail(MAKILING_TRAIL_ID);
+    trailStore.selectTrail(SUMMIT_TRAIL_ID);
     sidePanelStore.closePanel();
   });
 
@@ -18,7 +18,7 @@ describe("TrailPanel", () => {
     trailStore.openSheet();
     render(TrailPanel);
     expect(
-      screen.getByRole("heading", { name: "Makiling Trail" }),
+      screen.getByRole("heading", { name: "Summit Trail" }),
     ).toBeInTheDocument();
     const facts = screen.getByText("Route type").closest("dl") as HTMLElement;
     expect(within(facts).getByText("Out and back")).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe("TrailPanel", () => {
     const chart = screen.getByRole("img", {
       name: /Elevation profile from Station 1/,
     });
-    expect(chart).toHaveAccessibleName(/Agila Base: 5\.27 km/);
+    expect(chart).toHaveAccessibleName(/Eagle Base: 5\.27 km/);
     expect(
       screen.getByText("Distance from Station 1 (km)"),
     ).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe("TrailPanel", () => {
       screen.getAllByRole("heading", { name: "Before you go" }),
     ).toHaveLength(1);
     expect(
-      screen.getByText(/Monitoring Station 1 \(College of Forestry\)/),
+      screen.getByText(/Monitoring Station 1 \(the forestry college\)/),
     ).toBeInTheDocument();
     expect(
       screen.getByText(/cut-off to start for Peak 2 is 9 AM/),
@@ -58,7 +58,7 @@ describe("TrailPanel", () => {
     ).toBeInTheDocument();
     expect(screen.getByText(/PHP 10 per person/)).toBeInTheDocument();
     expect(screen.getByText(/PHP 500 per group per night/)).toBeInTheDocument();
-    expect(screen.getByText(/0908 988 1778/)).toBeInTheDocument();
+    expect(screen.getByText(/+63 900 000 0000/)).toBeInTheDocument();
     expect(document.body.textContent).not.toMatch(/guide/);
     expect(document.body.textContent).not.toContain("06:00");
     expect(document.body.textContent).not.toMatch(/Wilderness Zone start/);
@@ -81,12 +81,12 @@ describe("TrailPanel", () => {
     trailStore.openSheet();
     render(TrailPanel);
     const before = trailStore.flyNonce;
-    screen.getByRole("button", { name: /Agila Base/ }).click();
+    screen.getByRole("button", { name: /Eagle Base/ }).click();
     flushSync();
-    expect(trailStore.selectedStopId).toBe("agila-base");
+    expect(trailStore.selectedStopId).toBe("eagle-base");
     expect(trailStore.flyNonce).toBe(before + 1);
     expect(
-      screen.getByRole("heading", { name: "Agila Base" }),
+      screen.getByRole("heading", { name: "Eagle Base" }),
     ).toBeInTheDocument();
     expect(screen.getByText("Station 11")).toBeInTheDocument();
     expect(screen.getByText(/last reliable water/)).toBeInTheDocument();
@@ -94,9 +94,9 @@ describe("TrailPanel", () => {
 
     screen.getByRole("button", { name: /Next/ }).click();
     flushSync();
-    expect(trailStore.selectedStopId).toBe("punodaan");
+    expect(trailStore.selectedStopId).toBe("halfway-rest");
 
-    screen.getByRole("button", { name: "Makiling Trail" }).click();
+    screen.getByRole("button", { name: "Summit Trail" }).click();
     flushSync();
     expect(trailStore.selectedStopId).toBeNull();
     expect(
@@ -120,35 +120,35 @@ describe("TrailPanel", () => {
 describe("TrailPanel trail picker", () => {
   beforeEach(() => {
     trailStore.disable();
-    trailStore.selectTrail(MAKILING_TRAIL_ID);
+    trailStore.selectTrail(SUMMIT_TRAIL_ID);
     sidePanelStore.closePanel();
   });
 
   test("two buttons switch the trail and ask for a frame", () => {
     trailStore.openSheet();
     render(TrailPanel);
-    const uplb = screen.getByRole("button", { name: "UPLB trail" });
-    const sipit = screen.getByRole("button", { name: "Sipit trail" });
-    expect(uplb).toHaveAttribute("aria-pressed", "true");
-    expect(sipit).toHaveAttribute("aria-pressed", "false");
+    const campus = screen.getByRole("button", { name: "Summit Trail" });
+    const ridge = screen.getByRole("button", { name: "Ridge trail" });
+    expect(campus).toHaveAttribute("aria-pressed", "true");
+    expect(ridge).toHaveAttribute("aria-pressed", "false");
     const before = trailStore.frameNonce;
-    sipit.click();
+    ridge.click();
     flushSync();
-    expect(trailStore.trailId).toBe(SIPIT_TRAIL_ID);
+    expect(trailStore.trailId).toBe(RIDGE_TRAIL_ID);
     expect(trailStore.frameNonce).toBe(before + 1);
-    expect(sipit).toHaveAttribute("aria-pressed", "true");
+    expect(ridge).toHaveAttribute("aria-pressed", "true");
     expect(
-      screen.getByRole("heading", { name: "Sipit Trail" }),
+      screen.getByRole("heading", { name: "Ridge Trail" }),
     ).toBeInTheDocument();
   });
 
-  test("the Sipit overview says it isn't open and points to Facebook", () => {
-    trailStore.openSheet(null, SIPIT_TRAIL_ID);
+  test("the Ridge overview says it isn't open and points to Facebook", () => {
+    trailStore.openSheet(null, RIDGE_TRAIL_ID);
     render(TrailPanel);
     expect(screen.getByText(/isn't open to visitors yet/)).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: "facebook.com/makilingcenter" }),
-    ).toHaveAttribute("href", "https://www.facebook.com/makilingcenter");
+      screen.getByRole("link", { name: "facebook.com/example" }),
+    ).toHaveAttribute("href", "https://www.facebook.com/example");
     const facts = screen.getByText("Route type").closest("dl") as HTMLElement;
     expect(within(facts).getByText("One way")).toBeInTheDocument();
     expect(within(facts).getByText("5 to 8 h")).toBeInTheDocument();
@@ -162,13 +162,13 @@ describe("TrailPanel trail picker", () => {
     expect(screen.getByRole("heading", { name: "Stops" })).toBeInTheDocument();
   });
 
-  test("a Sipit stop shows the notice and measures from the trailhead", () => {
-    trailStore.openSheet("sipit-junction", SIPIT_TRAIL_ID);
+  test("a Ridge stop shows the notice and measures from the trailhead", () => {
+    trailStore.openSheet("ridge-junction", RIDGE_TRAIL_ID);
     render(TrailPanel);
-    expect(trailStore.trailId).toBe(SIPIT_TRAIL_ID);
+    expect(trailStore.trailId).toBe(RIDGE_TRAIL_ID);
     expect(
       screen.getByRole("heading", {
-        name: "Junction with the old Makiling Trail",
+        name: "Junction with the old Summit Trail",
       }),
     ).toBeInTheDocument();
     expect(screen.getByText("From the trailhead")).toBeInTheDocument();
@@ -184,12 +184,12 @@ describe("TrailControl", () => {
 
   test("is a switch that remembers its state", () => {
     render(TrailControl);
-    const toggle = screen.getByRole("switch", { name: /Makiling Trail/ });
+    const toggle = screen.getByRole("switch", { name: /Summit Trail/ });
     expect(toggle).toHaveAttribute("aria-checked", "false");
     toggle.click();
     flushSync();
     expect(trailStore.enabled).toBe(true);
-    expect(localStorage.getItem("makiling-trail-layer")).toBe("true");
+    expect(localStorage.getItem("summit-trail-layer")).toBe("true");
     expect(toggle).toHaveAttribute("aria-checked", "true");
   });
 

@@ -65,12 +65,12 @@ Playwright **blocking** uses [playwright.config.ts](../playwright.config.ts) (`t
 - `src/lib/admin/require-editor.test.ts`
 - `src/lib/admin/roles.test.ts`
 - `src/lib/admin/signed-token.test.ts`
-- `src/lib/amis/fetch-classes.test.ts`
-- `src/lib/amis/import-classes.test.ts`
-- `src/lib/amis/import-errors.test.ts`
-- `src/lib/amis/normalize-class.test.ts`
-- `src/lib/amis/room-scheduled-types.test.ts`
-- `src/lib/amis/sanitize-row.test.ts`
+- `src/lib/portal/fetch-classes.test.ts`
+- `src/lib/portal/import-classes.test.ts`
+- `src/lib/portal/import-errors.test.ts`
+- `src/lib/portal/normalize-class.test.ts`
+- `src/lib/portal/room-scheduled-types.test.ts`
+- `src/lib/portal/sanitize-row.test.ts`
 - `src/lib/announcements.test.ts`
 - `src/lib/api/class-cursor.test.ts`
 - `src/lib/api/feedback.test.ts`
@@ -370,7 +370,7 @@ Layout guards at 320px / 768px where noted. Included in `bun run test:components
 
 ## E2E staging (Playwright) — 3 files
 
-`bun run e2e:staging` — read-only against `staging.room-tba.uplb.tools`.
+`bun run e2e:staging` — read-only against `staging.room-tba.campus.tools`.
 
 - `e2e/staging/data-fidelity.spec.ts`
 - `e2e/staging/live-boot.spec.ts`
@@ -388,4 +388,4 @@ Layout guards at 320px / 768px where noted. Included in `bun run test:components
 
 ## Manual only (not in this list)
 
-Subjective UX, AMIS live `--fetch`, prod data spot-checks — [testing.md § Manual only](testing.md#manual-only).
+Subjective UX, portal live `--fetch`, prod data spot-checks — [testing.md § Manual only](testing.md#manual-only).

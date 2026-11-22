@@ -101,7 +101,7 @@ describe("JeepneyStore", () => {
     jeepneyStore.selectRoute("snodlob");
     expect(jeepneyStore.drawnRoute).toEqual({
       id: "snodlob",
-      name: "UPLB Loop (SNODLOB e-jeep)",
+      name: "Example University Loop (SNODLOB e-jeep)",
     });
     jeepneyStore.openStop(1);
     jeepneyStore.clearDrawnRoute();

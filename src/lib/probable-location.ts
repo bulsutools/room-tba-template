@@ -1,7 +1,7 @@
 /**
  * Probable location for Room TBA sections (#846) — pure logic, no DB.
  *
- * Resolution order (see docs/amis-com-refresh-runbook.md § TBA sections):
+ * Resolution order (see docs/portal-com-refresh-runbook.md § TBA sections):
  *   1. Department link: acad_org → data/acad-orgs.json → the department's
  *      organizations-table entity, when that entity has a map position.
  *   2. Course history: modal building among same-course sections that have an
@@ -48,7 +48,7 @@ export type OrgEntityRow = {
 };
 
 /** Match a department name against org entities; "(ACRONYM)" suffixes on the
- * entity name are ignored, mirroring scripts/seed-uplb-directory.ts. */
+ * entity name are ignored, mirroring scripts/seed-campus-directory.ts. */
 export function findDeptEntity(
   orgs: OrgEntityRow[],
   wanted: string,

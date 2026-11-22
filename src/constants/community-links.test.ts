@@ -15,10 +15,10 @@ describe("community-links", () => {
   test("volunteer Messenger defaults to contribute short link", () => {
     expect(MESSENGER_URL).toBe(MESSENGER_CONTRIBUTE_URL);
     expect(MESSENGER_CONTRIBUTE_URL).toBe(
-      "https://room-tba.uplb.tools/messenger/contribute",
+      "https://room-tba.campus.tools/messenger/contribute",
     );
     expect(MESSENGER_MAINTAIN_URL).toBe(
-      "https://room-tba.uplb.tools/messenger/maintain",
+      "https://room-tba.campus.tools/messenger/maintain",
     );
   });
 
@@ -29,11 +29,11 @@ describe("community-links", () => {
   });
 
   test("Discord short link unchanged", () => {
-    expect(DISCORD_URL).toBe("https://discord.gg/SrVDgfcrVt");
+    expect(DISCORD_URL).toBe("https://discord.gg/YOUR_INVITE");
   });
-  test("UPLB Tools socials are listed for the footer", () => {
-    expect(FACEBOOK_URL).toBe("https://facebook.com/uplb.tools");
-    expect(INSTAGRAM_URL).toBe("https://instagram.com/uplb.tools");
+  test("campus-tools socials are listed for the footer", () => {
+    expect(FACEBOOK_URL).toBe("https://facebook.com/campus.tools");
+    expect(INSTAGRAM_URL).toBe("https://instagram.com/campus.tools");
     const labels = COMMUNITY_LINKS.map((link) => link.label);
     expect(labels).toContain("Facebook");
     expect(labels).toContain("Instagram");

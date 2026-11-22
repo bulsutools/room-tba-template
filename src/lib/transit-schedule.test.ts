@@ -14,15 +14,15 @@ describe("summarizeSchedule", () => {
   });
 
   test("lists fixed departures and counts trips", () => {
-    expect(routeScheduleSummary("uplb-to-buendia")).toMatchObject({
+    expect(routeScheduleSummary("campus-to-buendia")).toMatchObject({
       published: true,
       hours: "Monday to Saturday, 5:30 AM",
       frequency: "1 trip a day",
     });
-    expect(routeScheduleSummary("buendia-to-uplb").hours).toBe(
+    expect(routeScheduleSummary("buendia-to-campus").hours).toBe(
       "Daily, 6:00 PM",
     );
-    expect(routeScheduleSummary("uplb-to-upd").frequency).toBe("3 trips a day");
+    expect(routeScheduleSummary("campus-to-diliman").frequency).toBe("3 trips a day");
   });
 
   test("shows a service window when the route runs all day", () => {

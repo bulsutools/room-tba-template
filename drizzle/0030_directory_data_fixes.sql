@@ -3,10 +3,10 @@
 -- "University Cafeteria" is not a real establishment.
 DELETE FROM places WHERE name = 'University Cafeteria';
 
--- UPLB Perspective is the official student publication, not a student org.
+-- Example University Perspective is the official student publication, not a student org.
 UPDATE organizations
 SET category = 'publication'
-WHERE name = 'UPLB Perspective' AND category = 'student-org';
+WHERE name = 'Example University Perspective' AND category = 'student-org';
 
 -- The University Student Council is a student council, not a student org.
 UPDATE organizations

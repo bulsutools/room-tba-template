@@ -24,11 +24,11 @@ export const EMERGENCY_HOTLINE_CATEGORIES = [
         ],
       },
       {
-        name: "Los Baños Doctors Hospital",
+        name: "your campus Doctors Hospital",
         numbers: ["0906 399 2757", "(049) 536 0100"],
       },
       {
-        name: "Healthserv Los Baños Medical Center",
+        name: "Healthserv your campus Medical Center",
         numbers: ["0917 301 6646"],
       },
     ],
@@ -37,7 +37,7 @@ export const EMERGENCY_HOTLINE_CATEGORIES = [
     name: "University",
     entries: [
       {
-        name: "UPLB Security and Safety Office",
+        name: "Example University Security and Safety Office",
         numbers: ["0906 043 3288", "0921 890 1259"],
       },
       {
@@ -54,11 +54,11 @@ export const EMERGENCY_HOTLINE_CATEGORIES = [
         numbers: ["0919 254 4257", "0995 107 9907"],
       },
       {
-        name: "Los Baños Police Station",
+        name: "your campus Police Station",
         numbers: ["0927 509 1198", "0998 598 5649"],
       },
       {
-        name: "Los Baños Fire Station",
+        name: "your campus Fire Station",
         numbers: ["0939 432 5837", "(049) 536 7965"],
       },
       { name: "Municipal DRRMO", numbers: ["0977 204 9641"] },

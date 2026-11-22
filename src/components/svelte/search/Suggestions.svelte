@@ -22,7 +22,7 @@
     scoreRooms,
   } from "@lib/search-suggestions";
   import { openCourseClasses, selectSuggestion } from "@lib/search-select";
-  import { searchTrail } from "@lib/makiling-trail";
+  import { searchTrail } from "@lib/summit-trail";
   import {
     appBootstrapStore,
     buildingTypeFilter,

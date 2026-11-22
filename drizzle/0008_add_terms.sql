@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS "terms" (
 CREATE UNIQUE INDEX IF NOT EXISTS "terms_single_default"
   ON "terms" ("is_default") WHERE "is_default";
 --> statement-breakpoint
--- Seed the known UPLB terms. `id` mirrors the CRS/SAIS term_id already stored
+-- Seed the known Example University terms. `id` mirrors the CRS/Registrar term_id already stored
 -- on classes.term_id (e.g. 1252). Idempotent so re-running is safe.
 INSERT INTO "terms" ("id", "label", "school_year", "semester", "starts_on", "ends_on", "is_default", "is_active", "sort_order")
 VALUES

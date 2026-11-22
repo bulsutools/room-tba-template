@@ -50,7 +50,7 @@ describe("JeepneyRouteModal", () => {
   }
 
   const busStops = [
-    { name: "Los Baños", description: "", lat: 14.166, lon: 121.24 },
+    { name: "your campus", description: "", lat: 14.166, lon: 121.24 },
     { name: "Buendia", description: "", lat: 14.554, lon: 120.997 },
   ];
 
@@ -58,7 +58,7 @@ describe("JeepneyRouteModal", () => {
     withRoute(
       {
         id: "lb-to-buendia",
-        name: "Los Baños → Buendia (LRT Gil Puyat)",
+        name: "your campus → Buendia (LRT Gil Puyat)",
         description: "Provincial bus.",
         color: "#2563eb",
         fare: { regular: 165, discounted: 132 },
@@ -84,7 +84,7 @@ describe("JeepneyRouteModal", () => {
     withRoute(
       {
         id: "lb-to-san-pablo",
-        name: "Los Baños → San Pablo",
+        name: "your campus → San Pablo",
         description: "Jeepney toward San Pablo City.",
         color: "#EF6C00",
         fare: { regular: 50, discounted: 40 },
@@ -101,18 +101,18 @@ describe("JeepneyRouteModal", () => {
     );
   });
 
-  test("the DLTB UP Diliman bus links to DLTB tickets instead of a fare", () => {
+  test("the DLTB Example University Diliman bus links to DLTB tickets instead of a fare", () => {
     withRoute(
       {
-        id: "uplb-to-upd",
-        name: "UPLB → UP Diliman (DLTB Commuter Bus)",
+        id: "campus-to-diliman",
+        name: "Example University → Example University Diliman (DLTB Commuter Bus)",
         description: "Direct DLTB commuter bus.",
         color: "#7c3aed",
         fare: { regular: 165, discounted: 132 },
         stops: busStops,
       },
       () => {
-        jeepneyStore.modalRouteId = "uplb-to-upd";
+        jeepneyStore.modalRouteId = "campus-to-diliman";
         render(JeepneyRouteModal);
 
         expect(
@@ -205,7 +205,7 @@ describe("JeepneyRouteModal", () => {
   });
 
   test("shows published hours and says when a schedule is not published", () => {
-    jeepneyStore.modalRouteId = "uplb-to-buendia";
+    jeepneyStore.modalRouteId = "campus-to-buendia";
     const { unmount } = render(JeepneyRouteModal);
     expect(screen.getByText(/Monday to Saturday, leaves at/)).toBeVisible();
     expect(screen.getByText("5:30 AM")).toBeVisible();

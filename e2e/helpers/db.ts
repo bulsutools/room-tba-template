@@ -3,7 +3,7 @@ import { loadEnv } from "../../scripts/load-env";
 
 loadEnv();
 
-const E2E_PROJECT_REF = "yhzinxlakcewqjaqbbaj";
+const E2E_PROJECT_REF = "your-e2e-project-ref";
 
 export function e2eDatabaseUrl(): string | null {
   const url =

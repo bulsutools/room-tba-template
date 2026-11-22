@@ -7,8 +7,8 @@ INSERT INTO admin_users (
   username, display_name, password_hash, role, is_active, avatar_url, show_in_credits, legacy_credit
 )
 VALUES
-  ('legacy-nino-anthony-marmeto', 'Niño Anthony Marmeto', '', 'editor', false, NULL, true, true),
-  ('legacy-rosh-almario', 'Rosh Almario', '', 'editor', false, '/contributors/rosh-almario.png', true, true)
+  ('legacy-nino-anthony-marmeto', 'Example Contributor', '', 'editor', false, NULL, true, true),
+  ('legacy-rosh-almario', 'Example Contributor', '', 'editor', false, '/contributors/rosh-almario.png', true, true)
 ON CONFLICT (username) DO UPDATE
 SET
   display_name = EXCLUDED.display_name,

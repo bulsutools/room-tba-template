@@ -11,8 +11,8 @@ import { loadEnv } from "./load-env";
 
 loadEnv();
 
-const PROD_PROJECT_REF = "ccdqtmscmnixjbynwdvb";
-const E2E_PROJECT_REF = "yhzinxlakcewqjaqbbaj";
+const PROD_PROJECT_REF = "your-prod-project-ref";
+const E2E_PROJECT_REF = "your-e2e-project-ref";
 
 /** Initial introspection dump — commented out; never execute on live DBs. */
 const SKIP_FILES = new Set(["0000_smooth_spitfire.sql"]);

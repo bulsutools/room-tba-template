@@ -1,10 +1,10 @@
 /**
- * Opening and closing the Makiling trail sheet (#716). Search, the map
+ * Opening and closing the Summit trail sheet (#716). Search, the map
  * layer, the Layers sheet and place sheets all come through here so the
  * sheet, the layer and the camera stay in step.
  */
 import TrailPanel from "@ui/trail/TrailPanel.svelte";
-import { resolveTrailTarget } from "./makiling-trail";
+import { resolveTrailTarget } from "./summit-trail";
 import { dismissEphemeralOverlays } from "./overlay-stack";
 import {
   mapToolsStore,

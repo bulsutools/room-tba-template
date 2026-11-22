@@ -3,7 +3,7 @@ import { loadEnv } from "../../scripts/load-env";
 /** Shared integration/E2E preview env (see docs/testing.md). */
 loadEnv();
 
-const E2E_PROJECT_REF = "yhzinxlakcewqjaqbbaj";
+const E2E_PROJECT_REF = "your-e2e-project-ref";
 
 export function integrationDatabaseUrl(): string | null {
   const url =

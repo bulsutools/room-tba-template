@@ -14,8 +14,8 @@
 </script>
 
 <SettingsRow
-  label="Makiling Trail"
-  supporting="The UPLB and Sipit trails to Peak 2"
+  label="Summit Trail"
+  supporting="The Example University and Ridge trails to Peak 2"
   icon={Route}
   checked={trailStore.enabled}
   onclick={() => trailStore.toggle()}

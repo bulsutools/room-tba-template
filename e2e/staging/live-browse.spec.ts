@@ -54,6 +54,6 @@ test.describe("staging browse", () => {
 
 test.describe("staging data fidelity", () => {
   test.skip("known building search — enable when staging seeded", async () => {
-    // @skip until staging has AMIS/building data
+    // @skip until staging has portal/building data
   });
 });

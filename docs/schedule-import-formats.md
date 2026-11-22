@@ -1,7 +1,7 @@
 # Personal schedule routing (planner-sourced)
 
 The day-route feature in Map tools → Schedule reads the **active Planner plan**
-for the current term. There is no paste/import step anymore: the AMIS Schedule
+for the current term. There is no paste/import step anymore: the portal Schedule
 Extractor / CSV import was removed in July 2026 once the Planner could hold a
 personal schedule natively.
 
@@ -20,7 +20,7 @@ personal schedule natively.
 6. Only the selected weekday persists in `sessionStorage`; the schedule itself
    always re-derives from the Planner.
 
-Schedule slots use the same compact AMIS format parsed by
+Schedule slots use the same compact portal format parsed by
 `parseScheduleTime()` in `src/lib/schedule-renderer.ts`
 (e.g. `TTh 01:00PM-02:30PM`).
 

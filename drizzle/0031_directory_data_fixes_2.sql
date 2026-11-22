@@ -7,9 +7,9 @@ DELETE FROM places WHERE name ILIKE 'University Bookstore%';
 -- Missing colleges.
 INSERT INTO colleges (college_name, website_link)
 SELECT v.name, v.site FROM (VALUES
-  ('College of Public Affairs and Development (CPAf)', 'https://cpaf.uplb.edu.ph'),
-  ('School of Environmental Science and Management (SESAM)', 'https://sesam.uplb.edu.ph'),
-  ('Graduate School', 'https://gs.uplb.edu.ph')
+  ('College of Public Affairs and Development (CPAf)', 'https://cpaf.example.edu'),
+  ('School of Environmental Science and Management (SESAM)', 'https://sesam.example.edu'),
+  ('Graduate School', 'https://gs.example.edu')
 ) AS v(name, site)
 WHERE NOT EXISTS (
   SELECT 1 FROM colleges c WHERE c.college_name = v.name

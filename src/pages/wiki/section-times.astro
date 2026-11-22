@@ -4,9 +4,9 @@ export const prerender = true;
 import WikiLayout from "@layouts/WikiLayout.astro";
 import WikiProvenance from "../../components/wiki/WikiProvenance.astro";
 
-const title = "What times do UPLB section names correspond to? | Room TBA Wiki";
+const title = "What times do Example University section names correspond to? | Room TBA Wiki";
 const description =
-  "This page is a glossary of UPLB AMIS section codes. It covers letter ladders, NSTP/HK/GI/residency/ROTC, MS/PhD course numbers (200+/300+/400+), every activity type and L/R/C suffixes.";
+  "This page is a glossary of Example University portal section codes. It covers letter ladders, NSTP/HK/GI/residency/ROTC, MS/PhD course numbers (200+/300+/400+), every activity type and L/R/C suffixes.";
 
 const timeBlocks = [
   { wf: "A", tth: "S", time: "7:00", windows: "7:00–8:00 or 7:00–8:30", wfMatch: 78.4, tthMatch: 86.8 },
@@ -42,11 +42,11 @@ const singleLetters = [
 
 const missingLetters = "J, K, L, M, N, O, P, Q, R";
 
-/** AMIS activity types present in Room TBA classes table (prod census). */
+/** portal activity types present in Room TBA classes table (prod census). */
 const activityTypes = [
   { code: "LEC", meaning: "Lecture", rows: 22547, note: "Primary class meeting. The section letter often encodes day + start." },
   { code: "LAB", meaning: "Laboratory", rows: 12679, note: "Usually ends in L (B3L, G-1L). Letter echoes parent lecture, and time is independent." },
-  { code: "THE", meaning: "Thesis", rows: 9651, note: "Usually no fixed room/schedule in AMIS. Section often advisor initials + number." },
+  { code: "THE", meaning: "Thesis", rows: 9651, note: "Usually no fixed room/schedule in portal. Section often advisor initials + number." },
   { code: "SPR", meaning: "Special problem", rows: 2509, note: "Usually roomless. Section often initials + number." },
   { code: "PRA", meaning: "Practicum", rows: 2372, note: "May meet off-campus and rarely has a campus room code." },
   { code: "DSR", meaning: "Dissertation", rows: 700, note: "Graduate thesis-level, almost never scheduled on the map." },
@@ -195,7 +195,7 @@ const midyearQuartet = [
 ] as const;
 
 
-/** Midyear (CRS 1253) section-name patterns, from the AMIS export + Room TBA census. */
+/** Midyear (CRS 1253) section-name patterns, from the portal export + Room TBA census. */
 const midyearSectionPatterns = [
   {
     pattern: "A–H (single letter)",
@@ -235,7 +235,7 @@ const midyearSectionPatterns = [
   },
 ] as const;
 
-/** Notable midyear compound section codes from the CRS 1253 AMIS export. */
+/** Notable midyear compound section codes from the CRS 1253 portal export. */
 const midyearCompounds = [
   { code: "ABST", bridge: "AB + ST", note: "Early WF pair + early TTh pair" },
   { code: "BCTU", bridge: "BC + TU", note: "Common on CHEM midyear lectures" },
@@ -288,7 +288,7 @@ const gradSectionPatterns = [
   {
     pattern: "TBA section",
     example: "VPAR 236 TBA",
-    meaning: "Common on graduate LEC when the meeting isn’t fixed in AMIS.",
+    meaning: "Common on graduate LEC when the meeting isn’t fixed in portal.",
   },
 ] as const;
 
@@ -372,7 +372,7 @@ const specialCourses = [
     rows: 327,
     type: "LEC",
     sectionMeaning:
-      "AMIS course code is literally \"GI .\". Sections look like F2, W1, ST1, CD3 (letter+number groups for 1-hour advising slots). Don’t read F as the WF F-block. GI meetings are mostly single-day hour slots.",
+      "portal course code is literally \"GI .\". Sections look like F2, W1, ST1, CD3 (letter+number groups for 1-hour advising slots). Don’t read F as the WF F-block. GI meetings are mostly single-day hour slots.",
     letterUseful: "No",
   },
   {
@@ -410,7 +410,7 @@ const nstpPrefixes = [
 ] as const;
 
 
-/** Oldest→newest term trend (AMIS normalize + prod DB counts, July 16, 2026). */
+/** Oldest→newest term trend (portal normalize + prod DB counts, July 16, 2026). */
 const termTrends = [
   { term: "1231", label: "AY 23–24 1st", db: 5096, lecSched: 2729, tth: 35.4, wf: 31.1, single: 30.9, dense: 0, d90: 1387, note: "DB has LEC+LAB only" },
   { term: "1232", label: "AY 23–24 2nd", db: 4875, lecSched: 2600, tth: 37.2, wf: 32.3, single: 28.5, dense: 0, d90: 1371, note: "DB has LEC+LAB only" },
@@ -433,9 +433,9 @@ const termTrends = [
 >
   <article class="wiki-article">
     <header class="article-hero">
-      <h1 class="wiki-title">What times do UPLB section names correspond to?</h1>
+      <h1 class="wiki-title">What times do Example University section names correspond to?</h1>
       <p class="wiki-lede">
-        Every class row in Room TBA has an AMIS <strong>activity type</strong>
+        Every class row in Room TBA has an portal <strong>activity type</strong>
         (LEC, LAB, RCT, …) and a <strong>section code</strong> (B, ST, AB2R,
         G-1L, …). This page lists every type and every section-code pattern
         observed in the archive, then shows which letters preview WF vs TTh
@@ -445,7 +445,7 @@ const termTrends = [
         The glossary census was taken on July 16, 2026 across all terms in prod.
         The letter-ladder match test ran on July 14, 2026 against 8,917
         single-letter regular-semester lectures (87.5%). The term-trend pass
-        ran on July 16, 2026 using AMIS caches 1231→1261 plus prod row counts.
+        ran on July 16, 2026 using portal caches 1231→1261 plus prod row counts.
       </p>
       <WikiProvenance sourcePath="src/pages/wiki/section-times.astro" />
     </header>
@@ -472,7 +472,7 @@ const termTrends = [
         section codes.
       </p>
       <p>
-        The AMIS schedule row remains the source of truth. Codes below are a
+        The portal schedule row remains the source of truth. Codes below are a
         preview built from Room TBA’s imported rows.
       </p>
     </section>
@@ -796,7 +796,7 @@ const termTrends = [
     <section aria-labelledby="grad-courses">
       <h2 id="grad-courses">MS / PhD course numbers (200+, 300+, 400+)</h2>
       <p>
-        UPLB course numbers encode level. In campus talk, people often say
+        Example University course numbers encode level. In campus talk, people often say
         <strong>200+</strong> for master’s work and <strong>300+</strong> for
         doctoral work. Room TBA’s imported rows are a bit finer-grained, so
         read the title and type, not only the number.
@@ -875,7 +875,7 @@ const termTrends = [
       <p>
         Oldest archive term is CRS <strong>1231</strong> (AY 2023–2024 1st
         semester), and the newest is <strong>1261</strong> (AY 2026–2027 1st). Reading
-        AMIS exports through the same normalizer, the <em>calendar</em> barely
+        portal exports through the same normalizer, the <em>calendar</em> barely
         moved. What jumped in Room TBA’s table is mostly <em>import scope</em>.
       </p>
       <h3 id="term-trends-schedule">Schedule shape (stable)</h3>
@@ -908,7 +908,7 @@ const termTrends = [
         <li>
           Terms <strong>1231–1243</strong> and midyear <strong>1253</strong> in
           prod are still mostly <strong>LEC + LAB</strong> (~4.8k–5.1k regular and
-          ~230 midyear). AMIS itself already had ~4k THE rows each term, and Room
+          ~230 midyear). portal itself already had ~4k THE rows each term, and Room
           TBA didn’t import them yet.
         </li>
         <li>
@@ -918,7 +918,7 @@ const termTrends = [
         <li>
           <strong>1252</strong> and <strong>1261</strong> jump to ~12.6k–12.9k
           DB rows because the importer started keeping thesis / SP / practicum /
-          dissertation with null rooms (~7.5k roomless rows). AMIS LEC/LAB volume
+          dissertation with null rooms (~7.5k roomless rows). portal LEC/LAB volume
           didn’t double. Room TBA’s catalog got wider.
         </li>
       </ul>
@@ -960,7 +960,7 @@ const termTrends = [
       <h3 id="term-trends-why">Likely reasons</h3>
       <ul class="break-list">
         <li>
-          <strong>The cause is import policy, not campus growth.</strong> AMIS regular-term
+          <strong>The cause is import policy, not campus growth.</strong> portal regular-term
           dumps stay ~11k–13k rows across the archive. The DB doubling at 1252/1261
           matches turning on NON_ROOM types (THE/SPR/PRA/DSR/IND) in the importer,
           plus RCT for the planner. See
@@ -983,7 +983,7 @@ const termTrends = [
         </li>
       </ul>
       <p class="figure-note">
-        Day % are shares of normalized LEC schedule slots from local AMIS JSON
+        Day % are shares of normalized LEC schedule slots from local portal JSON
         caches (not raw mon–sat flags). DB row counts are prod
         <code>classes</code> as of July 16, 2026.
       </p>
@@ -1076,7 +1076,7 @@ const termTrends = [
       <p>
         Midyear reuses the same alphabet soup as regular semesters, then bends
         it. Single letters <strong>A–H</strong> still dominate lecture labels
-        (C, B, H, G are the busiest in the CRS 1253 AMIS export), but those
+        (C, B, H, G are the busiest in the CRS 1253 portal export), but those
         rows meet <strong>MTWThFS</strong>, so the regular “A–H = WF” rule is
         false for midyear. S–Z singles are rare.
       </p>
@@ -1128,7 +1128,7 @@ const termTrends = [
         </table>
       </div>
       <p class="figure-note">
-        These were observed on midyear AMIS lecture rows (e.g. CHEM 32 <code>BCTU</code> /
+        These were observed on midyear portal lecture rows (e.g. CHEM 32 <code>BCTU</code> /
         <code>FGXY</code> on MTWThFS). Treat these as midyear labels, not as
         “take both a BC and a TU regular-sem section.”
       </p>
@@ -1193,7 +1193,7 @@ const termTrends = [
       </ul>
       <p>
         Treat the letter as a useful preview for regular paired lectures. The
-        current AMIS or Room TBA schedule remains the source for exact days,
+        current portal or Room TBA schedule remains the source for exact days,
         time, and room.
       </p>
     </aside>
@@ -1214,7 +1214,7 @@ const termTrends = [
       <p>
         Day-structure figures use CRS terms <strong>1252</strong> and
         <strong>1253</strong> LEC slots only (July 16, 2026 pass). The
-        across-terms table normalizes every local <code>data/amis-*.json</code>
+        across-terms table normalizes every local <code>data/portal-*.json</code>
         cache from CRS 1231 through 1261 and compares against prod row counts.
       </p>
     </section>

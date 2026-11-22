@@ -137,7 +137,7 @@ describe("niceScaleBarMeters", () => {
 
 describe("toWinAnsi", () => {
   test("maps arrows and typography the standard fonts cannot encode", () => {
-    expect(toWinAnsi("Buendia → Los Baños")).toBe("Buendia to Los Baños");
+    expect(toWinAnsi("Buendia → your campus")).toBe("Buendia to your campus");
     expect(toWinAnsi("A ↔ B • C")).toBe("A <-> B - C");
   });
 
@@ -170,7 +170,7 @@ describe("isCampusScopeRoute", () => {
     expect(
       isCampusScopeRoute(
         route({
-          name: "Buendia → Los Baños",
+          name: "Buendia → your campus",
           stops: [
             { name: "Buendia", lat: 14.5586, lon: 121.0198 },
             { name: "LB Terminal", lat: 14.1685, lon: 121.2414 },
@@ -204,7 +204,7 @@ describe("renderTransitMapPdf", () => {
     expect(bytes.length).toBeGreaterThan(2000);
 
     const pdf = await PDFDocument.load(bytes);
-    expect(pdf.getTitle()).toBe("UPLB Jeeps & Buses");
+    expect(pdf.getTitle()).toBe("Example University Jeeps & Buses");
     expect(pdf.getAuthor()).toBe("Room TBA");
   });
 
@@ -220,7 +220,7 @@ describe("renderTransitMapPdf", () => {
         route(),
         route({
           id: "buendia",
-          name: "Buendia → Los Baños",
+          name: "Buendia → your campus",
           stops: [
             { name: "Buendia", lat: 14.5586, lon: 121.0198 },
             { name: "LB Terminal", lat: 14.1685, lon: 121.2414 },
@@ -279,7 +279,7 @@ describe("nearest stop", () => {
     const stops = [
       { name: "Main Library", lat: 14.16544, lon: 121.2386 },
       { name: "Graduate School / Umali", lat: 14.16374, lon: 121.23999 },
-      { name: "Makiling School", lat: 14.16574, lon: 121.24426 },
+      { name: "Summit School", lat: 14.16574, lon: 121.24426 },
     ];
     const nearest = findNearestStop(here, stops);
     expect(nearest?.stop.name).toBe("Graduate School / Umali");
@@ -408,7 +408,7 @@ describe("route styles", () => {
       isLoopRoute({
         ...loop,
         id: "snodlob",
-        name: "UPLB Loop (SNODLOB e-jeep)",
+        name: "Example University Loop (SNODLOB e-jeep)",
       }),
     ).toBe(false);
   });
@@ -564,8 +564,8 @@ describe("signboardWords", () => {
       "UP RURAL",
       "JUBILEEVILLE",
     ]);
-    expect(signboardWords("UPLB Loop (SNODLOB e-jeep)")).toEqual([
-      "UPLB LOOP",
+    expect(signboardWords("Example University Loop (SNODLOB e-jeep)")).toEqual([
+      "Example University LOOP",
       "SNODLOB E-JEEP",
     ]);
     expect(signboardWords("Kaliwa")).toEqual(["KALIWA", ""]);
@@ -592,10 +592,10 @@ describe("shortStopLabel", () => {
 
   test("cuts long names at a word", () => {
     const label = shortStopLabel(
-      "UPLB Landscape Horticulture Research and Development Facility",
+      "Example University Landscape Horticulture Research and Development Facility",
     );
     expect(label.length).toBeLessThanOrEqual(30);
-    expect(label).toMatch(/^UPLB Landscape Horticulture.*\.\.\.$/);
+    expect(label).toMatch(/^Example University Landscape Horticulture.*\.\.\.$/);
   });
 });
 

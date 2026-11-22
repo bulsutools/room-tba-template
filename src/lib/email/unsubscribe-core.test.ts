@@ -8,12 +8,12 @@ import {
 
 describe("unsubscribe helpers", () => {
   test("urls carry the encoded token to the page and one-click endpoint", () => {
-    const urls = unsubscribeUrls("https://room-tba.uplb.tools", "a.b+c");
+    const urls = unsubscribeUrls("https://room-tba.campus.tools", "a.b+c");
     expect(urls.page).toBe(
-      "https://room-tba.uplb.tools/unsubscribe?token=a.b%2Bc",
+      "https://room-tba.campus.tools/unsubscribe?token=a.b%2Bc",
     );
     expect(urls.oneClick).toBe(
-      "https://room-tba.uplb.tools/api/email/unsubscribe?token=a.b%2Bc",
+      "https://room-tba.campus.tools/api/email/unsubscribe?token=a.b%2Bc",
     );
   });
 

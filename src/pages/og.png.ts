@@ -70,7 +70,7 @@ export const GET: APIRoute = async ({ url }) => {
       },
     },
     h("img", {
-      src: new URL("/uplb-bg-og.jpg", url.origin).toString(),
+      src: new URL("/campus-bg-og.jpg", url.origin).toString(),
       width: WIDTH,
       height: HEIGHT,
       style: {

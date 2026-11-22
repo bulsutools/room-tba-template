@@ -1,4 +1,4 @@
-import { UPLB_OSA_ORGANIZATIONS_URL } from "@constants/community-links";
+import { Example University_OSA_ORGANIZATIONS_URL } from "@constants/community-links";
 
 export type OsaOrganization = {
   name: string;
@@ -43,9 +43,9 @@ export function parseOsaOrganizations(html: string): OsaOrganization[] {
     const href = attributes.match(/\bhref\s*=\s*(["'])(.*?)\1/i)?.[2];
     if (!className.split(/\s+/).includes("orgText") || !href) continue;
 
-    const officialUrl = new URL(href, UPLB_OSA_ORGANIZATIONS_URL);
+    const officialUrl = new URL(href, Example University_OSA_ORGANIZATIONS_URL);
     if (
-      officialUrl.origin !== "https://uplbosa.org" ||
+      officialUrl.origin !== "https://orgs.campus.tools" ||
       !officialUrl.pathname.startsWith("/orgs/")
     ) {
       continue;

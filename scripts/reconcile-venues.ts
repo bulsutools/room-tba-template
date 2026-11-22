@@ -1,17 +1,17 @@
 /**
- * Reconcile free-typed AMIS/registrar venue strings against the rooms table.
+ * Reconcile free-typed portal/registrar venue strings against the rooms table.
  *
- * AMIS venues are typed by hand, so every term ships spacing/case/abbreviation
+ * portal venues are typed by hand, so every term ships spacing/case/abbreviation
  * variants plus venues that have no rooms row at all (PE areas, PS A-xxx,
  * IMSP PCs). This script:
  *   1. Seeds curated alias rows for known renames (ICS LH3 -> SMA LH, ...).
  *   2. Fixes known typo room codes (CAS 1043 -> CAS 104).
  *   3. Creates rooms for recurring unmatched venues (>= --min-count across all
- *      data/amis-*.json + data/final-exams-*.json), inferring building_id when
+ *      data/portal-*.json + data/final-exams-*.json), inferring building_id when
  *      every existing room sharing the venue's first word sits in one building.
  *
  * Dry-run by default; pass --apply to write. Rerun after adding a new term's
- * JSON. After applying, re-run import:amis-classes / import:final-exams so
+ * JSON. After applying, re-run import:portal-classes / import:final-exams so
  * class rows pick up the new room ids.
  *
  *   DATABASE_URL=… bun run scripts/reconcile-venues.ts [--apply] [--min-count 5]
@@ -23,8 +23,8 @@ import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
 import pg from "pg";
 import { aliasesTable, roomsTable } from "@drizzle/schema";
-import { buildRoomLookup, matchRoomId } from "@lib/amis/import-classes";
-import { normalizeFacilityKey } from "@lib/amis/normalize-class";
+import { buildRoomLookup, matchRoomId } from "@lib/portal/import-classes";
+import { normalizeFacilityKey } from "@lib/portal/normalize-class";
 import { normalizeAlias } from "@lib/site";
 
 config({ path: ".env" });
@@ -45,7 +45,7 @@ const CURATED_ALIASES: Record<string, string> = {
   "ICS MEGA HALL": "EAA LH",
   "LITE ROOM 4": "CAS LITE 4",
   "LITE ROOM 5": "CAS LITE 5",
-  // PE venues: AMIS types EB Gym shorthand; the Copeland rooms already exist.
+  // PE venues: portal types EB Gym shorthand; the Copeland rooms already exist.
   "MA-EB GYM": "MARTIAL ARTS AREA",
   "DA1-EB GYM": "DANCE AREA 1",
   "DA1 EB Gym": "DANCE AREA 1",
@@ -90,7 +90,7 @@ const CURATED_ALIASES: Record<string, string> = {
 };
 
 /** Venues that are placeholders, not places. */
-const SKIP_VENUES = new Set(["UPLB", "TBA"]);
+const SKIP_VENUES = new Set(["Example University", "TBA"]);
 
 /** Venue pattern -> building id when prefix inference can't see it. */
 const BUILDING_HINTS: [RegExp, number][] = [
@@ -98,13 +98,13 @@ const BUILDING_HINTS: [RegExp, number][] = [
   [/^Chess Room$/i, 32],
   [/^TCC ?-?\d/i, 37], // Temporary Common Classrooms
   [/^SU$/, 55], // Student Union Building
-  [/^UPLB (GS|Grad School)$|^MPH ?\(GS\)$/i, 20], // Graduate School
+  [/^Example University (GS|Grad School)$|^MPH ?\(GS\)$/i, 20], // Graduate School
   [/^AMPED/i, 1], // AMPED Building
   [/^HNF/i, 27], // IHNF Building
   [/^CEM /i, 12], // two DAAE-tagged CEM rooms poison prefix inference
 ];
 
-/** Typo'd room codes in the DB -> what AMIS actually types. */
+/** Typo'd room codes in the DB -> what portal actually types. */
 const ROOM_CODE_FIXES: Record<string, string> = {
   "CAS 1043": "CAS 104",
 };
@@ -132,7 +132,7 @@ function collectVenueCounts(): Map<string, number> {
   };
 
   for (const file of readdirSync("data")) {
-    if (file.startsWith("amis-") && file.endsWith(".json")) {
+    if (file.startsWith("portal-") && file.endsWith(".json")) {
       const raw = JSON.parse(readFileSync(`data/${file}`, "utf8"));
       const rows = Array.isArray(raw) ? raw : (raw.classes ?? raw.data ?? []);
       for (const row of rows) {

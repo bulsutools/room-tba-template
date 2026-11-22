@@ -8,7 +8,7 @@ import type {
 } from "./types";
 import type { QueryStoreState } from "./store.svelte";
 
-/** Query categories, plus the Makiling trail and its stops (not entities). */
+/** Query categories, plus the Summit trail and its stops (not entities). */
 export type SuggestionCategory =
   | Exclude<QueryStoreState["category"], null>
   | "trail";

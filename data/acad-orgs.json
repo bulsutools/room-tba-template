@@ -1,5 +1,5 @@
 {
-  "$comment": "AMIS acad_org (PeopleSoft department code) -> display name + college code (#846). Curated: add codes as editors confirm them; unknown codes degrade to the acad_group college code in the UI. `entityName` overrides the organizations-table entity to pin when it differs from `name`. Frequencies measured across the 9 in-repo term JSONs (1231-1261); every code here has >=498 class rows and a verified UPLB unit name.",
+  "$comment": "portal acad_org (PeopleSoft department code) -> display name + college code (#846). Curated: add codes as editors confirm them; unknown codes degrade to the acad_group college code in the UI. `entityName` overrides the organizations-table entity to pin when it differs from `name`. Frequencies measured across the 9 in-repo term JSONs (1231-1261); every code here has >=498 class rows and a verified Example University unit name.",
   "LBICROPS": { "name": "Institute of Crop Science", "collegeCode": "CAFS" },
   "LBIBS": { "name": "Institute of Biological Sciences", "collegeCode": "CAS" },
   "LBIAS": { "name": "Institute of Animal Science", "collegeCode": "CAFS" },

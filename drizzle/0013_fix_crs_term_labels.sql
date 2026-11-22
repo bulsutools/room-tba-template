@@ -1,4 +1,4 @@
--- CRS/AMIS term_id values are chronological within the AY (1251 1st, 1252 2nd, 1253 midyear).
+-- CRS/portal term_id values are chronological within the AY (1251 1st, 1252 2nd, 1253 midyear).
 -- Supersedes wrong labels/dates from 0009/0010 and the class move in 0012 (do not re-run 0012).
 UPDATE "terms"
 SET

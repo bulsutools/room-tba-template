@@ -23,7 +23,7 @@ import { loadEnv } from "./load-env";
 
 loadEnv();
 
-const PROD_PROJECT_REF = "ccdqtmscmnixjbynwdvb";
+const PROD_PROJECT_REF = "your-prod-project-ref";
 
 const apply = process.argv.includes("--apply");
 const overwrite = process.argv.includes("--overwrite");

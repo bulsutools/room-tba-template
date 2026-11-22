@@ -1,6 +1,6 @@
 ---
 name: repo-baseline
-description: Default workflow for smmariquit repositories. Use at the start of any task — read README, match conventions, minimal diffs, no secrets in commits, verify before redoing infra work. Check for stack-specific skills in this repo (.cursor/skills/).
+description: Default workflow for example-contributor repositories. Use at the start of any task — read README, match conventions, minimal diffs, no secrets in commits, verify before redoing infra work. Check for stack-specific skills in this repo (.cursor/skills/).
 ---
 
 # Repo baseline
@@ -25,7 +25,7 @@ description: Default workflow for smmariquit repositories. Use at the start of a
 
 ## Cross-repo infra
 
-If the task touches Cloudflare, Vercel, or DNS across multiple repos, check `smmariquit/tutorials` for `MIGRATION-HANDOFF.md` and `MIGRATION-STATUS.md` before redoing migration work.
+If the task touches Cloudflare, Vercel, or DNS across multiple repos, check `example-contributor/tutorials` for `MIGRATION-HANDOFF.md` and `MIGRATION-STATUS.md` before redoing migration work.
 
 ## MCP vs shell
 

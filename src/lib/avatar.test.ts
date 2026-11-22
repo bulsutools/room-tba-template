@@ -23,7 +23,7 @@ describe("nameInitials", () => {
   });
 
   test("first two letters for a single word", () => {
-    expect(nameInitials("stimmie")).toBe("ST");
+    expect(nameInitials("example-contributor")).toBe("ST");
   });
 
   test("falls back to ? for empty/blank", () => {

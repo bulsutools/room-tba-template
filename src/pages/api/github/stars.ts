@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 
 export const prerender = false;
 
-const GITHUB_REPO = "uplbtools/room-tba";
+const GITHUB_REPO = "campus-tools/room-tba";
 const CACHE_SECONDS = 60 * 60;
 
 type GithubRepo = {

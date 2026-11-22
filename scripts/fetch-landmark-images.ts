@@ -54,12 +54,12 @@ import { loadEnv } from "./load-env";
 loadEnv();
 
 const OUT_PATH = "src/constants/landmark-images.json";
-// www.uplb.tools is the org landing site; the app (and its API) lives here.
-const DEFAULT_API = "https://room-tba.uplb.tools";
+// www.campus.tools is the org landing site; the app (and its API) lives here.
+const DEFAULT_API = "https://room-tba.campus.tools";
 const COMMONS_API = "https://commons.wikimedia.org/w/api.php";
 /** Wikimedia asks API clients to identify themselves. */
 const USER_AGENT =
-  "RoomTBA-landmark-images/1.0 (https://github.com/uplbtools/room-tba)";
+  "RoomTBA-landmark-images/1.0 (https://github.com/campus-tools/room-tba)";
 
 /**
  * Search radii, metres. Buildings sit back from the road, so 100m finds their
@@ -128,11 +128,11 @@ async function commonsQuery(params: Record<string, string>) {
 /**
  * Hand-picked Commons files, by manifest key, for places whose good photos
  * carry no location tag, so the geosearch below never finds them. A name
- * search is not safe instead: "UPLB Oblation" also matches Oblation Run
+ * search is not safe instead: "Example University Main Hall" also matches Main Hall Run
  * photos. Each file here was checked by hand.
  */
 const PINNED_COMMONS: Record<string, string[]> = {
-  "place:UPLB Oblation (Oblation Park)": ["File:UPLB Oblation Statue.jpg"],
+  "place:Example University Main Hall (Main Hall Park)": ["File:Example University Main Hall Statue.jpg"],
 };
 
 async function commonsImagesFor(target: Target): Promise<CommonsImage[]> {

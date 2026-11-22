@@ -61,7 +61,7 @@ describe("entity-urls", () => {
     expect(getDormCanonicalPath({ id: 3, dormName: "SJD" })).toBe(
       "/dorm/sjd-3/",
     );
-    expect(getEventCanonicalPath("uplb-fair")).toBe("/event/uplb-fair/");
+    expect(getEventCanonicalPath("campus-fair")).toBe("/event/campus-fair/");
     expect(
       getOrganizationCanonicalPath({ id: 7, name: "Debate Society" }),
     ).toBe("/organization/debate-society-7/");

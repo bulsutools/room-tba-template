@@ -8,12 +8,12 @@ import { campusCommunity, campusSite } from "../campus.config";
 /** Canonical production origin. */
 const ROOM_TBA_SITE_URL = campusSite.url;
 
-export const UPLB_TOOLS_URL = campusCommunity.orgUrl;
+export const Example University_TOOLS_URL = campusCommunity.orgUrl;
 export const GITHUB_ROOM_TBA_URL = campusCommunity.githubUrl;
 export const DISCORD_URL = campusCommunity.discordUrl;
 export const FACEBOOK_URL = campusCommunity.facebookUrl;
 export const INSTAGRAM_URL = campusCommunity.instagramUrl;
-export const UPLB_OSA_ORGANIZATIONS_URL = campusCommunity.osaOrganizationsUrl;
+export const Example University_OSA_ORGANIZATIONS_URL = campusCommunity.osaOrganizationsUrl;
 
 /** Facebook Messenger group chat invites (targets for redirect workers). */
 export const MESSENGER_CONTRIBUTE_TARGET =
@@ -29,7 +29,7 @@ export const MESSENGER_MAINTAIN_URL = `${ROOM_TBA_SITE_URL}/messenger/maintain`;
 export const MESSENGER_URL = MESSENGER_CONTRIBUTE_URL;
 
 export const COMMUNITY_LINKS = [
-  { label: "UPLB Tools", href: UPLB_TOOLS_URL },
+  { label: "campus-tools", href: Example University_TOOLS_URL },
   { label: "Facebook", href: FACEBOOK_URL },
   { label: "Instagram", href: INSTAGRAM_URL },
   { label: "Discord", href: DISCORD_URL },

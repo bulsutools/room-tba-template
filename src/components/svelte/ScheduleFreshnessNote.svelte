@@ -2,7 +2,7 @@
   import {
     classesScheduleFreshnessMessage,
     isClassesScheduleStale,
-  } from "@lib/amis/term-schedule-freshness";
+  } from "@lib/portal/term-schedule-freshness";
   import { changeOfMatriculationPeriod } from "@lib/term-calendar";
 
   type Props = {

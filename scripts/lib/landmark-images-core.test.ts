@@ -45,11 +45,11 @@ describe("facadeHeadings", () => {
 describe("isLikelyPhotoTitle", () => {
   test("keeps photographs, drops maps and documents", () => {
     expect(isLikelyPhotoTitle("File:Baker Hall front.jpg")).toBe(true);
-    expect(isLikelyPhotoTitle("File:Oblation.JPEG")).toBe(true);
-    expect(isLikelyPhotoTitle("File:UPLB campus map.svg")).toBe(false);
+    expect(isLikelyPhotoTitle("File:Main Hall.JPEG")).toBe(true);
+    expect(isLikelyPhotoTitle("File:Example University campus map.svg")).toBe(false);
     expect(isLikelyPhotoTitle("File:Campus plan.pdf")).toBe(false);
     // Raster maps used to slip through on extension alone.
-    expect(isLikelyPhotoTitle("File:UPLB_Campus_map.png")).toBe(false);
+    expect(isLikelyPhotoTitle("File:Example University_Campus_map.png")).toBe(false);
     expect(isLikelyPhotoTitle("File:Mapua Hall.jpg")).toBe(true);
   });
 });
@@ -111,7 +111,7 @@ describe("small-place filters", () => {
     );
     // A bird photographed next to the post office.
     expect(
-      titleNamesPlace("File:Butastur_indicus_30197174.jpg", "UPLB Post Office"),
+      titleNamesPlace("File:Butastur_indicus_30197174.jpg", "Example University Post Office"),
     ).toBe(false);
   });
 

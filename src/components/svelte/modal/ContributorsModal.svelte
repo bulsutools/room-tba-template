@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { designers } from "@constants/contributors";
   import {
-    UPLB_TOOLS_URL,
+    Example University_TOOLS_URL,
     DISCORD_URL,
     MESSENGER_CONTRIBUTE_TARGET,
     MESSENGER_MAINTAIN_TARGET,
@@ -31,12 +31,12 @@
       href: "https://umap.openstreetmap.fr/en/map/ati-ntc-rh-malayo-ba-yan-maps-and-directions_1245231",
     },
     {
-      label: "UPLB Lower Campus",
-      href: "https://umap.openstreetmap.fr/en/map/uplb-lower-campus_1180826",
+      label: "Example University Lower Campus",
+      href: "https://umap.openstreetmap.fr/en/map/campus-map_1180826",
     },
     {
-      label: "UPLB ScribbleMaps",
-      href: "https://www.scribblemaps.com/maps/view/UPLB-Map/8fmzCgyQ4y",
+      label: "Example University ScribbleMaps",
+      href: "https://www.scribblemaps.com/maps/view/Example University-Map/8fmzCgyQ4y",
     },
   ];
 
@@ -163,10 +163,10 @@
         </li>
         <li>
           <a
-            href={UPLB_TOOLS_URL}
+            href={Example University_TOOLS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-link">UPLB Tools</a
+            class="inline-link">campus-tools</a
           >
         </li>
         <li>
@@ -203,19 +203,19 @@
         </li>
         <li>
           <a
-            href="https://uplb-trail.vercel.app/"
+            href="https://directory.campus.tools/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-link">UPLB Trail</a
+            class="inline-link">Example University Trail</a
           >
           by Bernard Jezua Tandang
         </li>
         <li>
           <a
-            href="https://chromewebstore.google.com/detail/amissu/mkdgckblaojfigmbnknehcmnjpkcehcj"
+            href="https://chromewebstore.google.com/detail/portalsu/mkdgckblaojfigmbnknehcmnjpkcehcj"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-link">AMISSU</a
+            class="inline-link">the campus mountaineering club</a
           >
           by Garth Hendrich Lapitan
         </li>

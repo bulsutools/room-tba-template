@@ -1,5 +1,5 @@
 /**
- * Extract an OUR "Schedule of Final Examinations" PDF into the
+ * Extract an the registrar "Schedule of Final Examinations" PDF into the
  * data/final-exams-{termId}.json format consumed by import:final-exams.
  *
  * The registrar PDF layout is stable across terms: one table page per
@@ -9,7 +9,7 @@
  * Source PDFs live in data/registrar/ (final-exams-{AY}-{sem}.pdf).
  *
  * Usage:
- *   bun run scripts/extract-final-exams-pdf.ts data/registrar/final-exams-2025-2026-1st-sem.pdf --term-id 1251 --source our-finals-pdf
+ *   bun run scripts/extract-final-exams-pdf.ts data/registrar/final-exams-2025-2026-1st-sem.pdf --term-id 1251 --source registrar-finals-pdf
  *
  * Requires `pdftotext` (poppler-utils) on PATH.
  */
@@ -50,7 +50,7 @@ const SLOT =
   /(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})\s*(A\.?M\.?|P\.?M\.?|NOON|NN)?\s*$/i;
 // "AAE 151", "APHY 10.1", "ChE 32", "SCIENCE 10", "ENSC 14a", "CHEM 161A".
 // Some PDFs put only one space between the course and its room
-// ("CHEM 111.1 PSLH A"), so any whitespace separates the two cells.
+// ("CHEM 111.1 HALL A"), so any whitespace separates the two cells.
 const COURSE_ROW =
   /^([A-Z][A-Za-z]{1,7}\s+\d+(?:\.\d+)?[A-Za-z]?)(?:\s+(.*))?$/;
 const COLUMN_GAP = /^\S+\s+\S+\s{2,}\S/;

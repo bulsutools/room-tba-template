@@ -163,12 +163,12 @@
       setDocumentTitle(
         stop
           ? `${stop.name} | ${route.name} | Room TBA`
-          : `${route.name} ${transitRouteNoun(route)} | UPLB Transit | Room TBA`,
+          : `${route.name} ${transitRouteNoun(route)} | Example University Transit | Room TBA`,
       );
       return;
     }
     if (queryStore.category === "browse" && queryStore.queryValue === "jeepney") {
-      setDocumentTitle("Jeepney and bus routes | UPLB Transit | Room TBA");
+      setDocumentTitle("Jeepney and bus routes | Example University Transit | Room TBA");
       return;
     }
 
@@ -185,10 +185,10 @@
     if (queryStore.category === "room" && currentRoom.value) {
       const room = currentRoom.value;
       updateTermAwareDocumentMeta({
-        baseTitle: `${room.code} | Room at UPLB`,
+        baseTitle: `${room.code} | Room at Example University`,
         baseDescription: room.building?.name
-          ? `Find ${room.code} at UPLB in ${room.building.name} with directions and listed classes.`
-          : `Find ${room.code} at UPLB with directions and listed classes.`,
+          ? `Find ${room.code} at Example University in ${room.building.name} with directions and listed classes.`
+          : `Find ${room.code} at Example University with directions and listed classes.`,
         canonicalPath: getRoomCanonicalPath(room),
         termLabel,
         termId,
@@ -200,8 +200,8 @@
     if (queryStore.category === "building") {
       const buildingName = queryStore.queryValue;
       updateTermAwareDocumentMeta({
-        baseTitle: `${buildingName} | Building at UPLB`,
-        baseDescription: `Find rooms in ${buildingName} at UPLB with map context and class schedules by room.`,
+        baseTitle: `${buildingName} | Building at Example University`,
+        baseDescription: `Find rooms in ${buildingName} at Example University with map context and class schedules by room.`,
         canonicalPath: getBuildingCanonicalPath(buildingName),
         termLabel,
         termId,
@@ -217,9 +217,9 @@
       if (!organization) return;
       const category = orgCategoryLabel(organization.category) ?? "Organization";
       updateTermAwareDocumentMeta({
-        baseTitle: `${organization.name} | ${category} at UPLB`,
+        baseTitle: `${organization.name} | ${category} at Example University`,
         baseDescription: organization.description ??
-          `Find ${organization.name}, a ${category.toLowerCase()} at UPLB, on the campus map.`,
+          `Find ${organization.name}, a ${category.toLowerCase()} at Example University, on the campus map.`,
         canonicalPath: getOrganizationCanonicalPath(organization),
         termLabel,
         termId,
@@ -235,9 +235,9 @@
       if (!place) return;
       const category = placeCategoryLabel(place.category) ?? "Campus place";
       updateTermAwareDocumentMeta({
-        baseTitle: `${place.name} | ${category} at UPLB`,
+        baseTitle: `${place.name} | ${category} at Example University`,
         baseDescription: place.description ??
-          `Find ${place.name}, a ${category.toLowerCase()} at UPLB, on the campus map.`,
+          `Find ${place.name}, a ${category.toLowerCase()} at Example University, on the campus map.`,
         canonicalPath: getPlaceCanonicalPath(place),
         termLabel,
         termId,

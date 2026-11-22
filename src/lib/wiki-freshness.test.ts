@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import {
   formatLongDay,
   hasDayPassed,
-  UPCAT_EXAM_LAST_DAY,
+  Entrance Exam_EXAM_LAST_DAY,
 } from "./wiki-freshness";
 
 describe("hasDayPassed", () => {
@@ -22,12 +22,12 @@ describe("hasDayPassed", () => {
     expect(() => hasDayPassed("soon")).toThrow();
   });
 
-  test("the UPCAT article is flagged as past from August 3, 2026", () => {
+  test("the Entrance Exam article is flagged as past from August 3, 2026", () => {
     expect(
-      hasDayPassed(UPCAT_EXAM_LAST_DAY, new Date("2026-08-03T00:00:00Z")),
+      hasDayPassed(Entrance Exam_EXAM_LAST_DAY, new Date("2026-08-03T00:00:00Z")),
     ).toBe(true);
     expect(
-      hasDayPassed(UPCAT_EXAM_LAST_DAY, new Date("2026-07-27T00:00:00Z")),
+      hasDayPassed(Entrance Exam_EXAM_LAST_DAY, new Date("2026-07-27T00:00:00Z")),
     ).toBe(false);
   });
 });

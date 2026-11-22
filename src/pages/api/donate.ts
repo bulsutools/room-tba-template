@@ -15,7 +15,7 @@ function json(status: number, body: unknown): Response {
 
 /**
  * One-time donations via a PayMongo Checkout Session (same pattern as
- * kape.stimmie.dev). The hosted checkout handles all payment data — no card
+ * kape.example.edu). The hosted checkout handles all payment data — no card
  * or wallet details ever touch this server. See docs/funding-model.md.
  */
 export const POST: APIRoute = async ({ request }) => {
@@ -70,7 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
               {
                 currency: "PHP",
                 amount: pesoAmount * 100,
-                name: "🗺️ Room TBA / UPLB Tools donation",
+                name: "🗺️ Room TBA / campus-tools donation",
                 quantity: 1,
                 description,
               },

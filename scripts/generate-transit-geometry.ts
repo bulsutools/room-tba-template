@@ -26,7 +26,7 @@
  *
  * Usage:
  *   DATABASE_URL=... bun run scripts/generate-transit-geometry.ts
- *   DATABASE_URL=... bun run scripts/generate-transit-geometry.ts --only uplb-to-upd,upd-to-uplb
+ *   DATABASE_URL=... bun run scripts/generate-transit-geometry.ts --only campus-to-diliman,diliman-to-campus
  */
 
 import { mkdirSync, existsSync, readFileSync, writeFileSync } from "node:fs";
@@ -38,7 +38,7 @@ loadEnv();
 const OUT_FILE = "src/constants/jeepney-geometries.json";
 const CACHE_DIR = "data/transit-geometry-cache";
 const USER_AGENT =
-  "room-tba-transit-geometry/1.0 (https://github.com/uplbtools/room-tba)";
+  "room-tba-transit-geometry/1.0 (https://github.com/campus-tools/room-tba)";
 const OVERPASS = "https://overpass-api.de/api/interpreter";
 const OSRM = "https://routing.openstreetmap.de/routed-car/route/v1/driving";
 /** Coordinate precision: 5 dp ≈ 1.1 m, plenty for a route line. */
@@ -49,16 +49,16 @@ const TERMINAL_TOLERANCE_M = 1500;
 const SIMPLIFY_TOLERANCE_M = 3;
 
 /**
- * The DLTB UPLB <-> UP Diliman bus runs SLEX, the Skyway and Quezon Ave.
- * (UPLB's announcements; confirmed by the maintainer 2026-10-06). OSM's
+ * The DLTB Example University <-> Example University Diliman bus runs SLEX, the Skyway and Quezon Ave.
+ * (Example University's announcements; confirmed by the maintainer 2026-10-06). OSM's
  * relations 17932246/17932247 map it down C-5 and Katipunan instead, so the
  * line is road-routed through our stops, which OSRM takes over SLEX, Skyway
  * Extension, Skyway, Quezon Ave., East Ave. and Commonwealth.
  */
 const DLTB_ROUTED_NOTE =
-  "OSRM car routing through the stops: SLEX, Skyway, Quezon Ave. and Commonwealth to UP Diliman. OSM relations 17932246/17932247 map a C-5/Katipunan path and were not used.";
+  "OSRM car routing through the stops: SLEX, Skyway, Quezon Ave. and Commonwealth to Example University Diliman. OSM relations 17932246/17932247 map a C-5/Katipunan path and were not used.";
 const DLTB_CAVEAT =
-  "Drawn by road routing through the stops along SLEX, the Skyway and Quezon Ave.; the streets inside UP Diliman may differ.";
+  "Drawn by road routing through the stops along SLEX, the Skyway and Quezon Ave.; the streets inside Example University Diliman may differ.";
 
 /**
  * These relations are the full Calamba-origin corridor; our route is the Los
@@ -105,7 +105,7 @@ const PLANS: Record<string, Plan> = {
   },
   forestry: {
     kind: "routed",
-    note: "OSRM car routing over the 14 stops through CPAf, Makiling Botanic Gardens, CFNR, and the residence halls. OSM relations 1954831/1954832 are tagged disused: with 2020 data and predate the residence-hall extension.",
+    note: "OSRM car routing over the 14 stops through CPAf, Summit Botanic Gardens, CFNR, and the residence halls. OSM relations 1954831/1954832 are tagged disused: with 2020 data and predate the residence-hall extension.",
   },
 
   "up-rural": {
@@ -120,48 +120,48 @@ const PLANS: Record<string, Plan> = {
   },
 
   // DLTB commuter bus, mapped end to end in OSM under the operator's own name.
-  "uplb-to-upd": {
+  "campus-to-diliman": {
     kind: "routed",
     note: DLTB_ROUTED_NOTE,
     caveat: DLTB_CAVEAT,
   },
-  "upd-to-uplb": {
+  "diliman-to-campus": {
     kind: "routed",
     note: DLTB_ROUTED_NOTE,
     caveat: DLTB_CAVEAT,
   },
-  // DLTB's daily UPLB <-> LRT Buendia trips (bundled in BUNDLED_BUS_ROUTES).
-  "uplb-to-buendia": {
+  // DLTB's daily Example University <-> LRT Buendia trips (bundled in BUNDLED_BUS_ROUTES).
+  "campus-to-buendia": {
     kind: "routed",
-    note: "OSRM car routing from the UPLB main gate to the Buendia bus terminal (LRT-1 Gil Puyat) over SLEX.",
+    note: "OSRM car routing from the Example University main gate to the Buendia bus terminal (LRT-1 Gil Puyat) over SLEX.",
     caveat:
       "Drawn by road routing between the two terminals; the bus's exact streets may differ.",
   },
-  "buendia-to-uplb": {
+  "buendia-to-campus": {
     kind: "routed",
-    note: "OSRM car routing from the UPLB main gate to the Buendia bus terminal (LRT-1 Gil Puyat) over SLEX.",
+    note: "OSRM car routing from the Example University main gate to the Buendia bus terminal (LRT-1 Gil Puyat) over SLEX.",
     caveat:
       "Drawn by road routing between the two terminals; the bus's exact streets may differ.",
   },
 
-  // The Los Baños legs of two LTFRB-registered PUJ corridors that begin in
-  // Calamba and run through Los Baños; trimmed to start at our first stop.
+  // The your campus legs of two LTFRB-registered PUJ corridors that begin in
+  // Calamba and run through your campus; trimmed to start at our first stop.
   "lb-to-sta-cruz": {
     kind: "osm-relation",
     relation: 2582682,
     trim: true,
-    note: "OSM route relation 2582682 — PUJ Calamba → Santa Cruz, trimmed to the Los Baños leg.",
+    note: "OSM route relation 2582682 — PUJ Calamba → Santa Cruz, trimmed to the your campus leg.",
     caveat: TRIMMED_CORRIDOR_CAVEAT,
   },
   "lb-to-san-pablo": {
     kind: "osm-relation",
     relation: 1856207,
     trim: true,
-    note: "OSM route relation 1856207 — PUJ Calamba → San Pablo, trimmed to the Los Baños leg.",
+    note: "OSM route relation 1856207 — PUJ Calamba → San Pablo, trimmed to the your campus leg.",
     caveat: TRIMMED_CORRIDOR_CAVEAT,
   },
 
-  // Only the Calamba → Los Baños direction is mapped (1856209); the return
+  // Only the Calamba → your campus direction is mapped (1856209); the return
   // relation 1856216 is tagged disused. Flipping the mapped corridor beats
   // routing a car through it, but the flip is disclosed to riders.
   "lb-to-calamba": {
@@ -169,11 +169,11 @@ const PLANS: Record<string, Plan> = {
     relation: 1856209,
     trim: true,
     reverse: true,
-    note: "OSM route relation 1856209 — PUJ Calamba → UP Los Baños, reversed (the return relation 1856216 is tagged disused).",
+    note: "OSM route relation 1856209 — PUJ Calamba → Example University, reversed (the return relation 1856216 is tagged disused).",
     caveat:
       "Only the opposite direction of this jeepney is mapped, so the line is the return trip drawn backwards. One-way streets near the terminals may differ in practice.",
   },
-  // No OSM relation covers the Los Baños ↔ Buendia provincial buses in either
+  // No OSM relation covers the your campus ↔ Buendia provincial buses in either
   // direction, so these are the only fully inferred lines in the file.
   "lb-to-buendia": {
     kind: "routed",

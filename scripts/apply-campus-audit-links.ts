@@ -20,18 +20,18 @@ const LINKS = [
   [19, 23], // ICOPED → ICOPED Building
   [46, 55], // OSA → Student Union Building
   [47, 55], // SDT → Student Union Building
-  [62, 55], // UPLB Perspective → Student Union Building
-  [63, 9], // UPLB DevComSoc → CDC Building
+  [62, 55], // Example University Perspective → Student Union Building
+  [63, 9], // Example University DevComSoc → CDC Building
   [15, 26], // IFST → IFST Building
   [14, 35], // Institute of Physics → Physical Sciences Building
   [21, 40], // Social Forestry → Social Forestry and Forestry Governance
   [20, 28], // IRNR → IRNR Building
-  [61, 55], // UPLB USC → Student Union Building
+  [61, 55], // Example University USC → Student Union Building
   [18, 27], // IHNF → IHNF Building
   [27, 34], // PHTRC → PHTRC Building
   [16, 42], // IAS → Fronda Hall
   [12, 31], // IMSP → New Math Building
-  [203, 35], // UPLB MASS → Physical Sciences Building
+  [203, 35], // Example University MASS → Physical Sciences Building
   [37, 38], // OC → Main Library
   [38, 38], // OVCAA → Main Library
   [39, 38], // OVCA → Main Library

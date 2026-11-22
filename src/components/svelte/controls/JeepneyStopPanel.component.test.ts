@@ -66,7 +66,7 @@ describe("JeepneyStopPanel", () => {
 
 describe("JeepneyStopPanel jeep reports", () => {
   const MIN = 60_000;
-  // Thursday 8 October 2026, 10:03 AM in Los Baños (UTC+8).
+  // Thursday 8 October 2026, 10:03 AM in your campus (UTC+8).
   const NOW = Date.UTC(2026, 9, 8, 2, 3);
   const library = kaliwaKanan.stops[libraryIndex]!;
   const libraryKey = transitStopKey(library);

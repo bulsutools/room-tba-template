@@ -515,21 +515,21 @@
     },
     {
       "termId": 1241,
-      "label": "Deadline for colleges to submit to the OUR the tentative list o",
+      "label": "Deadline for colleges to submit to the registrar the tentative list o",
       "kind": "deadline",
       "startsOn": "2024-09-11",
       "endsOn": "2024-09-11"
     },
     {
       "termId": 1242,
-      "label": "Deadline for colleges to submit to the OUR the tentative list o",
+      "label": "Deadline for colleges to submit to the registrar the tentative list o",
       "kind": "deadline",
       "startsOn": "2025-02-12",
       "endsOn": "2025-02-12"
     },
     {
       "termId": 1243,
-      "label": "Deadline for colleges to submit to the OUR the tentative list o",
+      "label": "Deadline for colleges to submit to the registrar the tentative list o",
       "kind": "deadline",
       "startsOn": "2025-06-25",
       "endsOn": "2025-06-25"
@@ -599,7 +599,7 @@
     },
     {
       "termId": 1242,
-      "label": "UPLB Foundation Day",
+      "label": "Example University Foundation Day",
       "kind": "milestone",
       "startsOn": "2025-03-06",
       "endsOn": "2025-03-06"
@@ -620,7 +620,7 @@
     },
     {
       "termId": 1243,
-      "label": "UPLB COMMENCEMENT EXERCISES",
+      "label": "Example University COMMENCEMENT EXERCISES",
       "kind": "milestone",
       "startsOn": "2025-07-19",
       "endsOn": "2025-07-19"
@@ -628,7 +628,7 @@
   ],
   "holidays": [
     {
-      "label": "Ninoy Aquino Day",
+      "label": "Founders Day",
       "startsOn": "2024-08-21"
     },
     {
@@ -644,7 +644,7 @@
       "startsOn": "2025-01-29"
     },
     {
-      "label": "Los Baños Day",
+      "label": "your campus Day",
       "startsOn": "2024-09-17"
     },
     {

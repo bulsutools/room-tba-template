@@ -80,7 +80,7 @@ describe("MapToolsFlyout", () => {
       .click();
     expect(mapViewStore.showPlaces).toBe(false);
     expect(
-      within(sheet).getByRole("switch", { name: "Makiling Trail" }),
+      within(sheet).getByRole("switch", { name: "Summit Trail" }),
     ).toBeInTheDocument();
   });
 

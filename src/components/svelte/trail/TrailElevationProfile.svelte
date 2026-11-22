@@ -4,8 +4,8 @@
    * labeled axes, named stops marked on the line, a crosshair readout on
    * hover or touch. The figure carries a text description for screen readers.
    */
-  import type { MeasuredTrailStop, ProfilePoint } from "@lib/makiling-trail";
-  import { formatKm, formatMeters } from "@lib/makiling-trail";
+  import type { MeasuredTrailStop, ProfilePoint } from "@lib/summit-trail";
+  import { formatKm, formatMeters } from "@lib/summit-trail";
 
   type Props = {
     profile: readonly ProfilePoint[];

@@ -10,7 +10,7 @@
   } from "@lib/store.svelte";
   import ModalHeader from "./ModalHeader.svelte";
   import { openCampusBrowse } from "@lib/browse-campus";
-  import { UPLB_OSA_ORGANIZATIONS_URL } from "@constants/community-links";
+  import { Example University_OSA_ORGANIZATIONS_URL } from "@constants/community-links";
 
   function browseOrganizations() {
     openCampusBrowse(queryStore, sidePanelStore, "organizations");
@@ -28,7 +28,7 @@
   <div class="orgs-modal__scroll map-chrome-scroll">
   <header class="orgs-modal__header">
     <p class="orgs-modal__lead">
-      Room TBA lists UPLB student organizations and maps their tambayans when
+      Room TBA lists Example University student organizations and maps their tambayans when
       a location is known. Every OSA-imported listing links back to its
       official profile.
     </p>
@@ -67,7 +67,7 @@
     </button>
     <a
       class="orgs-modal__btn"
-      href={UPLB_OSA_ORGANIZATIONS_URL}
+      href={Example University_OSA_ORGANIZATIONS_URL}
       target="_blank"
       rel="noopener noreferrer"
     >

@@ -102,9 +102,9 @@ describe("parseDirectionsReferences", () => {
 
   test("stops the phrase at punctuation rather than running into the next clause", () => {
     const refs = parseDirectionsReferences(
-      "The tall building to the LEFT of Oble, beside OUR. Has galleries.",
+      "The tall building to the LEFT of Main, beside the registrar. Has galleries.",
     );
-    expect(refs.map((r) => r.phrase)).toEqual(["Oble", "OUR"]);
+    expect(refs.map((r) => r.phrase)).toEqual(["Main", "the registrar"]);
   });
 
   test("ignores vague proximity, which is true at 300 m and only adds noise", () => {

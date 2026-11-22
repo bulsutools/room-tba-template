@@ -1,8 +1,8 @@
 # GitHub Sponsors funding model — links to our donation and sponsorship pages.
 # See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository
-github: [uplbtools]
+github: [campus-tools]
 custom:
   [
-    "https://room-tba.uplb.tools/donate",
-    "https://room-tba.uplb.tools/sponsors",
+    "https://room-tba.campus.tools/donate",
+    "https://room-tba.campus.tools/sponsors",
   ]

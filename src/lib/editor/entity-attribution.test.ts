@@ -64,7 +64,7 @@ describe("publicActorName", () => {
   });
 
   test("never shows email-shaped names or opted-out editors", () => {
-    expect(publicActorName("someone@up.edu.ph", null)).toBe(ANONYMOUS_EDITOR);
+    expect(publicActorName("someone@example.edu", null)).toBe(ANONYMOUS_EDITOR);
     expect(
       publicActorName("quiet", null, [
         {
@@ -96,7 +96,7 @@ const row = (over: Partial<HistoryRow> = {}): HistoryRow => ({
   id: 1,
   entityType: "dorm",
   action: "update",
-  editedBy: "reviewer@up.edu.ph",
+  editedBy: "reviewer@example.edu",
   summary: null,
   before: {
     dormName: "Old",

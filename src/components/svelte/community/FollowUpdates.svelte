@@ -18,7 +18,7 @@
     <CommunityPlatformLink
       brand="facebook"
       href={FACEBOOK_URL}
-      label="UPLB Tools on Facebook"
+      label="campus-tools on Facebook"
       onclick={onfollow}
     />
   </li>
@@ -26,7 +26,7 @@
     <CommunityPlatformLink
       brand="instagram"
       href={INSTAGRAM_URL}
-      label="UPLB Tools on Instagram"
+      label="campus-tools on Instagram"
       onclick={onfollow}
     />
   </li>

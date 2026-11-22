@@ -1,5 +1,5 @@
 /**
- * Extract the OUR "Academic Calendar" PDF into
+ * Extract the registrar "Academic Calendar" PDF into
  * data/academic-calendar-{schoolYear}.json: term windows (consumed by
  * src/lib/term-calendar.ts) plus every milestone row and official holiday.
  *

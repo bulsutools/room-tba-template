@@ -64,7 +64,7 @@ describe("holidaysWithin", () => {
   it("returns the official holidays inside the strip's span", () => {
     const holidays = holidaysWithin("2026-08-01", "2026-12-31");
     expect(holidays.map((holiday) => holiday.label)).toContain(
-      "Ninoy Aquino Day",
+      "Founders Day",
     );
     expect(holidays[0]?.startsOn).toBe("2026-08-21");
     expect(holidays.every((holiday) => holiday.kind === "holiday")).toBe(true);

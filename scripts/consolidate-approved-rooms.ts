@@ -2,7 +2,7 @@
  * Apply the approved room-name consolidation for #875.
  *
  * A room code stays short; its readable spelling is stored in full_name and
- * all historic/current AMIS spellings are aliases. Dry-run by default.
+ * all historic/current portal spellings are aliases. Dry-run by default.
  *
  *   bun run consolidate:approved-rooms
  *   bun run consolidate:approved-rooms -- --apply --allow-prod
@@ -13,7 +13,7 @@ import { loadEnv } from "./load-env";
 
 loadEnv();
 
-const PROD_PROJECT_REF = "ccdqtmscmnixjbynwdvb";
+const PROD_PROJECT_REF = "your-prod-project-ref";
 const OP_KEY = "2026-08-10-approved-room-names";
 const SOURCE = "room_name_consolidation";
 const apply = process.argv.includes("--apply");
@@ -22,7 +22,7 @@ const allowProd = process.argv.includes("--allow-prod");
 type Group = { code: string; fullName: string; aliases: string[] };
 
 // Maintainer-approved groups from #875, supplemented only with spelling
-// variants found in the current AMIS 1261 export.
+// variants found in the current portal 1261 export.
 const GROUPS: Group[] = [
   {
     code: "DSDS MLH",

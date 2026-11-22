@@ -5,31 +5,31 @@ import {
   needsStreetViewLookup,
 } from "@lib/landmark-images";
 
-// "building:CEM Building" ships in the committed manifest with three Street
+// "building:Science Annex" ships in the committed manifest with three Street
 // View headings from a Google capture, so the real manifest doubles as the
 // fixture.
-const CEM = {
-  name: "CEM Building",
+const SCIENCE_ANNEX = {
+  name: "Science Annex",
   lat: 14.1675,
   lon: 121.2412,
   panoId: null,
   googleKey: "test-google-key",
 };
 
-// The only pano near "building:Freedom Park" is a photo sphere somebody
-// uploaded ("© Ry Clark Media Arts").
+// The only pano near "building:Central Park" is a photo sphere somebody
+// uploaded ("© Example Photographer").
 const FREEDOM_PARK = {
-  name: "Freedom Park",
+  name: "Central Park",
   lat: 14.1617660159005,
   lon: 121.241457649492,
   panoId: "CAoSFkNJSE0wb2dLRUlDQWdJREUwYVhZT1E.",
   googleKey: "test-google-key",
 };
 
-// Commons photos must name their place in the file title, so Freedom Park has
-// none; the Veterinary Teaching Hospital carries two titled photos.
+// Commons photos must name their place in the file title, so Central Park has
+// none; the Veterinary Clinic carries two titled photos.
 const VET_HOSPITAL = {
-  name: "Veterinary Teaching Hospital",
+  name: "Veterinary Clinic",
   lat: 14.16,
   lon: 121.24,
   panoId: null,
@@ -39,7 +39,7 @@ const VET_HOSPITAL = {
 describe("landmarkImages", () => {
   test("orders street view angles, contributor, commons; caps at 10", () => {
     const images = landmarkImages({
-      ...CEM,
+      ...SCIENCE_ANNEX,
       imageUrl: "https://r2.example/cem.jpg",
     });
     expect(images.slice(0, 4).map((i) => i.source)).toEqual([
@@ -99,7 +99,7 @@ describe("landmarkImages", () => {
     expect(streetView).toHaveLength(3);
     expect(images.slice(-3)).toEqual(streetView);
     expect(streetView[0]?.credit).toBe(
-      "Street View image © Ry Clark Media Arts",
+      "Street View image © Example Photographer",
     );
     // Pinned to the pano the headings were computed from.
     expect(new URL(streetView[0]!.src).searchParams.get("pano")).toBe(
@@ -108,12 +108,12 @@ describe("landmarkImages", () => {
   });
 
   test("dorms, places and orgs read their own kind's manifest key", () => {
-    // "dorm:Centtro Residences" and "place:Church Among the Palms" ship in
+    // "dorm:Campus Heights Residences" and "place:Chapel on the Green" ship in
     // the committed manifest; neither has a DB pano column, so the pinned
     // manifest pano alone has to turn Street View on.
     const dorm = landmarkImages({
       kind: "dorm",
-      name: "Centtro Residences",
+      name: "Campus Heights Residences",
       lat: 14.1679,
       lon: 121.2433,
       googleKey: "test-google-key",
@@ -130,21 +130,21 @@ describe("landmarkImages", () => {
 
     const place = landmarkImages({
       kind: "place",
-      name: "Church Among the Palms",
+      name: "Chapel on the Green",
       googleKey: "test-google-key",
     });
     expect(place.some((i) => i.source === "commons")).toBe(true);
 
     // Same name under another kind is a different entry.
     expect(
-      landmarkImages({ kind: "organization", name: "Centtro Residences" }),
+      landmarkImages({ kind: "organization", name: "Campus Heights Residences" }),
     ).toEqual([]);
   });
 
   test("contributor photo still leads for non-building kinds", () => {
     const images = landmarkImages({
       kind: "place",
-      name: "Church Among the Palms",
+      name: "Chapel on the Green",
       imageUrl: "https://r2.example/church.jpg",
     });
     expect(images[0]?.source).toBe("contributor");
@@ -175,7 +175,7 @@ describe("runtime Street View lookup", () => {
     // A cached "no coverage" skips the request.
     expect(needsStreetViewLookup({ ...FOOD_TRUCK, panoId: null })).toBe(false);
     expect(
-      needsStreetViewLookup({ ...FOOD_TRUCK, name: "Church Among the Palms" }),
+      needsStreetViewLookup({ ...FOOD_TRUCK, name: "Chapel on the Green" }),
     ).toBe(false);
   });
 
@@ -211,7 +211,7 @@ describe("runtime Street View lookup", () => {
     expect(landmarkImages({ ...FOOD_TRUCK, lookedUpPano: null })).toEqual([]);
     const church = landmarkImages({
       ...FOOD_TRUCK,
-      name: "Church Among the Palms",
+      name: "Chapel on the Green",
       lookedUpPano: { panoId: "lookup-pano", heading: 10 },
     });
     expect(church.some((i) => i.src.includes("lookup-pano"))).toBe(false);

@@ -34,7 +34,7 @@
   import { getPlaceShareUrl } from "@lib/share-links";
   import Route from "@lucide/svelte/icons/route";
   import MapChromeActionChip from "@ui/map-chrome/MapChromeActionChip.svelte";
-  import { trailStopForPlace } from "@lib/makiling-trail";
+  import { trailStopForPlace } from "@lib/summit-trail";
   import { openTrailSheet } from "@lib/trail-sheet";
 
   const appData = getAppData();
@@ -48,7 +48,7 @@
   const canPublish = $derived(adminAuthStore.canPublish);
   const draftPin = $derived(additionProposalStore.draftPin);
   const placeShareUrl = $derived(place ? getPlaceShareUrl(place) : "");
-  /** Trailhead, Peak 2 and the side-trip spots open the Makiling trail. */
+  /** Trailhead, Peak 2 and the side-trip spots open the Summit trail. */
   const trailStop = $derived(trailStopForPlace(place?.name));
 
   let editing = $state(false);
