@@ -4,25 +4,25 @@ import { getJeepneyRouteShareUrl } from "./share-links.js";
 describe("getJeepneyRouteShareUrl", () => {
   test("builds a jeepney deep link without a stop", () => {
     expect(getJeepneyRouteShareUrl("kaliwa-kanan")).toBe(
-      "https://room-tba.uplb.tools/transit/kaliwa-kanan/",
+      "https://room-tba.campus.tools/transit/kaliwa-kanan/",
     );
   });
 
   test("appends the stop index when given", () => {
     expect(getJeepneyRouteShareUrl("forestry", 3)).toBe(
-      "https://room-tba.uplb.tools/transit/forestry/narra-bridge/",
+      "https://room-tba.campus.tools/transit/forestry/narra-bridge/",
     );
   });
 
   test("includes stop=0 (index is not treated as absent)", () => {
     expect(getJeepneyRouteShareUrl("forestry", 0)).toBe(
-      "https://room-tba.uplb.tools/transit/forestry/forestry-jeep-terminal/",
+      "https://room-tba.campus.tools/transit/forestry/forestry-jeep-terminal/",
     );
   });
 
   test("url-encodes the route id", () => {
     expect(getJeepneyRouteShareUrl("a b/c")).toBe(
-      "https://room-tba.uplb.tools/transit/a%20b%2Fc/",
+      "https://room-tba.campus.tools/transit/a%20b%2Fc/",
     );
   });
 });

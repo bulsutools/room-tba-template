@@ -22,7 +22,7 @@ describe("contributor-progress", () => {
   it("builds room completeness from directions, schedule, and position", () => {
     const row = buildRoomProgressRow({
       id: 1,
-      code: "PSLH 4",
+      code: "HALL 4",
       buildingId: 9,
       directions: "Near the stairs",
       classCount: 2,
@@ -35,8 +35,8 @@ describe("contributor-progress", () => {
       position: false,
     });
     expect(row.missingFields).toEqual(["position"]);
-    expect(missingFieldLabel("PSLH 4", "position")).toBe(
-      "PSLH 4 is missing its floor plan pin",
+    expect(missingFieldLabel("HALL 4", "position")).toBe(
+      "HALL 4 is missing its floor plan pin",
     );
   });
 

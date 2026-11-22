@@ -14,9 +14,9 @@ import {
 import { adminAuthStore } from "@lib/store.svelte";
 
 const PROFILE = {
-  username: "stimmie",
+  username: "example-contributor",
   displayName: "Stimmie",
-  email: "stimmie@example.ph",
+  email: "example-contributor@example.ph",
   role: "admin",
   hasPassword: true,
   linkedGoogle: false,

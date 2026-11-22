@@ -13,13 +13,13 @@ describe("getGoogleMapsPinUrl", () => {
         "Electrical Engineering Building",
       ),
     ).toBe(
-      "https://www.google.com/maps/place/UPLB+Dante+B.+De+Padua+Hall+(CEAT+Administration+Building)/@14.1614261,121.2479207,19.07z/data=!4m6!3m5!1s0x33bd619058953c0d:0xbc3af31f3d3de971!8m2!3d14.1615904!4d121.2478685!16s%2Fg%2F11s5jspcv0",
+      "https://www.google.com/maps/place/Example University+Dante+B.+De+Padua+Hall+(CEAT+Administration+Building)/@14.1614261,121.2479207,19.07z/data=!4m6!3m5!1s0x33bd619058953c0d:0xbc3af31f3d3de971!8m2!3d14.1615904!4d121.2478685!16s%2Fg%2F11s5jspcv0",
     );
   });
 
   test("searches for a named entity instead of opening raw coordinates", () => {
     expect(getGoogleMapsPinUrl(14.6532, 121.0689, "Test Hall")).toBe(
-      "https://www.google.com/maps/search/?api=1&query=Test%20Hall%2C%20UPLB%2C%20Los%20Ba%C3%B1os",
+      "https://www.google.com/maps/search/?api=1&query=Test%20Hall%2C%20Example University%2C%20Los%20Ba%C3%B1os",
     );
   });
 

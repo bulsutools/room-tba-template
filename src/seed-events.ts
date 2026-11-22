@@ -51,7 +51,7 @@ const seedEvents = [
     event: {
       slug: "university-graduation-2026",
       title: "University Graduation",
-      description: "UPLB University Graduation ceremony at Copeland Gymnasium.",
+      description: "Example University University Graduation ceremony at Copeland Gymnasium.",
       category: "ceremony" as const,
       startsAt: "2026-07-04T08:00:00+08:00",
       endsAt: "2026-07-04T17:00:00+08:00",
@@ -94,9 +94,9 @@ const seedEvents = [
   },
   {
     event: {
-      slug: "uplb-cas-testimonials-2026",
-      title: "UPLB CAS Testimonials",
-      description: "UPLB College of Arts and Sciences testimonials.",
+      slug: "campus-cas-testimonials-2026",
+      title: "Example University CAS Testimonials",
+      description: "Example University College of Arts and Sciences testimonials.",
       category: "ceremony" as const,
       startsAt: "2026-07-02T07:30:00+08:00",
       endsAt: "2026-07-02T12:00:00+08:00",

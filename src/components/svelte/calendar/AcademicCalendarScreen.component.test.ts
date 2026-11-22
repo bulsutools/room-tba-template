@@ -82,7 +82,7 @@ describe("AcademicCalendarScreen", () => {
     }
     expect(
       screen
-        .getByText("May differ from the official UPLB academic calendar")
+        .getByText("May differ from the official Example University academic calendar")
         .closest("details"),
     ).not.toHaveAttribute("open");
   });
@@ -108,7 +108,7 @@ describe("AcademicCalendarScreen", () => {
   test("shows the community-data disclaimer", () => {
     render(AcademicCalendarScreen);
     expect(
-      screen.getByText("May differ from the official UPLB academic calendar"),
+      screen.getByText("May differ from the official Example University academic calendar"),
     ).toBeTruthy();
     expect(screen.getByRole("note").textContent).toContain("Registrar");
   });
@@ -154,7 +154,7 @@ describe("AcademicCalendarScreen", () => {
       expect(labels).toContain("Start of classes");
       expect(labels).toContain("Dropping deadline");
       expect(labels).toContain("Final examinations");
-      expect(labels).toContain("Ninoy Aquino Day");
+      expect(labels).toContain("Founders Day");
       expect(labels).not.toContain(
         "University Council Executive Committee Meeting",
       );

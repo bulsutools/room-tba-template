@@ -80,8 +80,8 @@ describe("HOTP / TOTP", () => {
 
 describe("otpauth URI and recovery codes", () => {
   test("otpauth URI carries issuer, account and secret", () => {
-    const uri = otpauthUri("ABC", "stimmie");
-    expect(uri.startsWith("otpauth://totp/Room%20TBA%3Astimmie?")).toBe(true);
+    const uri = otpauthUri("ABC", "example-contributor");
+    expect(uri.startsWith("otpauth://totp/Room%20TBA%3Aexample-contributor?")).toBe(true);
     expect(uri).toContain("secret=ABC");
     expect(uri).toContain("issuer=Room+TBA");
   });

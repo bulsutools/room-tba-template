@@ -34,7 +34,7 @@
   import {
     DISCORD_URL,
     MESSENGER_CONTRIBUTE_TARGET,
-    UPLB_TOOLS_URL,
+    Example University_TOOLS_URL,
   } from "@constants/community-links";
   import OnlineCounter from "../OnlineCounter.svelte";
   import Avatar from "../Avatar.svelte";
@@ -531,8 +531,8 @@
             />
             <SettingsRow
               icon={Globe}
-              label="UPLB Tools"
-              href={UPLB_TOOLS_URL}
+              label="campus-tools"
+              href={Example University_TOOLS_URL}
               external
             />
           </SettingsSection>

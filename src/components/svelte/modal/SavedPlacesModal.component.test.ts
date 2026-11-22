@@ -42,23 +42,23 @@ describe("SavedPlacesModal", () => {
   test("remove and clear update the lists", async () => {
     savedPlaces.save({
       category: "place",
-      value: "Oblation",
-      label: "Oblation",
+      value: "Main Hall",
+      label: "Main Hall",
     });
     recentPlaces.record({
       category: "place",
-      value: "Oblation",
-      label: "Oblation",
+      value: "Main Hall",
+      label: "Main Hall",
     });
     render(SavedPlacesModal);
 
     await fireEvent.click(
-      screen.getByRole("button", { name: "Remove Oblation from Saved" }),
+      screen.getByRole("button", { name: "Remove Main Hall from Saved" }),
     );
     expect(savedPlaces.items).toEqual([]);
 
     await fireEvent.click(screen.getByRole("button", { name: "Clear" }));
     expect(recentPlaces.items).toEqual([]);
-    expect(screen.queryByRole("button", { name: /Oblation/ })).toBeNull();
+    expect(screen.queryByRole("button", { name: /Main Hall/ })).toBeNull();
   });
 });

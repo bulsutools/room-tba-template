@@ -6,7 +6,7 @@ import { adminAuthStore } from "@lib/store.svelte";
 const USERS = [
   {
     id: 1,
-    username: "stimmie",
+    username: "example-contributor",
     displayName: "Stimmie",
     email: "s@example.ph",
     role: "admin",

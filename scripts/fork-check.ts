@@ -1,8 +1,8 @@
 /**
- * Scan tracked files for UPLB-specific strings a fork must replace.
+ * Scan tracked files for Example University-specific strings a fork must replace.
  *
- * On upstream (uplbtools/room-tba) this reports many hits — that is expected,
- * this is the UPLB app. Run it on YOUR fork after you think you have replaced
+ * On upstream (campus-tools/room-tba) this reports many hits — that is expected,
+ * this is the Example University app. Run it on YOUR fork after you think you have replaced
  * everything. A clean run means you caught it all; remaining hits are things
  * you forgot.
  *
@@ -18,52 +18,52 @@ import { readFileSync } from "node:fs";
 type Marker = { pattern: RegExp; hint: string };
 
 const markers: Marker[] = [
-  { pattern: /\buplb\b/gi, hint: "UPLB name — rebrand to your campus." },
-  { pattern: /uplbtools/gi, hint: "UPLB Tools org/domain — your org/domain." },
+  { pattern: /\buplb\b/gi, hint: "Example University name — rebrand to your campus." },
+  { pattern: /campus-tools/gi, hint: "campus-tools org/domain — your org/domain." },
   {
-    pattern: /room-tba\.uplb\.tools/gi,
+    pattern: /room-tba\.campus\.tools/gi,
     hint: "Production URL — set to your domain (also astro.config.mjs `site:`).",
   },
   {
     pattern: /discord\.gg\/SrVDgfcrVt/gi,
-    hint: "UPLB Discord invite — your community link, or delete.",
+    hint: "Example University Discord invite — your community link, or delete.",
   },
   {
     pattern: /m\.me\/j\/[A-Za-z0-9_-]+/gi,
-    hint: "UPLB Messenger group invite — your community link, or delete.",
+    hint: "Example University Messenger group invite — your community link, or delete.",
   },
   {
-    pattern: /\bMakiling\b/g,
-    hint: "Mt. Makiling terrain — your terrain source, or disable 3D.",
+    pattern: /\bSummit\b/g,
+    hint: "the campus summit terrain — your terrain source, or disable 3D.",
   },
   {
     pattern: /\bAMIS\b/g,
-    hint: "UPLB course system. You do not have AMIS — write your own class importer.",
+    hint: "Example University course system. You do not have the portal — write your own class importer.",
   },
   {
-    pattern: /\bSAIS\b/g,
-    hint: "UPLB student system reference — repoint to your registrar.",
+    pattern: /\bRegistrar\b/g,
+    hint: "Example University student system reference — repoint to your registrar.",
   },
   {
-    pattern: /\bPSLH\b/g,
-    hint: "UPLB building code (Physical Sciences Lecture Hall).",
+    pattern: /\bHALL\b/g,
+    hint: "Example University building code (Physical Sciences Lecture Hall).",
   },
-  { pattern: /\bPhySci\b/g, hint: "UPLB building alias (Physical Sciences)." },
+  { pattern: /\bSciHall\b/g, hint: "Example University building alias (Physical Sciences)." },
   {
-    pattern: /\bOble\b|\bOblation\b/g,
-    hint: "UPLB landmark — your campus landmark, or remove copy.",
+    pattern: /\bMain\b|\bMain Hall\b/g,
+    hint: "Example University landmark — your campus landmark, or remove copy.",
   },
   {
     pattern: /Los Ba[ñn]os/g,
-    hint: "UPLB campus locale — your campus location.",
+    hint: "Example University campus locale — your campus location.",
   },
   {
     pattern: /r\/peyups/gi,
-    hint: "UPLB subreddit source credit — remove or replace.",
+    hint: "Example University subreddit source credit — remove or replace.",
   },
   {
     pattern: /121\.24125948460573|14\.16323736946326/g,
-    hint: "UPLB default map center — set your campus center in src/campus.config.ts.",
+    hint: "Example University default map center — set your campus center in src/campus.config.ts.",
   },
 ];
 
@@ -74,7 +74,7 @@ const markers: Marker[] = [
 const configOwned: (Marker & { file: RegExp })[] = [
   {
     file: /^src\/constants\/map-terrain\.ts$/,
-    pattern: /makiling|\b1[24]\d*\.\d{2,}/i,
+    pattern: /summit|\b1[24]\d*\.\d{2,}/i,
     hint: "map-terrain.ts must read terrain params from campusTerrain in src/campus.config.ts.",
   },
   {
@@ -94,8 +94,8 @@ const configOwned: (Marker & { file: RegExp })[] = [
   },
 ];
 
-// Files that mention UPLB by design (this scanner, the fork guide that tells
-// you to replace UPLB strings). Everything else is a real "you forgot this".
+// Files that mention Example University by design (this scanner, the fork guide that tells
+// you to replace Example University strings). Everything else is a real "you forgot this".
 const allowList = [
   /scripts\/fork-check\.ts$/,
   /src\/pages\/wiki\/fork-for-your-campus\.astro$/,
@@ -151,7 +151,7 @@ const hits = scan();
 
 if (hits.length === 0) {
   if (!silent)
-    console.log("fork:check passed — no UPLB-specific strings found.");
+    console.log("fork:check passed — no Example University-specific strings found.");
   process.exit(0);
 }
 
@@ -163,7 +163,7 @@ if (!silent) {
     byFile.set(h.file, arr);
   }
   console.error(
-    `fork:check found ${hits.length} UPLB-specific hit(s) across ${byFile.size} file(s).\n`,
+    `fork:check found ${hits.length} Example University-specific hit(s) across ${byFile.size} file(s).\n`,
   );
   for (const [file, fileHits] of byFile) {
     console.error(`  ${file}  (${fileHits.length})`);

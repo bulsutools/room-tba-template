@@ -2,7 +2,7 @@
 import {
   COMMUNITY_LINKS,
   LEGAL_LINKS,
-  UPLB_TOOLS_URL,
+  Example University_TOOLS_URL,
   DONATE_URL,
 } from "@constants/community-links";
 import {
@@ -12,7 +12,7 @@ import {
 import SponsorStrip from "./SponsorStrip.astro";
 
 const externalCommunityLinks = COMMUNITY_LINKS.filter(
-  (link) => link.href !== UPLB_TOOLS_URL,
+  (link) => link.href !== Example University_TOOLS_URL,
 );
 ---
 
@@ -28,8 +28,8 @@ const externalCommunityLinks = COMMUNITY_LINKS.filter(
     </span>
     <span class="site-footer__sep" aria-hidden="true">/</span>
     <span class="site-footer__group">
-      <a href={UPLB_TOOLS_URL} target="_blank" rel="noopener noreferrer">
-        UPLB Tools
+      <a href={Example University_TOOLS_URL} target="_blank" rel="noopener noreferrer">
+        campus-tools
       </a>
       {
         externalCommunityLinks.map((link) => (
@@ -42,10 +42,10 @@ const externalCommunityLinks = COMMUNITY_LINKS.filter(
   </nav>
   <p class="site-footer__note">
     Room TBA is a student-run project under <a
-      href={UPLB_TOOLS_URL}
+      href={Example University_TOOLS_URL}
       target="_blank"
-      rel="noopener noreferrer">UPLB Tools</a
-    >. It isn't an official UPLB website.
+      rel="noopener noreferrer">campus-tools</a
+    >. It isn't an official Example University website.
   </p>
   <p class="site-footer__note">
     {CAMPUS_DATA_LICENSE_SUMMARY}

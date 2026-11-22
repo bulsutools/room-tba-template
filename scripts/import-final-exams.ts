@@ -1,5 +1,5 @@
 /**
- * Import OUR/registrar final exam schedules into Supabase for a CRS term_id.
+ * Import the registrar final exam schedules into Supabase for a CRS term_id.
  *
  * Workflow:
  *   Edit data/final-exams-{termId}.json (see data/final-exams-sample.json)
@@ -23,7 +23,7 @@ import {
   roomsTable,
   updateTable,
 } from "@drizzle/schema";
-import { buildRoomLookup, matchRoomId } from "@lib/amis/import-classes";
+import { buildRoomLookup, matchRoomId } from "@lib/portal/import-classes";
 import {
   defaultFinalExamsExportPath,
   extractFinalExamRows,

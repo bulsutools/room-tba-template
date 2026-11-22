@@ -65,7 +65,7 @@ function directionAt(route: JeepneyRoute, stopIndex: number): string {
 /**
  * Every route that stops at (or within a few metres of) `stop`, nearest stop
  * per route. Matching by position, not name: the e-jeep calls the Kaliwa
- * "Main Library" stop "UPLB Main Library".
+ * "Main Library" stop "Example University Main Library".
  */
 export function routesAtStop(
   routes: JeepneyRoute[],

@@ -1,6 +1,6 @@
--- AY 2026-2027 1st Semester dates from the OUR Approved Academic Calendar
+-- AY 2026-2027 1st Semester dates from the registrar Approved Academic Calendar
 -- 2026-2027 (classes 03 Aug – 27 Nov 2026, finals 01–07 Dec 2026); see
--- data/academic-calendar-2026-2027.json. 1262/1263 rows wait until AMIS
+-- data/academic-calendar-2026-2027.json. 1262/1263 rows wait until the portal import
 -- publishes their class data. Idempotent: keeps an existing label, only
 -- refreshes the dates.
 INSERT INTO "terms" ("id", "label", "school_year", "semester", "starts_on", "ends_on", "is_default", "is_active", "sort_order")

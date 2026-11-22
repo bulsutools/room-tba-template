@@ -24,7 +24,7 @@ import type {
   ImportedScheduleRow,
   ScheduleMatchResult,
 } from "../schedule-import/types.js";
-import { ROOM_SCHEDULE_SCOPE_NOTE } from "../amis/room-scheduled-types.js";
+import { ROOM_SCHEDULE_SCOPE_NOTE } from "../portal/room-scheduled-types.js";
 import { dismissEphemeralOverlays } from "../overlay-stack.js";
 import {
   deactivateMapModesExcept,
@@ -281,11 +281,11 @@ class LocationStore {
 
         if (!this.isWithinBounds(longitude, latitude)) {
           toastStore.show(
-            "You appear to be outside the UPLB Campus. Location features are limited to the campus area.",
+            "You appear to be outside the Example University Campus. Location features are limited to the campus area.",
             "error",
           );
           this.stopTracking();
-          this.failure = "You appear to be outside the UPLB campus.";
+          this.failure = "You appear to be outside the Example University campus.";
           return;
         }
 
@@ -1379,7 +1379,7 @@ export const proposalsStore = new ProposalsStore();
 export const sidebarStore = new SidebarStore();
 export const sidePanelStore = new SidePanelStore();
 
-// Map modes (edit, jeepney routes, Makiling terrain) are mutually exclusive.
+// Map modes (edit, jeepney routes, Summit terrain) are mutually exclusive.
 registerMapMode("edit", {
   disable: () => {
     mapEditStore.close();

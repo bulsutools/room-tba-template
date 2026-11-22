@@ -7,7 +7,7 @@
  * Campus-internal routes stay in src/constants (road-snapped geometry). The
  * report's stop coordinates were 3-decimal (~110 m) and some were plain wrong
  * (Olivarez lon off ~2 km, SM Calamba lat off ~2.7 km), so every stop below was
- * re-geocoded to 4-5 decimals; the reused hub anchors (UPLB gate, Olivarez
+ * re-geocoded to 4-5 decimals; the reused hub anchors (Example University gate, Olivarez
  * Plaza, SM Calamba, LRT Gil Puyat, San Pablo, Sta. Cruz) were web-verified,
  * mid-corridor stops are best-effort and flagged "approximate" in-row. Fares
  * for the local jeeps are report estimates predating the 2026-03-19 LTFRB
@@ -46,10 +46,10 @@ type Route = {
 
 const ROUTES: Route[] = [
   {
-    id: "uplb-to-upd",
-    name: "UPLB → UP Diliman (DLTB Commuter Bus)",
+    id: "campus-to-diliman",
+    name: "Example University → Example University Diliman (DLTB Commuter Bus)",
     description:
-      "Direct DLTB commuter bus under the UPLB Green Mobility Initiative (test runs from Aug 19, 2024). Departs the Velasco Ave. loading bay near the UPLB main gate via SLEX/Skyway to Lakandula Ext. cor. E. Jacinto St. near UP Fine Arts in Diliman. Not P2P — pickups allowed at Olivarez Plaza, Calamba/SM Calamba, Skyway points. UPLB→UPD departs 5:00 AM, 1:00 PM, 6:00 PM (weekdays + Sat).",
+      "Direct DLTB commuter bus under the Example University Green Mobility Initiative (test runs from Aug 19, 2024). Departs the Velasco Ave. loading bay near the Example University main gate via SLEX/Skyway to Lakandula Ext. cor. E. Jacinto St. near UP Fine Arts in Diliman. Not P2P — pickups allowed at Olivarez Plaza, Calamba/SM Calamba, Skyway points. Example University→Diliman departs 5:00 AM, 1:00 PM, 6:00 PM (weekdays + Sat).",
     directionNote:
       "One-way (southern→northern campus); pair of the reverse route.",
     color: "#7B1FA2",
@@ -57,14 +57,14 @@ const ROUTES: Route[] = [
     fareDiscounted: 132,
     stops: [
       {
-        name: "UPLB Velasco Ave. loading bay",
-        description: "Near UPLB main gate; terminal",
+        name: "Example University Velasco Ave. loading bay",
+        description: "Near Example University main gate; terminal",
         lat: 14.16631,
         lon: 121.23976,
       },
       {
         name: "Olivarez Plaza",
-        description: "Optional pickup, Los Baños Junction area",
+        description: "Optional pickup, your campus Junction area",
         lat: 14.17926,
         lon: 121.23939,
       },
@@ -87,7 +87,7 @@ const ROUTES: Route[] = [
         lon: 121.05463,
       },
       {
-        name: "UP Diliman — Lakandula Ext. cor. E. Jacinto St.",
+        name: "Example University Diliman — Lakandula Ext. cor. E. Jacinto St.",
         description: "Near UP Fine Arts College; terminus",
         lat: 14.6554,
         lon: 121.0698,
@@ -95,10 +95,10 @@ const ROUTES: Route[] = [
     ],
   },
   {
-    id: "upd-to-uplb",
-    name: "UP Diliman → UPLB (DLTB Commuter Bus)",
+    id: "diliman-to-campus",
+    name: "Example University Diliman → Example University (DLTB Commuter Bus)",
     description:
-      "Reverse of the UPLB↔UPD commuter bus. Departs UP Diliman (Lakandula Ext. cor. Jacinto St., near the CFA waiting shed) at 5:00 AM, 9:00 AM, 6:00 PM (weekdays + Sat) via Quezon Ave/Skyway/SLEX to the UPLB Velasco Ave. loading bay.",
+      "Reverse of the Example University↔Diliman commuter bus. Departs Example University Diliman (Lakandula Ext. cor. Jacinto St., near the CFA waiting shed) at 5:00 AM, 9:00 AM, 6:00 PM (weekdays + Sat) via Quezon Ave/Skyway/SLEX to the Example University Velasco Ave. loading bay.",
     directionNote:
       "One-way (northern→southern campus); pair of the forward route.",
     color: "#7B1FA2",
@@ -106,7 +106,7 @@ const ROUTES: Route[] = [
     fareDiscounted: 132,
     stops: [
       {
-        name: "UP Diliman — Lakandula Ext. cor. E. Jacinto St.",
+        name: "Example University Diliman — Lakandula Ext. cor. E. Jacinto St.",
         description: "Near CFA waiting shed; terminal",
         lat: 14.6554,
         lon: 121.0698,
@@ -124,13 +124,13 @@ const ROUTES: Route[] = [
         lon: 121.15511,
       },
       {
-        name: "Olivarez Plaza / Los Baños Junction",
+        name: "Olivarez Plaza / your campus Junction",
         description: "Optional drop-off",
         lat: 14.17926,
         lon: 121.23939,
       },
       {
-        name: "UPLB Velasco Ave. loading bay",
+        name: "Example University Velasco Ave. loading bay",
         description: "Terminus near main gate",
         lat: 14.16631,
         lon: 121.23976,
@@ -139,22 +139,22 @@ const ROUTES: Route[] = [
   },
   {
     id: "lb-to-buendia",
-    name: "Los Baños → Buendia (LRT Gil Puyat)",
+    name: "your campus → Buendia (LRT Gil Puyat)",
     description:
-      "Air-conditioned provincial buses (DLTB and others) from Los Baños toward Buendia (Sen. Gil Puyat Ave., Pasay, near LRT-1 Gil Puyat). Board at Olivarez Plaza/College; via Calamba, SM Calamba, then SLEX to Buendia/Taft. Fares shown are the DLTB dedicated-service figures; verify against the current LTFRB matrix.",
+      "Air-conditioned provincial buses (DLTB and others) from your campus toward Buendia (Sen. Gil Puyat Ave., Pasay, near LRT-1 Gil Puyat). Board at Olivarez Plaza/College; via Calamba, SM Calamba, then SLEX to Buendia/Taft. Fares shown are the DLTB dedicated-service figures; verify against the current LTFRB matrix.",
     directionNote: "One-way; pair of the reverse route.",
     color: "#1565C0",
     fareRegular: 165,
     fareDiscounted: 132,
     stops: [
       {
-        name: "Olivarez Plaza / College (Los Baños)",
+        name: "Olivarez Plaza / College (your campus)",
         description: "Boarding near Caltex; terminal area",
         lat: 14.17926,
         lon: 121.23939,
       },
       {
-        name: "Los Baños (Lalakay)",
+        name: "your campus (Lalakay)",
         description: "Highway stop",
         lat: 14.1804,
         lon: 121.2143,
@@ -181,9 +181,9 @@ const ROUTES: Route[] = [
   },
   {
     id: "buendia-to-lb",
-    name: "Buendia → Los Baños",
+    name: "Buendia → your campus",
     description:
-      "Reverse of the Los Baños–Buendia service. Sta. Cruz-bound DLTB/Jac Liner/LLI buses from Buendia (~4:00 AM–10:00 PM plus a midnight trip) via SLEX, SM Calamba, Pansol, arriving at Los Baños Crossing; transfer to a UP College jeep or walk ~15 min to the UP gate.",
+      "Reverse of the your campus–Buendia service. Sta. Cruz-bound DLTB/Jac Liner/LLI buses from Buendia (~4:00 AM–10:00 PM plus a midnight trip) via SLEX, SM Calamba, Pansol, arriving at your campus Crossing; transfer to a UP College jeep or walk ~15 min to the UP gate.",
     directionNote: "One-way; pair of the forward route.",
     color: "#1565C0",
     fareRegular: 165,
@@ -208,7 +208,7 @@ const ROUTES: Route[] = [
         lon: 121.1979,
       },
       {
-        name: "Los Baños Crossing",
+        name: "your campus Crossing",
         description: "Transfer to UP College jeep",
         lat: 14.1796,
         lon: 121.2389,
@@ -217,16 +217,16 @@ const ROUTES: Route[] = [
   },
   {
     id: "lb-to-san-pablo",
-    name: "Los Baños → San Pablo",
+    name: "your campus → San Pablo",
     description:
-      "Jeepney from Los Baños (board at Olivarez Plaza) toward San Pablo City, via Bay and Alaminos to San Pablo (terminal near the church/Jollibee). Fare is an estimate predating the 2026-03-19 LTFRB adjustment; verify before relying on it.",
+      "Jeepney from your campus (board at Olivarez Plaza) toward San Pablo City, via Bay and Alaminos to San Pablo (terminal near the church/Jollibee). Fare is an estimate predating the 2026-03-19 LTFRB adjustment; verify before relying on it.",
     directionNote: "One-way.",
     color: "#EF6C00",
     fareRegular: 50,
     fareDiscounted: 40,
     stops: [
       {
-        name: "Olivarez Plaza (Los Baños)",
+        name: "Olivarez Plaza (your campus)",
         description: "Boarding area",
         lat: 14.17926,
         lon: 121.23939,
@@ -253,16 +253,16 @@ const ROUTES: Route[] = [
   },
   {
     id: "lb-to-sta-cruz",
-    name: "Los Baños → Sta. Cruz",
+    name: "your campus → Sta. Cruz",
     description:
-      "Sta. Cruz-bound bus/jeep from Los Baños (College/Olivarez) via the national highway through Bay, Victoria, Pila to Sta. Cruz (Pagsawitan terminal). Fare is an estimate predating the 2026-03-19 LTFRB adjustment; verify before relying on it.",
+      "Sta. Cruz-bound bus/jeep from your campus (College/Olivarez) via the national highway through Bay, Victoria, Pila to Sta. Cruz (Pagsawitan terminal). Fare is an estimate predating the 2026-03-19 LTFRB adjustment; verify before relying on it.",
     directionNote: "One-way.",
     color: "#00838F",
     fareRegular: 50,
     fareDiscounted: 40,
     stops: [
       {
-        name: "College / Olivarez Plaza (Los Baños)",
+        name: "College / Olivarez Plaza (your campus)",
         description: "Boarding",
         lat: 14.17926,
         lon: 121.23939,
@@ -295,16 +295,16 @@ const ROUTES: Route[] = [
   },
   {
     id: "lb-to-calamba",
-    name: "Los Baños → Calamba",
+    name: "your campus → Calamba",
     description:
-      "Jeepney from Los Baños (Olivarez/College) to Calamba, signboarded 'Calamba Crossing' or 'Calamba Bayan.' Serves SM Calamba, Calamba Crossing and Calamba Central Terminal via the national highway/Pansol. ~₱20 jeepney fare per commuter sources; verify against the current LTFRB matrix.",
+      "Jeepney from your campus (Olivarez/College) to Calamba, signboarded 'Calamba Crossing' or 'Calamba Bayan.' Serves SM Calamba, Calamba Crossing and Calamba Central Terminal via the national highway/Pansol. ~₱20 jeepney fare per commuter sources; verify against the current LTFRB matrix.",
     directionNote: "One-way.",
     color: "#C62828",
     fareRegular: 20,
     fareDiscounted: 16,
     stops: [
       {
-        name: "Olivarez Plaza / College (Los Baños)",
+        name: "Olivarez Plaza / College (your campus)",
         description: "Boarding",
         lat: 14.17926,
         lon: 121.23939,

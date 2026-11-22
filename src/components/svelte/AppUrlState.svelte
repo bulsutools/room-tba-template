@@ -21,7 +21,7 @@
   import { replaceAppUrl } from "@lib/overlay-history";
   import { trackOverlay } from "@lib/track-overlay.svelte";
   import { droppedPinStore } from "@lib/dropped-pin.svelte";
-  import { trailUrlValue } from "@lib/makiling-trail";
+  import { trailUrlValue } from "@lib/summit-trail";
   import { closeTrailSheet, openTrailSheet } from "@lib/trail-sheet";
   import { slugifySegment } from "@lib/site";
   import {
@@ -79,7 +79,7 @@
     sidePanelStore.closePanel,
   );
 
-  // ── Makiling trail: ?layers=trail, ?trail=overview | <stop> ────────────
+  // ── Summit trail: ?layers=trail, ?trail=overview | <stop> ────────────
   // The sheet takes one entry and a stop another on top, so Back steps from
   // a stop to the overview, then closes the sheet.
   trackOverlay("trail", () => trailStore.sheetOpen, closeTrailSheet, () => ({

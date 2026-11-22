@@ -46,7 +46,7 @@ describe("emergency hotlines", () => {
       0,
     );
     expect(cards).toBe(contacts);
-    expect(vcf).toContain("FN:UPLB Security and Safety Office");
+    expect(vcf).toContain("FN:Example University Security and Safety Office");
     expect(vcf).toContain("TEL;TYPE=VOICE:+639060433288");
     expect(vcf).toContain("TEL;TYPE=VOICE:+63495363247");
   });

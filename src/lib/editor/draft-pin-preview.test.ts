@@ -59,7 +59,7 @@ describe("buildDraftPinPreview", () => {
     expect(
       draftPinMapProps({
         kind: "place",
-        label: "Oblation",
+        label: "Main Hall",
         placeCategory: "tourist-spot",
       }).tone,
     ).toBe("landmark");

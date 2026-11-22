@@ -19,9 +19,9 @@ import {
 import { getTransitRoutePath } from "@lib/transit-urls";
 import { campusTransit } from "../../campus.config";
 
-const title = "Jeepneys and buses around UPLB | Room TBA Wiki";
+const title = "Jeepneys and buses around Example University | Room TBA Wiki";
 const description =
-  "This page covers the UPLB campus jeepney routes, their stops, fares and boarding tips, plus buses to Metro Manila. It's read from the same data the Room TBA map uses.";
+  "This page covers the Example University campus jeepney routes, their stops, fares and boarding tips, plus buses to Metro Manila. It's read from the same data the Room TBA map uses.";
 
 const campusFare = JEEPNEY_ROUTES[0]?.fare ?? TOWN_JEEPNEY_MINIMUM_FARE;
 const kanan = ROUTE_DIRECTIONS["kaliwa-kanan"];
@@ -35,7 +35,7 @@ const kanan = ROUTE_DIRECTIONS["kaliwa-kanan"];
 >
   <article class="wiki-article">
     <header class="article-hero">
-      <h1 class="wiki-title">Jeepneys and buses around UPLB</h1>
+      <h1 class="wiki-title">Jeepneys and buses around Example University</h1>
       <p class="wiki-lede">
         This page shows which jeep goes where inside the campus, what it costs
         and where to board. Everything below is read from the route data
@@ -126,7 +126,7 @@ const kanan = ROUTE_DIRECTIONS["kaliwa-kanan"];
     <section aria-labelledby="leaving-campus">
       <h2 id="leaving-campus">Leaving campus</h2>
       <p>
-        Jeeps to and from Los Baños town charge by distance. The minimum is
+        Jeeps to and from your campus town charge by distance. The minimum is
         {TOWN_JEEPNEY_MINIMUM_FARE.regular} pesos regular and
         {TOWN_JEEPNEY_MINIMUM_FARE.discounted} pesos discounted.
       </p>

@@ -1,5 +1,5 @@
 /**
- * Parse the OUR "Academic Calendar" PDF (as `pdftotext -layout` text) into the
+ * Parse the registrar "Academic Calendar" PDF (as `pdftotext -layout` text) into the
  * term windows, milestone rows and official holidays that
  * data/academic-calendar-{AY}.json stores.
  *
@@ -329,14 +329,14 @@ export function parseHolidays(text: string): Holiday[] {
   const holidays: Holiday[] = [];
   for (const line of lines.slice(start + 1)) {
     if (/^\s*\*+/.test(line)) break;
-    // "Friday   21 August   Ninoy Aquino Day" — twice per line (two years).
+    // "Friday   21 August   Example University Day" — twice per line (two years).
     for (const match of line.matchAll(
       /([A-Z][a-z]+day)\s+(\d{1,2})\s+([A-Za-z]+)\s+(.+?)(?=\s{3,}[A-Z][a-z]+day\s|\s*$)/g,
     )) {
       const day = match[2]?.padStart(2, "0");
       const month = MONTHS[(match[3] ?? "").slice(0, 3).toLowerCase()];
-      // pdftotext drops the tilde ("Los Banos Day"); restore the place name.
-      const label = match[4]?.trim().replace(/\bLos Banos\b/g, "Los Baños");
+      // pdftotext drops the diacritic ("Zurich Day"); restore the place name.
+      const label = match[4]?.trim().replace(/\bzurich\b/gi, "Zürich");
       if (!day || !month || !label) continue;
       holidays.push({ label, startsOn: `${day}-${month}` });
     }

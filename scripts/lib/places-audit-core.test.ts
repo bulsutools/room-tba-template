@@ -9,7 +9,7 @@ import {
 describe("placesQueryText", () => {
   test("pins generic names to the campus", () => {
     expect(placesQueryText("Main Library")).toBe(
-      "Main Library, University of the Philippines Los Baños",
+      "Main Library, Example University",
     );
   });
 });
@@ -19,7 +19,7 @@ describe("namesPlausiblyMatch", () => {
     expect(
       namesPlausiblyMatch(
         "Physical Sciences Building",
-        "UPLB Physical Sciences Bldg",
+        "Example University Physical Sciences Bldg",
       ),
     ).toBe(true);
   });
@@ -67,7 +67,7 @@ describe("classify", () => {
   test("wrongly named result never flags, whatever the distance", () => {
     expect(
       classify(
-        { ...hit, name: "Los Baños Municipal Hall" },
+        { ...hit, name: "your campus Municipal Hall" },
         "Graduate School Building",
         500,
         DEFAULT_FLAG_THRESHOLD_M,

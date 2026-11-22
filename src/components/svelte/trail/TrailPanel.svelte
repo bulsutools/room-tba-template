@@ -1,6 +1,6 @@
 <script lang="ts">
   /**
-   * The Makiling trail sheet (#716). Overview: an AllTrails-style summary,
+   * The Summit trail sheet (#716). Overview: an AllTrails-style summary,
    * the elevation profile, one "Before you go" briefing and every stop, all
    * in the sheet's single scroll, with a picker between the two trails. A
    * stop: its number, elevation, distance, what to know there, and Prev / Next
@@ -18,7 +18,7 @@
   import EntityDirectionsChip from "@ui/controls/EntityDirectionsChip.svelte";
   import EntityShareButton from "@ui/controls/EntityShareButton.svelte";
   import TrailElevationProfile from "./TrailElevationProfile.svelte";
-  import { MAKILING_TRAIL_COLOR, MAKILING_TRAILS } from "@constants/makiling-trail";
+  import { SUMMIT_TRAIL_COLOR, SUMMIT_TRAILS } from "@constants/summit-trail";
   import { TERRAIN_ENABLED } from "@constants/map-terrain";
   import {
     findTrailStop,
@@ -30,7 +30,7 @@
     getTrailSummary,
     stationLabel,
     trailUrlValue,
-  } from "@lib/makiling-trail";
+  } from "@lib/summit-trail";
   import { withAppState } from "@lib/app-url-state";
   import {
     directionsStore,
@@ -106,7 +106,7 @@
   {/if}
 {/snippet}
 
-<div class="entity-detail trail-panel" style:--trail-color={MAKILING_TRAIL_COLOR}>
+<div class="entity-detail trail-panel" style:--trail-color={SUMMIT_TRAIL_COLOR}>
   {#if stop}
     <header class="entity-header">
       <button
@@ -199,7 +199,7 @@
       </div>
       <p class="trail-subtitle">{trail.subtitle}</p>
       <div class="trail-picker" role="group" aria-label="Trail">
-        {#each MAKILING_TRAILS as item (item.id)}
+        {#each SUMMIT_TRAILS as item (item.id)}
           <button
             type="button"
             class="trail-picker__btn"
@@ -266,7 +266,7 @@
       {#if trail.oneWay}
         The trail is {formatKm(summary.lengthMeters)} from {formatMeters(summary.startElevation)}
         at the trailhead to {formatMeters(summary.summitElevation)} at Peak 2. The time is from older
-        guides (Pinoy Mountaineer, 2015).
+        guides (a 2015 trail guide, 2015).
       {:else}
         The trail is {formatKm(summary.lengthMeters)} each way, from {formatMeters(summary.startElevation)}
         at Station 1 to {formatMeters(summary.summitElevation)} at Peak 2. Time uses Naismith's
@@ -296,7 +296,7 @@
       <p class="trail-note">
         {trail.source.text}
         <a href={trail.source.href} target="_blank" rel="noreferrer">{trail.source.label}</a>.
-        Confirm with MCME before your hike. This map is for planning, not navigation.
+        Confirm with the summit center before your hike. This map is for planning, not navigation.
       </p>
     </section>
 

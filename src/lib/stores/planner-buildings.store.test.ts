@@ -23,11 +23,11 @@ describe("plannerRoomCodes", () => {
       plannerRoomCodes([
         { roomCode: "icb 12" },
         { roomCode: "ICB 12" },
-        { roomCode: " PSLH-A " },
+        { roomCode: " HALL-A " },
         { roomCode: null },
         { roomCode: "" },
       ]),
-    ).toEqual(["ICB 12", "PSLH-A"]);
+    ).toEqual(["ICB 12", "HALL-A"]);
   });
 
   test("empty plan yields no codes", () => {
@@ -49,7 +49,7 @@ describe("PlannerBuildingsStore", () => {
     }));
 
     const store = new PlannerBuildingsStore();
-    await store.load(["ICB 12", "PSLH-A"]);
+    await store.load(["ICB 12", "HALL-A"]);
 
     expect(store.buildingIds).toEqual(new Set([7, 9]));
     expect(getJSONFetch).not.toHaveBeenCalled();

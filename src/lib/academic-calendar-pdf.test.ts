@@ -17,7 +17,7 @@ import {
  * whose month implies the wrong year, and a range crossing new year.
  */
 const FIXTURE = [
-  "                                           UNIVERSITY OF THE PHILIPPINES LOS BANOS",
+  "                                           EXAMPLE UNIVERSITY",
   "                                                ACADEMIC CALENDAR 2026-2027",
   "",
   "                                                                            FIRST SEMESTER                   SECOND SEMESTER                 MIDYEAR",
@@ -48,7 +48,7 @@ const FIXTURE = [
   "                                                          (AY 2026-2027)",
   "",
   "                                2026                                                                    2027",
-  "      Friday            21 August    Ninoy Aquino Day                      Friday              01 January    New Year's Day",
+  "      Friday            21 August    Founders Day                      Friday              01 January    New Year's Day",
   "      Thursday          24 December        Christmas Eve                    Saturday           01 May          Labor Day",
   "                                                                                                               Eidul Fitr",
   "    * Based on Proclamation No. 1006, s. 2025.",
@@ -164,7 +164,7 @@ describe("parseHolidays", () => {
   it("reads both year columns and skips undated entries", () => {
     const holidays = parseHolidays(FIXTURE);
     expect(holidays.map((holiday) => holiday.label)).toEqual([
-      "Ninoy Aquino Day",
+      "Founders Day",
       "New Year's Day",
       "Christmas Eve",
       "Labor Day",
@@ -174,13 +174,13 @@ describe("parseHolidays", () => {
       false,
     );
   });
-  it("restores the tilde pdftotext drops from Los Baños", () => {
+  it("restores the tilde pdftotext drops from your campus", () => {
     const text = [
       "OFFICIAL HOLIDAYS*",
-      "      Saturday          17 September    Los Banos Day",
+      "      Saturday          17 September    your campus Day",
     ].join("\n");
     expect(parseHolidays(text).map((holiday) => holiday.label)).toEqual([
-      "Los Baños Day",
+      "your campus Day",
     ]);
   });
 });
@@ -227,7 +227,7 @@ describe("parseAcademicCalendar", () => {
 
   it("dates the holidays from the AY they fall in", () => {
     expect(calendar.holidays).toContainEqual({
-      label: "Ninoy Aquino Day",
+      label: "Founders Day",
       startsOn: "2026-08-21",
     });
     expect(calendar.holidays).toContainEqual({

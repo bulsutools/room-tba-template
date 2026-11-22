@@ -12,7 +12,7 @@ describe("parseOsaOrganizations", () => {
     expect(organizations).toEqual([
       {
         name: "UP & Example",
-        officialUrl: "https://uplbosa.org/orgs/example",
+        officialUrl: "https://orgs.campus.tools/orgs/example",
       },
     ]);
   });

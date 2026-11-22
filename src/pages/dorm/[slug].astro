@@ -27,9 +27,9 @@ if (appData === null) {
 const { dorm } = appData;
 
 const canonicalPath = `/dorm/${getDormRouteSlug(dorm)}/`;
-const title = `${dorm.dormName} | Dorm at UPLB | Room TBA`;
+const title = `${dorm.dormName} | Dorm at Example University | Room TBA`;
 const description = [
-  `Find ${dorm.dormName} at UPLB on Room TBA.`,
+  `Find ${dorm.dormName} at Example University on Room TBA.`,
   dorm.isUpManaged ? "It's a UP-managed housing listing." : "It's a private housing listing.",
   dorm.priceRange ? `The price range is ${dorm.priceRange}.` : null,
 ]
@@ -62,7 +62,7 @@ const structuredData = jsonLd(
     image: ogImageUrl(dorm.imageUrl ?? undefined),
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Los Banos",
+      addressLocality: "your campus",
       addressRegion: "Laguna",
       addressCountry: "PH",
     },
@@ -88,9 +88,9 @@ const structuredData = jsonLd(
   ogCard={{
     title: dorm.dormName,
     subtitle: `${dorm.isUpManaged ? "UP-managed" : "Private"} housing${dorm.priceRange ? `, ${dorm.priceRange}` : ""}${dorm.gender ? `, ${dorm.gender}` : ""}`,
-    kicker: "Dorm at UPLB",
+    kicker: "Dorm at Example University",
   }}
-  heading={`${dorm.dormName} at UPLB`}
+  heading={`${dorm.dormName} at Example University`}
   {intro}
   {facts}
   breadcrumbs={[

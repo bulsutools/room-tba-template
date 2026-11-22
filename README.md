@@ -4,17 +4,17 @@
 
 # Room TBA
 
-**Saan sa UPLB ang \___?**
+**Saan sa Example University ang \___?**
 
-[![Live app](https://img.shields.io/badge/open-room--tba.uplb.tools-maroon?style=for-the-badge)](https://room-tba.uplb.tools)
+[![Live app](https://img.shields.io/badge/open-room--tba.campus.tools-maroon?style=for-the-badge)](https://room-tba.campus.tools)
 [![MIT](https://img.shields.io/badge/license-MIT-brightgreen?style=flat-square)](LICENSE)
 [![Bun](https://img.shields.io/badge/bun-1.3+-black?style=flat-square&logo=bun)](https://bun.sh)
 [![Astro](https://img.shields.io/badge/Astro-7-BC52EE?style=flat-square&logo=astro)](https://astro.build)
 [![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)
 
-_One campus map holds the schedules, buildings, jeepney routes and the answer to "where is PSLH 1?"_
+_One campus map holds the schedules, buildings, jeepney routes and the answer to "where is HALL 1?"_
 
-[Open the map](https://room-tba.uplb.tools) | [Wiki](https://room-tba.uplb.tools/wiki) | [FAQ](https://room-tba.uplb.tools/faq) | [Report wrong data](https://github.com/uplbtools/room-tba/issues/new/choose) | [Changelog](https://room-tba.uplb.tools/changelog)
+[Open the map](https://room-tba.campus.tools) | [Wiki](https://room-tba.campus.tools/wiki) | [FAQ](https://room-tba.campus.tools/faq) | [Report wrong data](https://github.com/campus-tools/room-tba/issues/new/choose) | [Changelog](https://room-tba.campus.tools/changelog)
 
 </div>
 
@@ -22,23 +22,23 @@ _One campus map holds the schedules, buildings, jeepney routes and the answer to
 
 ## What this is
 
-**Room TBA** is a map-first web app for [UPLB](https://uplb.edu.ph) students. You search a room code, building nickname or course, and the app puts it on the campus map. It shows schedules when we have them and keeps working when the signal drops.
+**Room TBA** is a map-first web app for [Example University](https://example.edu) students. You search a room code, building nickname or course, and the app puts it on the campus map. It shows schedules when we have them and keeps working when the signal drops.
 
 You don't need an account to browse. Editors and contributors fix data in the same app through a login popup on the map, not a separate admin site.
 
-Under the hood it's a campus platform, not a UPLB-only app. The engine (map UI, search, schedules, offline cache, editor and planner) is kept apart from campus data behind one config file, and independent forks run it at [other universities](#running-at-other-campuses).
+Under the hood it's a campus platform, not a Example University-only app. The engine (map UI, search, schedules, offline cache, editor and planner) is kept apart from campus data behind one config file, and independent forks run it at [other universities](#running-at-other-campuses).
 
 ## By the numbers
 
 - **58 buildings** and their rooms mapped, searchable, and routable on one campus map
 - **94,000+ class sections** imported across **9 academic terms** (AY 2023 to present)
 - **50,000+ page views** in the 30 days to late Aug 2026 as the term starts, ~21,000/30d during term break (Vercel Analytics, with peaks in enlistment and exam weeks)
-- **20 contributors**, 30+ tagged releases, and a [good-first-issue queue](https://github.com/uplbtools/room-tba/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) for student developers
+- **20 contributors**, 30+ tagged releases, and a [good-first-issue queue](https://github.com/campus-tools/room-tba/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) for student developers
 - Campus map data published as **open data** under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- Serving [UPLB](https://uplb.edu.ph), a campus of roughly 12,000 students, and built to be [forked for other campuses](#fork-this-for-your-campus)
-- **Independent campus forks** at UP Visayas, UP Baguio, and Bulacan State University, [all active](#running-at-other-campuses)
+- Serving [Example University](https://example.edu), a campus of roughly 12,000 students, and built to be [forked for other campuses](#fork-this-for-your-campus)
+- **Independent campus forks** at Example University Visayas, Example University Baguio, and Example State University, [all active](#running-at-other-campuses)
 
-> Volunteers update the room and class listings each term. The active term follows the academic calendar (midyear Jun–Jul, 2nd sem Jan–May and so on). **Class search** lists lecture, lab, thesis, special problem and similar sections, and sections without a room in AMIS show as unassigned. **Room schedules** list only lecture and lab sections with assigned rooms. If a schedule is wrong, [open an issue](https://github.com/uplbtools/room-tba/issues/new/choose).
+> Volunteers update the room and class listings each term. The active term follows the academic calendar (midyear Jun–Jul, 2nd sem Jan–May and so on). **Class search** lists lecture, lab, thesis, special problem and similar sections, and sections without a room in the portal show as unassigned. **Room schedules** list only lecture and lab sections with assigned rooms. If a schedule is wrong, [open an issue](https://github.com/campus-tools/room-tba/issues/new/choose).
 
 ---
 
@@ -46,16 +46,16 @@ Under the hood it's a campus platform, not a UPLB-only app. The engine (map UI, 
 
 | Goal                                | How                                                                                                                                                                                     |
 | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Find **PSLH 1** or **PhySci**       | Search + aliases (`PhySci`, `HUM`, …)                                                                                                                                                   |
+| Find **HALL 1** or **SciHall**       | Search + aliases (`SciHall`, `HUM`, …)                                                                                                                                                   |
 | Room schedule this sem              | Term filter + timetable                                                                                                                                                                 |
 | Personal schedule route             | Build a plan in Planner → Map tools → Schedule → pick a day, route stops                                                                                                                |
 | Browse all classes                  | Status bar → Browse classes, then search by course code                                                                                                                                 |
 | Section with no room yet            | "No assigned room" rows hint the offering department and where the course usually meets (#846)                                                                                          |
 | Plan your classes                   | Planner view to build a draft schedule                                                                                                                                                  |
 | What do I have today                | Today view (`/today`) lists your plan's classes for today, tomorrow and the rest of the week. One tap routes the day on the map with total walking time and distance (`/today?route=1`) |
-| Course Planner explainer            | [Four-panel, screenshot-ready guide](https://room-tba.uplb.tools/pubmat/course-planner/)                                                                                                |
+| Course Planner explainer            | [Four-panel, screenshot-ready guide](https://room-tba.campus.tools/pubmat/course-planner/)                                                                                                |
 | Final exam time & room              | Search a course code for the finals panel, or open the room panel during finals week                                                                                                    |
-| Academic calendar                   | [/calendar](https://room-tba.uplb.tools/calendar) shows term windows on a year timeline, and the term picker opens it too                                                               |
+| Academic calendar                   | [/calendar](https://room-tba.campus.tools/calendar) shows term windows on a year timeline, and the term picker opens it too                                                               |
 | Building location                   | Map, pins, directions, Google Maps                                                                                                                                                      |
 | Compare dorm listings               | Verified dorms link to their Kubo listing when available                                                                                                                                |
 | Landmarks, services, orgs & offices | Map filters and the App menu, distinct map pins, and shareable detail links                                                                                                             |
@@ -65,9 +65,9 @@ Under the hood it's a campus platform, not a UPLB-only app. The engine (map UI, 
 | Directions from anywhere            | Start from your location, any search result or a dropped pin, and tap the start or end of a trip to change it                                                                           |
 | Walking time from a point           | Map tools → Travel time, then tap the map to color paths by minutes                                                                                                                     |
 | Measure a route                     | Map tools → Measure route, then drop waypoints for walk, cycle and car times                                                                                                            |
-| 3D view                             | Buildings + Makiling terrain (online)                                                                                                                                                   |
+| 3D view                             | Buildings + Summit terrain (online)                                                                                                                                                   |
 | Satellite imagery                   | Map tools → View → Satellite, with locally changed historical imagery back to 2015 when online                                                                                          |
-| Common questions                    | [Student FAQ](https://room-tba.uplb.tools/faq) (3D models, data sources, offline)                                                                                                       |
+| Common questions                    | [Student FAQ](https://room-tba.campus.tools/faq) (3D models, data sources, offline)                                                                                                       |
 | Tell us something is wrong          | Settings → Feedback (free text, optional contact), or the team on Messenger or Discord                                                                                                  |
 | Understand section names            | Wiki guide to the A–H / S–Z class time blocks                                                                                                                                           |
 | Find emergency contacts             | Menu → Emergency hotlines, which work offline                                                                                                                                           |
@@ -84,7 +84,7 @@ Under the hood it's a campus platform, not a UPLB-only app. The engine (map UI, 
 | Suggest edits without publishing                                   | **Suggest an edit** → admin review queue                                                                                |
 | Upload event posters                                               | Event editor + R2 image upload (when configured)                                                                        |
 | Manage public credit                                               | Account settings → optional HTTPS avatar or profile link, and uncheck credits to opt out                                |
-| Undo a pin drag                                                    | Toolbar undo and redo for the session, with durable history in [#202](https://github.com/uplbtools/room-tba/issues/202) |
+| Undo a pin drag                                                    | Toolbar undo and redo for the session, with durable history in [#202](https://github.com/campus-tools/room-tba/issues/202) |
 
 Log in at **`/?editor=login`** or from the shield or status bar in the app. `/admin` URLs redirect back to the map.
 
@@ -145,7 +145,7 @@ Contributor notes are in [AGENTS.md](AGENTS.md).
 ### Setup
 
 ```sh
-git clone https://github.com/uplbtools/room-tba.git
+git clone https://github.com/campus-tools/room-tba.git
 cd room-tba
 cp .env.example .env.local
 # Fill DATABASE_URL (staging pooler) and ADMIN_SESSION_SECRET. See .env.example for prod and E2E URLs.
@@ -200,9 +200,9 @@ Install the [Biome VS Code extension](https://marketplace.visualstudio.com/items
 | `bun run generate:pglite-schema`                     | Regenerate the offline PGlite init SQL from `drizzle/schema.ts`                                                                                |
 | `bun run import:osa-orgs`                            | Add the current public OSA organization directory (`DATABASE_URL`, safe to rerun)                                                              |
 | `bun run import:campus-offices`                      | Add missing campus offices and units (`DATABASE_URL`, safe to rerun)                                                                           |
-| `bun run import:amis-classes`                        | Upsert AMIS classes (`docs/amis-com-refresh-runbook.md`)                                                                                       |
-| `bun run backfill:acad-orgs`                         | Rerun the AMIS import over the 9 cached term JSONs to fill `classes.acad_group`/`acad_org` (#846)                                              |
-| `bun run import:final-exams`                         | Import OUR finals JSON into Postgres (`DATABASE_URL`, see `docs/final-exams-data-source.md`)                                                   |
+| `bun run import:portal-classes`                        | Upsert classes from your campus portal (see `docs/schedule-import-formats.md`)                                                                                       |
+| `bun run backfill:acad-orgs`                         | Rerun the portal import over the 9 cached term JSONs to fill `classes.acad_group`/`acad_org` (#846)                                              |
+| `bun run import:final-exams`                         | Import the registrar finals JSON into Postgres (`DATABASE_URL`, see `docs/final-exams-data-source.md`)                                                   |
 | `bun run audit:campus-data`                          | Read-only sweep for wrong pins, scattered tenants, missing building links and orphan rooms (`PROD_DATABASE_URL`, writes nothing)               |
 | `bun run apply:campus-audit-links -- --prod --apply` | Apply the verified organization-to-building links from the campus audit, with `editor_history` records                                         |
 | `bun run record:bulk-history`                        | Record `editor_history` rows for a maintenance/bulk data operation (`DATABASE_URL`, dry run unless `--apply`, see `docs/bulk-data-history.md`) |
@@ -241,7 +241,7 @@ The editor QA plan is [`docs/editor-foundation-test-plan.md`](docs/editor-founda
 - To **write code**, branch off `staging` and open the PR to `staging` ([developer guide](docs/developer-guide.md)).
 - **Maintainers and agents** start at [AGENTS.md](AGENTS.md) and [agent tooling](docs/agent-tooling.md), and run `bun run install:agent-tooling` and `install:agent-plugins` once per machine.
 
-Start with the [good first issues](https://github.com/uplbtools/room-tba/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). Data issues carry the `data` label and QA issues carry `qa`. You can chat with the team on [Messenger](https://room-tba.uplb.tools/messenger/contribute).
+Start with the [good first issues](https://github.com/campus-tools/room-tba/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). Data issues carry the `data` label and QA issues carry `qa`. You can chat with the team on [Messenger](https://room-tba.campus.tools/messenger/contribute).
 
 Before you implement something, read the [issue hygiene](docs/issue-hygiene.md) notes and the [PR QA process](docs/agentic-qa-process.md).
 
@@ -257,24 +257,24 @@ Versions follow semver. Pushes to `main` run [semantic-release](https://semantic
 
 ## Credits
 
-**Founder and lead:** [Simonee Ezekiel Mariquit](https://stimmie.dev)
+**Founder and lead:** [Example Contributor](https://example.edu)
 
 **Core team**
 
 | Person                                            | Works on                                 |
 | ------------------------------------------------- | ---------------------------------------- |
-| [Ken Ramiscal](https://kendan.dev)                | Offline support, map, interface          |
-| Eunice Almeyda                                    | Directions, map chrome, mobile interface |
-| [Simeon Ricalde](https://meonnn.github.io/)       | Publicity and outreach                   |
-| [Kalinaw Lukas Aom Bebis](https://lukasbebis.com) | Interface, map, bug fixes                |
+| [Example Contributor](https://example.edu)                | Offline support, map, interface          |
+| Example Contributor                                    | Directions, map chrome, mobile interface |
+| [Example Contributor](https://example.edu/)       | Publicity and outreach                   |
+| [Example Contributor](https://example.edu) | Interface, map, bug fixes                |
 
-**Design:** [Rovic Villaralvo](https://rovicdesign.framer.website/) · Mary Gwyneth Telmosa (interface design)
+**Design:** [Example Designer](https://example.edu/) · Example Designer (interface design)
 
-**Also contributed:** Niño Anthony Marmeto (Electrical Engineering building info) · Rosh Almario (Institute of Chemistry room directions) · everyone on the [contributors graph](https://github.com/uplbtools/room-tba/graphs/contributors)
+**Also contributed:** Example Contributor (Electrical Engineering building info) · Example Contributor (Institute of Chemistry room directions) · everyone on the [contributors graph](https://github.com/campus-tools/room-tba/graphs/contributors)
 
-Team page: [uplb.tools/people](https://www.uplb.tools/people) · Press kit: [uplb.tools/press](https://www.uplb.tools/press)
+Team page: [campus.tools/people](https://www.campus.tools/people) · Press kit: [campus.tools/press](https://www.campus.tools/press)
 
-Org: [uplbtools](https://github.com/uplbtools) · Campus tool, not an official UPLB product.
+Org: [campus-tools](https://github.com/campus-tools) · Campus tool, not an official Example University product.
 
 ---
 
@@ -282,7 +282,7 @@ Org: [uplbtools](https://github.com/uplbtools) · Campus tool, not an official U
 
 Room TBA is funded by campus-relevant sponsors we pick and by one-time donations. Revenue covers running costs first (hosting, database, domains, promotion), including paying back maintainers for costs they paid themselves. The rest funds contributor payouts and core team incentives. Every peso is tracked in public transparency reports.
 
-**[Donate](https://room-tba.uplb.tools/donate)** | **[Become a sponsor](https://room-tba.uplb.tools/sponsors)** | [Funding model](docs/funding-model.md) | [Ad policy](docs/ad-policy.md)
+**[Donate](https://room-tba.campus.tools/donate)** | **[Become a sponsor](https://room-tba.campus.tools/sponsors)** | [Funding model](docs/funding-model.md) | [Ad policy](docs/ad-policy.md)
 
 ### Transparency policy
 
@@ -295,20 +295,17 @@ Room TBA is funded by campus-relevant sponsors we pick and by one-time donations
 
 ## Fork this for your campus
 
-MIT lets you fork this and run it for a different school. It isn't a "swap the logo and ship" fork, because a lot of the app is UPLB data and UPLB-specific glue. You keep the engine (map UI, search, offline cache, editor, planner, the Drizzle schema) and replace the UPLB parts.
+MIT lets you fork this and run it for a different school. It isn't a "swap the logo and ship" fork, because a lot of the app is Example University data and Example University-specific glue. You keep the engine (map UI, search, offline cache, editor, planner, the Drizzle schema) and replace the Example University parts.
 
 ### Running at other campuses
 
 Each of these forks is maintained by its own campus.
 
-| Campus                             | Fork                                                                                                                                  |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| UP Visayas                         | [andrianllmm/upv-room-tba](https://github.com/andrianllmm/upv-room-tba)                                                               |
-| UP Baguio                          | [UPB-Tools/room-tba](https://github.com/UPB-Tools/room-tba)                                                                           |
-| Bulacan State University (Malolos) | [bulsutools/room-tba](https://github.com/bulsutools/room-tba), live at [bulsu-room-tba.vercel.app](https://bulsu-room-tba.vercel.app) |
-| UP Diliman                         | [uplbtools/room-tba-upd](https://github.com/uplbtools/room-tba-upd) (our own port, in progress)                                       |
+| Campus                | Fork                                                                                                              |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Example State College | [your-org/room-tba-college](https://github.com/your-org/room-tba-college), live at [college.example.edu](https://college.example.edu) |
 
-The full guide, with every file path and the painful parts, is **[Fork this for your campus](https://room-tba.uplb.tools/wiki/fork-for-your-campus)** in the wiki. For the config file, start with the **[fork wizard](https://room-tba.uplb.tools/fork)**. You point a map at your campus and it generates `src/campus.config.ts` and a Vercel deploy link.
+The full guide, with every file path and the painful parts, is **[Fork this for your campus](https://room-tba.campus.tools/wiki/fork-for-your-campus)** in the wiki. For the config file, start with the **[fork wizard](https://room-tba.campus.tools/fork)**. You point a map at your campus and it generates `src/campus.config.ts` and a Vercel deploy link.
 
 You can also run `bun run fork:init`. It asks for your campus name, URL, map center, bounds and zoom, and whether you want the 3D terrain and transit overlays, then rewrites `src/campus.config.ts`. It refuses a dirty git tree unless you pass `--force`.
 
@@ -319,15 +316,15 @@ This table lists what you replace.
 | File                                           | What to change                                                                                                                                                                                                                                                                                                  |
 | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `src/campus.config.ts`                         | **The single config file** (`bun run fork:init` writes it). Site name, URL, title, description, map center/bounds/camera, terrain (`campusTerrain.enabled` off = flat map), transit overlay (`campusTransit.enabled` + menu label), E2E fixture coordinates, community links. The files below import from here. |
-| `public/room_info.json`                        | UPLB building seed → your buildings                                                                                                                                                                                                                                                                             |
+| `public/room_info.json`                        | Example University building seed → your buildings                                                                                                                                                                                                                                                                             |
 | `src/constants/jeepney-routes.ts` + geometries | Your transit routes/stops, or set `campusTransit.enabled: false` to hide the overlay everywhere                                                                                                                                                                                                                 |
-| `src/generated/walk-graph.json`                | UPLB path network (travel-time tools). Rebuild it from your campus's OSM extract with `bun scripts/build-walk-graph.ts <your-osmnx-export.graphml>`. Speeds are in `src/constants/travel-modes.ts`.                                                                                                             |
-| `scripts/import-amis-classes.ts` and friends   | UPLB data sources (AMIS, OUR finals, OSA). Use `bun run import:classes-generic` with your registrar's export instead ([guide](docs/fork-data-guide.md)).                                                                                                                                                        |
-| Supabase DB contents                           | Every row is UPLB. The schema stays and the data goes.                                                                                                                                                                                                                                                          |
+| `src/generated/walk-graph.json`                | Example University path network (travel-time tools). Rebuild it from your campus's OSM extract with `bun scripts/build-walk-graph.ts <your-osmnx-export.graphml>`. Speeds are in `src/constants/travel-modes.ts`.                                                                                                             |
+| `scripts/import-portal-classes.ts` and friends   | Example University data sources (portal, finals, org directories). Use `bun run import:classes-generic` with your registrar's export instead ([guide](docs/fork-data-guide.md)).                                                                                                                                                        |
+| Supabase DB contents                           | Every row is Example University. The schema stays and the data goes.                                                                                                                                                                                                                                                          |
 
-The hard part is class schedules. Room TBA pulls from AMIS, which is UPLB's system. You don't have AMIS, so flatten whatever your registrar gives you into the generic importer's CSV/JSON shape ([docs/fork-data-guide.md](docs/fork-data-guide.md)) and rerun it each term. `data/sample-campus/classes.csv` is the worked example.
+The hard part is class schedules. Room TBA can pull from a campus portal if yours exposes one, but the simpler path is to flatten whatever your registrar gives you into the generic importer's CSV/JSON shape ([docs/fork-data-guide.md](docs/fork-data-guide.md)) and rerun it each term. `data/sample-campus/classes.csv` is the worked example.
 
-After you think you've replaced everything, run `bun run fork:check`. It scans for hardcoded UPLB strings you missed and reports file:line hits. Wire it into your fork's CI so a stray UPLB string doesn't sneak back in on a merge from upstream.
+After you think you've replaced everything, run `bun run fork:check`. It scans for hardcoded Example University strings you missed and reports file:line hits. Wire it into your fork's CI so a stray Example University string doesn't sneak back in on a merge from upstream.
 
 ---
 
@@ -338,14 +335,14 @@ After you think you've replaced everything, run `bun run fork:check`. It scans f
 | Application code                                                         | [MIT](LICENSE)                                                                                                |
 | Community campus map data (buildings, rooms, dorms, orgs, pins, aliases) | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)                                                     |
 | OpenStreetMap basemap / footprints                                       | [ODbL](https://www.openstreetmap.org/copyright) (+ [MapTiler](https://www.maptiler.com/copyright/) for tiles) |
-| AMIS/CRS, OUR, OSA imports                                               | Not offered under an open bulk license                                                                        |
+| Portal/CRS, finals, OSA imports                                               | Not offered under an open bulk license                                                                        |
 
-Use the code, fork it, teach with it. If you deploy a fork for another campus, change the data, not just the logo. See the [fork guide](#fork-this-for-your-campus) above. The student-facing summary is [Can I reuse Room TBA data?](https://room-tba.uplb.tools/faq#data-license) in the FAQ.
+Use the code, fork it, teach with it. If you deploy a fork for another campus, change the data, not just the logo. See the [fork guide](#fork-this-for-your-campus) above. The student-facing summary is [Can I reuse Room TBA data?](https://room-tba.campus.tools/faq#data-license) in the FAQ.
 
 ---
 
 <div align="center">
 
-**[room-tba.uplb.tools](https://room-tba.uplb.tools)**
+**[room-tba.campus.tools](https://room-tba.campus.tools)**
 
 </div>

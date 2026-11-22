@@ -117,7 +117,7 @@ describe("AdminHome (auth audit item 15)", () => {
               entries: [
                 {
                   id: 1,
-                  actorLabel: "stimmie",
+                  actorLabel: "example-contributor",
                   action: "user.role_changed",
                   targetLabel: "yeyel",
                   detail: { from: "editor", to: "admin" },
@@ -131,7 +131,7 @@ describe("AdminHome (auth audit item 15)", () => {
         : new Response(JSON.stringify(DASHBOARD)),
     );
     const { container } = render(AdminHome, {
-      viewer: { username: "stimmie", displayName: "Stimmie", role: "admin" },
+      viewer: { username: "example-contributor", displayName: "Stimmie", role: "admin" },
     });
     expect(await screen.findByTestId("pending-reviews")).toHaveTextContent("4");
     expect(

@@ -37,9 +37,9 @@ export type CampusGateRowValidation = {
   errors: string[];
 };
 
-/** Rough UPLB campus bounds for volunteer coordinate sanity checks. */
-export const UPLB_CAMPUS_LAT_RANGE = { min: 14.15, max: 14.19 } as const;
-export const UPLB_CAMPUS_LON_RANGE = { min: 121.23, max: 121.26 } as const;
+/** Rough Example University campus bounds for volunteer coordinate sanity checks. */
+export const Example University_CAMPUS_LAT_RANGE = { min: 14.15, max: 14.19 } as const;
+export const Example University_CAMPUS_LON_RANGE = { min: 121.23, max: 121.26 } as const;
 
 const GATE_TYPES = new Set<GateType>(["vehicle", "pedestrian", "both"]);
 const VERIFIED_VALUES = new Set(["yes", "no", "true", "false", ""]);
@@ -182,17 +182,17 @@ export function validateCampusGateRow(
   }
 
   if (lat !== null) {
-    if (lat < UPLB_CAMPUS_LAT_RANGE.min || lat > UPLB_CAMPUS_LAT_RANGE.max) {
+    if (lat < Example University_CAMPUS_LAT_RANGE.min || lat > Example University_CAMPUS_LAT_RANGE.max) {
       errors.push(
-        `lat ${lat} is outside UPLB campus range (${UPLB_CAMPUS_LAT_RANGE.min}–${UPLB_CAMPUS_LAT_RANGE.max})`,
+        `lat ${lat} is outside Example University campus range (${Example University_CAMPUS_LAT_RANGE.min}–${Example University_CAMPUS_LAT_RANGE.max})`,
       );
     }
   }
 
   if (lon !== null) {
-    if (lon < UPLB_CAMPUS_LON_RANGE.min || lon > UPLB_CAMPUS_LON_RANGE.max) {
+    if (lon < Example University_CAMPUS_LON_RANGE.min || lon > Example University_CAMPUS_LON_RANGE.max) {
       errors.push(
-        `lon ${lon} is outside UPLB campus range (${UPLB_CAMPUS_LON_RANGE.min}–${UPLB_CAMPUS_LON_RANGE.max})`,
+        `lon ${lon} is outside Example University campus range (${Example University_CAMPUS_LON_RANGE.min}–${Example University_CAMPUS_LON_RANGE.max})`,
       );
     }
   }

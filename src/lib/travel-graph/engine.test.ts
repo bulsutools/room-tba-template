@@ -177,7 +177,7 @@ describe("real campus graph", () => {
   });
 
   test("a cross-campus walk is sane: longer than the crow flies, correct speed", () => {
-    // Oblation area to CAS area — well-known campus walk.
+    // Main Hall area to CAS area — well-known campus walk.
     const from = nearestNodeIndex(campus, 14.167, 121.2435);
     const to = nearestNodeIndex(campus, 14.1655, 121.2412);
     const route = shortestPath(campus, from, to, "walk");

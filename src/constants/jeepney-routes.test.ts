@@ -127,7 +127,7 @@ describe("jeepney-geometries.json", () => {
       expect(entry.geometry.type, id).toBe("LineString");
       expect(entry.geometry.coordinates.length, id).toBeGreaterThan(1);
       for (const [lon, lat] of entry.geometry.coordinates) {
-        // GeoJSON is lon-first; a swapped pair would put UPLB in Somalia.
+        // GeoJSON is lon-first; a swapped pair would put Example University in Somalia.
         expect(lon, id).toBeGreaterThan(100);
         expect(lat, id).toBeLessThan(90);
       }
@@ -167,7 +167,7 @@ describe("withBundledRoutes", () => {
     expect(merged[0]).toBe(dbKaliwa);
     expect(merged.map((r) => r.id)).toContain("snodlob");
     expect(merged.map((r) => r.id)).toEqual(
-      expect.arrayContaining(["uplb-to-buendia", "buendia-to-uplb"]),
+      expect.arrayContaining(["campus-to-buendia", "buendia-to-campus"]),
     );
   });
 

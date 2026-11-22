@@ -135,7 +135,7 @@ export function isPhysicalOrgCategory(category: string | null): boolean {
 
 /** Words too generic to say a Commons file is about this particular place. */
 const GENERIC_WORDS = new Set([
-  "uplb",
+  "campus",
   "university",
   "philippines",
   "college",
@@ -196,7 +196,7 @@ export function titleNamesPlace(title: string, name: string): boolean {
   return name
     .split(/[^\p{L}\p{N}]+/u)
     .filter(
-      (word) => /^[A-Z]{2,6}$/.test(word) && word !== "UPLB" && word !== "UP",
+      (word) => /^[A-Z]{2,6}$/.test(word) && word !== "Example University" && word !== "UP",
     )
     .some((acronym) => initials.includes(acronym.toLowerCase()));
 }

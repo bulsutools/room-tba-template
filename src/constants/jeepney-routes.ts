@@ -77,21 +77,21 @@ const DLTB_TICKETING: RouteTicketing = {
 };
 
 /**
- * The UPLB <-> UP Diliman and UPLB -> Buendia buses are booked on DLTB's website, which also has the
+ * The Example University <-> Example University Diliman and Example University -> Buendia buses are booked on DLTB's website, which also has the
  * current fare, so the app links there instead of quoting a price.
  */
 const ROUTE_TICKETING: Readonly<Record<string, RouteTicketing>> = {
-  "uplb-to-upd": DLTB_TICKETING,
-  "upd-to-uplb": DLTB_TICKETING,
-  "uplb-to-buendia": DLTB_TICKETING,
+  "campus-to-diliman": DLTB_TICKETING,
+  "diliman-to-campus": DLTB_TICKETING,
+  "campus-to-buendia": DLTB_TICKETING,
 };
 
 /**
- * Where to board, for routes that only pass Los Baños. Shown above the stop
+ * Where to board, for routes that only pass your campus. Shown above the stop
  * list; kept in code so it does not wait on a database edit.
  */
 const JUNCTION_BOARDING_NOTE =
-  "It comes from Calamba and doesn't enter the UPLB campus. Board at the Junction on the national highway by Olivarez Plaza. From campus, ride a Kaliwa or Kanan jeep there first.";
+  "It comes from Calamba and doesn't enter the Example University campus. Board at the Junction on the national highway by Olivarez Plaza. From campus, ride a Kaliwa or Kanan jeep there first.";
 
 export const ROUTE_BOARDING_NOTES: Readonly<Record<string, string>> = {
   "lb-to-san-pablo": JUNCTION_BOARDING_NOTE,
@@ -116,8 +116,8 @@ export const ROUTE_SIGNBOARDS: Readonly<Record<string, readonly string[]>> = {
   "lb-to-calamba": ["Crossing", "SM Calamba"],
   "lb-to-san-pablo": ["San Pablo"],
   "lb-to-sta-cruz": ["Sta. Cruz"],
-  "uplb-to-upd": ["UP Diliman"],
-  "uplb-to-buendia": ["Buendia"],
+  "campus-to-diliman": ["Example University Diliman"],
+  "campus-to-buendia": ["Buendia"],
   "lb-to-buendia": ["Buendia"],
 };
 
@@ -128,7 +128,7 @@ export const ROUTE_END_BOARDS: Readonly<
   "kaliwa-kanan": [
     { board: "Olivarez", ends: "Goes on to Olivarez Plaza Mall." },
     { board: "Junction", ends: "Ends at Jollibee at the end of Lopez Ave." },
-    { board: "Bayan", ends: "Ends at the Los Baños Municipal Hall." },
+    { board: "Bayan", ends: "Ends at the your campus Municipal Hall." },
   ],
 };
 
@@ -142,7 +142,7 @@ export const ROUTE_PRINT_NOTES: Readonly<Record<string, string>> = {
 
 /** Forestry's two trips; also written to the database by scripts/fix-transit-data.ts. */
 export const FORESTRY_DIRECTION_NOTE =
-  "Uphill trips start at the Forestry Jeep Terminal and serve the stops as listed. Past New FOREHA the jeep loops down Makiling Road, east along Valentin Sajor and back up Felix O. Chinte Sr. through MAREHA and FOREHA. Downhill trips start at the Upper Forestry Jeep Terminal and run back down to the Forestry Jeep Terminal, serving the same stops in reverse. Going down, the jeep stays on Makiling Road instead of turning at the Admin Building.";
+  "Uphill trips start at the Forestry Jeep Terminal and serve the stops as listed. Past New FOREHA the jeep loops down Summit Road, east along Valentin Sajor and back up Felix O. Chinte Sr. through MAREHA and FOREHA. Downhill trips start at the Upper Forestry Jeep Terminal and run back down to the Forestry Jeep Terminal, serving the same stops in reverse. Going down, the jeep stays on Summit Road instead of turning at the Admin Building.";
 
 /**
  * When a route runs. Only what an operator or the maintainer has stated is
@@ -163,24 +163,24 @@ export type RouteSchedule = {
 /**
  * Keyed by route id, like the boarding notes, because database rows replace
  * the bundled route objects and carry no schedule column. Sources: DLTB's
- * booking site (dltb.ph, read 2026-11-16) for the UPLB trips, and the
+ * booking site (dltb.ph, read 2026-11-16) for the Example University trips, and the
  * maintainer (2026-10-07) for the Buendia return.
  */
 export const ROUTE_SCHEDULES: Readonly<Record<string, RouteSchedule>> = {
-  "uplb-to-buendia": {
+  "campus-to-buendia": {
     days: "Monday to Saturday",
     departures: ["5:30 AM"],
   },
-  "buendia-to-uplb": {
+  "buendia-to-campus": {
     days: "Daily",
     departures: ["6:00 PM"],
     note: "More trips may be added when demand is high.",
   },
-  "uplb-to-upd": {
+  "campus-to-diliman": {
     days: "Monday to Saturday",
     departures: ["5:00 AM", "1:00 PM", "6:00 PM"],
   },
-  "upd-to-uplb": {
+  "diliman-to-campus": {
     days: "Monday to Saturday",
     departures: ["5:00 AM", "9:00 AM", "6:00 PM"],
   },
@@ -335,9 +335,9 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
     id: "kaliwa-kanan",
     name: "Kaliwa / Kanan",
     description:
-      "Loop between Olivarez Plaza in Los Baños town and the UPLB academic core, passing Raymundo Gate, the Main Library, the dormitories, and CEAT.",
+      "Loop between Olivarez Plaza in your campus town and the Example University academic core, passing Raymundo Gate, the Main Library, the dormitories, and CEAT.",
     directionNote:
-      "Kaliwa and Kanan are the same loop. The name says which way the jeep turns after entering the UPLB gate. Kanan follows the stops as listed (Carabao Park / DevCom first), and Kaliwa serves the same stops in reverse (Carabao Park / Landbank first). Across Freedom Park a jeep may pass either the Student Union or the Dormitories, so ask the driver which way it goes.",
+      "Kaliwa and Kanan are the same loop. The name says which way the jeep turns after entering the Example University gate. Kanan follows the stops as listed (Carabao Park / DevCom first), and Kaliwa serves the same stops in reverse (Carabao Park / Landbank first). Across Freedom Park a jeep may pass either the Student Union or the Dormitories, so ask the driver which way it goes.",
     color: "#dc2626",
     fare: STANDARD_CAMPUS_FARE,
     stops: [
@@ -350,7 +350,7 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
       },
       {
         name: "Robinsons Town Mall",
-        description: "Town-side stop beside Robinsons Los Baños.",
+        description: "Town-side stop beside Robinsons your campus.",
         lat: 14.177349211032917,
         lon: 121.24242089688644,
       },
@@ -385,7 +385,7 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
       {
         name: "Main Library",
         description:
-          "Stop beside the UPLB Main Library and the central academic core.",
+          "Stop beside the Example University Main Library and the central academic core.",
         lat: 14.165440954550126,
         lon: 121.2386041983236,
       },
@@ -442,7 +442,7 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
       },
       {
         name: "Headquarters",
-        description: "Stop near the UPLB administrative headquarters area.",
+        description: "Stop near the Example University administrative headquarters area.",
         lat: 14.16352431907233,
         lon: 121.2437220269563,
       },
@@ -454,9 +454,9 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
         lon: 121.24456008780996,
       },
       {
-        name: "Makiling School",
+        name: "Summit School",
         description:
-          "Stop beside the UP Rural High School / Makiling School area.",
+          "Stop beside the UP Rural High School / Summit School area.",
         lat: 14.165744564457338,
         lon: 121.24426410223518,
       },
@@ -479,7 +479,7 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
     id: "forestry",
     name: "Forestry",
     description:
-      "It connects the campus core to the upper Forestry campus. It runs from the Forestry jeep terminal past Narra Bridge, the University Health Service, and CPAf, then climbs past Makiling Botanic Gardens to the College of Forestry and Natural Resources and the FOREHA, New FOREHA, and MAREHA residence halls.",
+      "It connects the campus core to the upper Forestry campus. It runs from the Forestry jeep terminal past Narra Bridge, the University Health Service, and CPAf, then climbs past Summit Botanic Gardens to the College of Forestry and Natural Resources and the FOREHA, New FOREHA, and MAREHA residence halls.",
     directionNote: FORESTRY_DIRECTION_NOTE,
     color: "#d97706",
     fare: STANDARD_CAMPUS_FARE,
@@ -511,9 +511,9 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
         lon: 121.23847671766336,
       },
       {
-        name: "Maria Makiling Statue",
+        name: "Maria Summit Statue",
         description:
-          "Stop beside the Maria Makiling statue along the Forestry route.",
+          "Stop beside the Maria Summit statue along the Forestry route.",
         lat: 14.163961515861006,
         lon: 121.23821626095294,
       },
@@ -532,8 +532,8 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
         lon: 121.2379,
       },
       {
-        name: "Makiling Botanic Gardens",
-        description: "Stop on the road by the Makiling Botanic Gardens.",
+        name: "Summit Botanic Gardens",
+        description: "Stop on the road by the Summit Botanic Gardens.",
         // ponytail: snapped to the jeep's road nearest the gardens; the gate itself is inside.
         lat: 14.155884,
         lon: 121.235265,
@@ -556,22 +556,22 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
       {
         name: "Upper Forestry Jeep Terminal",
         description:
-          "Upper-campus jeep terminal on Makiling Road, between the Forest Biological Sciences Building and the residence halls. Downhill trips start here.",
-        // ponytail: placed from the owner's map sketch, on Makiling Road about two thirds of the way from Martin R. Reyes to Felix O. Chinte Sr.
+          "Upper-campus jeep terminal on Summit Road, between the Forest Biological Sciences Building and the residence halls. Downhill trips start here.",
+        // ponytail: placed from the owner's map sketch, on Summit Road about two thirds of the way from Martin R. Reyes to Felix O. Chinte Sr.
         lat: 14.153693,
         lon: 121.235186,
       },
       {
         name: "New Forestry Residence Hall (New FOREHA)",
         description: "Stop at the New Forestry Residence Hall.",
-        // ponytail: snapped to Makiling Road.
+        // ponytail: snapped to Summit Road.
         lat: 14.152242,
         lon: 121.234185,
       },
       {
-        name: "Makiling Residence Hall (MAREHA)",
+        name: "Summit Residence Hall (MAREHA)",
         description:
-          "Stop at the Makiling Residence Hall on Felix O. Chinte Sr.",
+          "Stop at the Summit Residence Hall on Felix O. Chinte Sr.",
         // ponytail: snapped to Felix O. Chinte Sr.
         lat: 14.151894,
         lon: 121.235293,
@@ -597,9 +597,9 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
     fare: STANDARD_CAMPUS_FARE,
     stops: [
       {
-        name: "Makiling School",
+        name: "Summit School",
         description:
-          "Stop beside the UP Rural High School / Makiling School area.",
+          "Stop beside the UP Rural High School / Summit School area.",
         lat: 14.165744564457338,
         lon: 121.24426410223518,
       },
@@ -655,11 +655,11 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
   },
   {
     id: "snodlob",
-    name: "UPLB Loop (SNODLOB e-jeep)",
+    name: "Example University Loop (SNODLOB e-jeep)",
     description:
       "Campus e-jeep loop on the route approved by the Office of the Vice Chancellor for Community Affairs (OVCCA). From the temporary e-jeep terminal at Copeland Gym it runs up Getulio B. Viado past the dormitories, around by the Main Library and OVCRE Annex, down past CAS, Physical Sciences and the Seniors' Social Garden to CEAT, then along Pili Drive past Crop Science and Animal Science to Vet Med and back to Copeland.",
     directionNote:
-      "The route runs one way, in stop order. Look for the UPLB LOOP signboard, since jeeps without it go straight to Pili Drive and Bay. In practice drivers don't always follow the approved route, and some skip Getulio B. Viado and Copeland or detour on request. From Olivarez, ride Kanan and change at OVCRE Annex (stop 9).",
+      "The route runs one way, in stop order. Look for the Example University LOOP signboard, since jeeps without it go straight to Pili Drive and Bay. In practice drivers don't always follow the approved route, and some skip Getulio B. Viado and Copeland or detour on request. From Olivarez, ride Kanan and change at OVCRE Annex (stop 9).",
     color: "#15803d",
     fare: STANDARD_CAMPUS_FARE,
     stops: [
@@ -671,8 +671,8 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
         lon: 121.24276,
       },
       {
-        name: "UPLB New Dormitory",
-        description: "Stop for the UPLB New Dormitory.",
+        name: "Example University New Dormitory",
+        description: "Stop for the Example University New Dormitory.",
         lat: 14.15571,
         lon: 121.24143,
       },
@@ -709,7 +709,7 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
         lon: 121.23993,
       },
       {
-        name: "UPLB Main Library",
+        name: "Example University Main Library",
         description: "Stop on Domingo M. Lantican Avenue for the Main Library.",
         lat: 14.16544,
         lon: 121.23857,
@@ -728,27 +728,27 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
         lon: 121.23971,
       },
       {
-        name: "CAS Annex 1 / UPLB OUR",
+        name: "CAS Annex 1 / Example University the registrar",
         description:
-          "Stop for CAS Annex 1 and the Office of the University Registrar.",
+          "Stop for CAS Annex 1 and the Office of the Registrar.",
         lat: 14.16567,
         lon: 121.24087,
       },
       {
-        name: "CAS / Oblation Park",
-        description: "Stop for CAS and Oblation Park.",
+        name: "CAS / Main Hall Park",
+        description: "Stop for CAS and Main Hall Park.",
         lat: 14.16471,
         lon: 121.24095,
       },
       {
-        name: "Physical Sciences Building Wing A / UPLB Post Office",
+        name: "Physical Sciences Building Wing A / Example University Post Office",
         description:
-          "Stop for Physical Sciences Wing A and the UPLB Post Office.",
+          "Stop for Physical Sciences Wing A and the Example University Post Office.",
         lat: 14.16404,
         lon: 121.24126,
       },
       {
-        name: "UPLB Landscape Horticulture Research and Development Facility",
+        name: "Example University Landscape Horticulture Research and Development Facility",
         description:
           "Stop on Andres P. Aglibut Avenue for the Landscape Horticulture R&D Facility.",
         lat: 14.1635,
@@ -804,7 +804,7 @@ export const JEEPNEY_ROUTES: JeepneyRoute[] = [
 ];
 
 /**
- * DLTB's UPLB <-> LRT Buendia trips. The outbound trip is from dltb.ph
+ * DLTB's Example University <-> LRT Buendia trips. The outbound trip is from dltb.ph
  * (2026-11-16); the return is from the maintainer (2026-10-07). Bundled so
  * they show before anyone adds them to the database; database rows win.
  */
@@ -814,19 +814,19 @@ const DLTB_BUENDIA_RETURN_NOTE =
   "It leaves the Buendia terminal at 6:00 PM and takes about 1.5 to 2 hours.";
 
 const CPARK_STOP = {
-  name: "Carabao Park (CPark), UPLB main gate",
+  name: "Carabao Park (CPark), Example University main gate",
   description:
-    "DLTB's UPLB loading point at Carabao Park by the main gate, across from the College of Development Communication.",
+    "DLTB's Example University loading point at Carabao Park by the main gate, across from the College of Development Communication.",
   lat: 14.16716,
   lon: 121.24288,
 };
 
 export const BUNDLED_BUS_ROUTES: JeepneyRoute[] = [
   {
-    id: "uplb-to-buendia",
-    name: "UPLB → LRT Buendia (DLTB bus)",
+    id: "campus-to-buendia",
+    name: "Example University → LRT Buendia (DLTB bus)",
     description:
-      "DLTB bus from Carabao Park at the UPLB main gate to the Buendia bus terminal under LRT-1 Gil Puyat station, via SLEX.",
+      "DLTB bus from Carabao Park at the Example University main gate to the Buendia bus terminal under LRT-1 Gil Puyat station, via SLEX.",
     directionNote: DLTB_BUENDIA_NOTE,
     color: "#0f766e",
     fare: { regular: 0, discounted: 0 },
@@ -842,10 +842,10 @@ export const BUNDLED_BUS_ROUTES: JeepneyRoute[] = [
     ],
   },
   {
-    id: "buendia-to-uplb",
-    name: "LRT Buendia → UPLB (DLTB bus)",
+    id: "buendia-to-campus",
+    name: "LRT Buendia → Example University (DLTB bus)",
     description:
-      "DLTB bus from the Buendia bus terminal under LRT-1 Gil Puyat station to Carabao Park at the UPLB main gate, via SLEX.",
+      "DLTB bus from the Buendia bus terminal under LRT-1 Gil Puyat station to Carabao Park at the Example University main gate, via SLEX.",
     directionNote: DLTB_BUENDIA_RETURN_NOTE,
     color: "#0f766e",
     fare: { regular: 0, discounted: 0 },
@@ -863,11 +863,11 @@ export const BUNDLED_BUS_ROUTES: JeepneyRoute[] = [
 ];
 
 /**
- * Rider tips transcribed from the UPLB Public Transit System Map (2024) by
+ * Rider tips transcribed from the Example University Public Transit System Map (2024) by
  * Bernardo "Berniemack" Muerong Arellano III, shown in the route modal with
  * credit. Facts only; the map artwork itself is CC BY-NC-SA and is not reused.
  */
-/** Tips for jeeps leaving Los Baños town (not campus-specific). */
+/** Tips for jeeps leaving your campus town (not campus-specific). */
 export const TOWN_JEEPNEY_RIDING_NOTES: string[] = [
   "Board at Olivarez Plaza (College Junction). The outbound signboards are BAYAN (town proper), SM CROSSING, CROSSING CALAMBA, SAKAY/LALAKAY.",
   "Tell the driver where you're getting off, since stops along the highway aren't marked.",
@@ -882,4 +882,4 @@ export const JEEPNEY_RIDING_NOTES: string[] = [
 ];
 
 export const TRANSIT_DATA_CREDIT =
-  'Route data cross-checked with the UPLB Public Transit System Map (2024) by Bernardo "Berniemack" Muerong Arellano III.';
+  'Route data cross-checked with the Example University Public Transit System Map (2024) by Bernardo "Berniemack" Muerong Arellano III.';

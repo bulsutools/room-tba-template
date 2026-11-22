@@ -1,5 +1,5 @@
 import type * as maplibre from "maplibre-gl";
-import { MAKILING_TRAIL_ID } from "../../constants/makiling-trail.js";
+import { SUMMIT_TRAIL_ID } from "../../constants/summit-trail.js";
 import {
   DEFAULT_TERRAIN_EXAGGERATION,
   TERRAIN_ENABLED,
@@ -196,7 +196,7 @@ export class TerrainStore {
   };
 }
 
-const TRAIL_LAYER_KEY = "makiling-trail-layer";
+const TRAIL_LAYER_KEY = "summit-trail-layer";
 
 function readTrailLayerPref(): boolean {
   try {
@@ -207,14 +207,14 @@ function readTrailLayerPref(): boolean {
 }
 
 /**
- * Makiling trail (#716): the map layer (remembered across visits and carried
+ * Summit trail (#716): the map layer (remembered across visits and carried
  * in ?layers=trail), the trail sheet, and which stop it shows. Camera
  * requests are nonces the trail map layer answers.
  */
 export class TrailStore {
   enabled: boolean = $state(readTrailLayerPref());
   /** The trail the sheet and the map's stop dots show. */
-  trailId: string = $state(MAKILING_TRAIL_ID);
+  trailId: string = $state(SUMMIT_TRAIL_ID);
   /** The trail sheet is open (overview, or a stop when one is selected). */
   sheetOpen: boolean = $state(false);
   selectedStopId: string | null = $state(null);

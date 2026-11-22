@@ -5,7 +5,7 @@ import type { Milestone, MilestoneKind } from "./academic-calendar-pdf";
 /**
  * Registrar milestones for the calendar screen.
  *
- * The JSON stores every row the OUR calendar prints; this module decides which
+ * The JSON stores every row the registrar calendar prints; this module decides which
  * of them a student sees. Rows that only concern staff (faculty/UC/BOR
  * meetings, tentative-list submissions) stay in the data and out of the UI —
  * flipping one on is an edit to SURFACED, not a re-parse.
@@ -57,9 +57,9 @@ const SURFACED: { pattern: RegExp; display: string }[] = [
   { pattern: /^final examinations/i, display: "Final examinations" },
   { pattern: /grade submission/i, display: "Grade submission deadline" },
   { pattern: /^christmas vacation/i, display: "Christmas vacation" },
-  { pattern: /^uplb commencement/i, display: "UPLB commencement" },
+  { pattern: /^campus commencement/i, display: "Example University commencement" },
   { pattern: /hooding ceremony/i, display: "Graduate hooding ceremony" },
-  { pattern: /^uplb foundation day/i, display: "UPLB Foundation Day" },
+  { pattern: /^campus foundation day/i, display: "Example University Foundation Day" },
   { pattern: /^loyalty day/i, display: "Loyalty Day" },
 ];
 

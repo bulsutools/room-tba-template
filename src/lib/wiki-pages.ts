@@ -27,15 +27,15 @@ export const WIKI_PAGES: readonly WikiPage[] = [
   },
   {
     path: "/wiki/glossary",
-    title: "UPLB glossary: TBA, LH, AB, CAS and more",
+    title: "Example University glossary: TBA, LH, AB, CAS and more",
     kicker: "Glossary",
     blurb:
-      "These are the abbreviations on schedules, room signs and building names, from AMIS and CRS to the college acronyms and room-code prefixes.",
+      "These are the abbreviations on schedules, room signs and building names, from portal and CRS to the college acronyms and room-code prefixes.",
     sourcePath: "src/pages/wiki/glossary.astro",
   },
   {
     path: "/wiki/jeepney-guide",
-    title: "Jeepneys and buses around UPLB",
+    title: "Jeepneys and buses around Example University",
     kicker: "Getting around",
     blurb:
       "This covers the campus routes, their stops, fares and boarding tips, read from the same data the map uses.",
@@ -43,7 +43,7 @@ export const WIKI_PAGES: readonly WikiPage[] = [
   },
   {
     path: "/wiki/emergency-hotlines",
-    title: "Emergency hotlines around UPLB",
+    title: "Emergency hotlines around Example University",
     kicker: "Emergency contacts",
     blurb:
       "These contacts for campus security, local responders and nearby medical services work offline.",
@@ -59,26 +59,18 @@ export const WIKI_PAGES: readonly WikiPage[] = [
   },
   {
     path: "/wiki/section-times",
-    title: "What times do UPLB section names correspond to?",
+    title: "What times do Example University section names correspond to?",
     kicker: "Class schedules",
     blurb:
-      "This glossary covers letter ladders, NSTP/HK/GI/residency, MS/PhD numbers and every AMIS type. It also shows term trends from oldest to newest (what moved and what only looks bigger in Room TBA).",
+      "This glossary covers letter ladders, NSTP/HK/GI/residency, MS/PhD numbers and every portal type. It also shows term trends from oldest to newest (what moved and what only looks bigger in Room TBA).",
     sourcePath: "src/pages/wiki/section-times.astro",
-  },
-  {
-    path: "/wiki/upcat-at-uplb",
-    title: "Taking the UPCAT at UP Los Baños",
-    kicker: "UPCAT at UPLB",
-    blurb:
-      "This first-timer's guide to the UPCAT at UPLB covers what the test permit does and doesn't tell you, what to bring and how to save the campus map before mobile data gets congested. It was written for the August 2026 exam.",
-    sourcePath: "src/pages/wiki/upcat-at-uplb.astro",
   },
   {
     path: "/wiki/fork-for-your-campus",
     title: "Fork this for your campus",
     kicker: "For other campuses",
     blurb:
-      "Room TBA is built for UPLB. This is what you replace to run it for a different campus, from the UPLB data and glue to rip out and the config to repoint to the parts you write yourself (class import).",
+      "Room TBA is built for Example University. This is what you replace to run it for a different campus, from the Example University data and glue to rip out and the config to repoint to the parts you write yourself (class import).",
     sourcePath: "src/pages/wiki/fork-for-your-campus.astro",
   },
 ] as const;
@@ -98,7 +90,7 @@ export const WIKI_REPO_URL = GITHUB_ROOM_TBA_URL;
 export function wikiCorrectionUrl(pageTitle: string, path: string): string {
   const params = new URLSearchParams({
     title: `Wiki correction: ${pageTitle}`,
-    body: `Page: https://room-tba.uplb.tools${path}\n\nWhat is wrong:\n\nWhat it should say (with a source if you have one):\n`,
+    body: `Page: https://room-tba.campus.tools${path}\n\nWhat is wrong:\n\nWhat it should say (with a source if you have one):\n`,
   });
   return `${WIKI_REPO_URL}/issues/new?${params.toString()}`;
 }

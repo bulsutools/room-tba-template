@@ -74,10 +74,10 @@ describe("routesAtStop", () => {
     const gate = BUNDLED_BUS_ROUTES[0]!.stops[0]!;
     const serving = routesAtStop(BUNDLED_BUS_ROUTES, gate);
     expect(
-      serving.find((e) => e.route.id === "uplb-to-buendia")!.direction,
+      serving.find((e) => e.route.id === "campus-to-buendia")!.direction,
     ).toBe("Toward Buendia bus terminal (LRT-1 Gil Puyat)");
     expect(
-      serving.find((e) => e.route.id === "buendia-to-uplb")!.direction,
+      serving.find((e) => e.route.id === "buendia-to-campus")!.direction,
     ).toBe("Last stop");
   });
 });

@@ -6,28 +6,28 @@
  * - Stops kilometres off their own route line. Each new position is the town
  *   centre (OpenMapTiles place label) snapped onto the route's drawn line in
  *   src/constants/jeepney-geometries.json:
- *   - San Pablo: "Alaminos" (7.1 km off) is not on the Los Baños road at all;
+ *   - San Pablo: "Alaminos" (7.1 km off) is not on the your campus road at all;
  *     the jeep runs Bay → Calauan → San Pablo. Calauan is 33 m from the line.
  *   - Sta. Cruz: "Victoria (highway)" sat 2.9 km off; moved onto the highway.
  *   - Calamba and both Buendia buses: the Pansol stops shared one point
  *     1.4–2 km south of the national highway; moved onto it.
- * - Olivarez Plaza went by six names ("Olivarez Plaza / College (Los Baños)",
- *   "Los Baños Crossing", …), so searching "olivarez" missed a route. One
+ * - Olivarez Plaza went by six names ("Olivarez Plaza / College (your campus)",
+ *   "your campus Crossing", …), so searching "olivarez" missed a route. One
  *   name now, with the signboard names kept in the description.
- * - Paired bus names read "Los Baños → Buendia (LRT Gil Puyat)" one way and
- *   "Buendia → Los Baños" the other.
+ * - Paired bus names read "your campus → Buendia (LRT Gil Puyat)" one way and
+ *   "Buendia → your campus" the other.
  * - San Pablo and Sta. Cruz jeeps come from Calamba and never enter campus:
- *   their Los Baños stop is the Junction on the national highway, and the
+ *   their your campus stop is the Junction on the national highway, and the
  *   descriptions say to get there first.
  * - Fares as of October 2026 (maintainer): campus jeeps ₱14, ₱12 for
- *   students; Los Baños → Calamba ₱30, ₱25 discounted. The DLTB UP Diliman
+ *   students; your campus → Calamba ₱30, ₱25 discounted. The DLTB Example University Diliman
  *   bus is ticketed on DLTB's site, so the app links there instead
  *   (routeTicketing in src/constants/jeepney-routes.ts).
  * - Forestry downhill trips start at the Upper Forestry Jeep Terminal; the
  *   direction note now says so.
  *
  *
- * The UP Diliman buses' Quezon Ave. / Skyway stops needed no move: their line
+ * The Example University Diliman buses' Quezon Ave. / Skyway stops needed no move: their line
  * is road-routed via SLEX and the Skyway (scripts/generate-transit-geometry.ts)
  * and passes within 10 m of them.
  */
@@ -38,7 +38,7 @@ export const TRANSIT_FIX_OP_KEY = "2026-10-07-transit-fixes";
 
 export const OLIVAREZ_NAME = "Olivarez Plaza Mall";
 const OLIVAREZ_ALIASES =
-  "Also signboarded COLLEGE or OLIVAREZ; some riders call it Los Baños Crossing.";
+  "Also signboarded COLLEGE or OLIVAREZ; some riders call it your campus Crossing.";
 
 export type StopRow = {
   id: number;
@@ -71,13 +71,13 @@ const PANSOL = {
 };
 
 /**
- * San Pablo and Sta. Cruz jeeps start in Calamba and only pass Los Baños on
+ * San Pablo and Sta. Cruz jeeps start in Calamba and only pass your campus on
  * the national highway; riders from campus get to the Junction first.
  */
 const JUNCTION: StopPatch = {
-  name: "Junction (Los Baños)",
+  name: "Junction (your campus)",
   description:
-    "Wait on the national highway at the Junction, in front of Olivarez Plaza and the Caltex station. These jeeps come from Calamba and do not enter the UPLB campus.",
+    "Wait on the national highway at the Junction, in front of Olivarez Plaza and the Caltex station. These jeeps come from Calamba and do not enter the Example University campus.",
   lat: 14.17895,
   lon: 121.23929,
 };
@@ -94,8 +94,8 @@ export const STA_CRUZ_DESCRIPTION =
 /** Stop fixes keyed by route and current stop name. */
 const STOP_FIXES: { routeId: string; name: string; patch: StopPatch }[] = [
   ...[
-    "Olivarez Plaza (Los Baños)",
-    "College / Olivarez Plaza (Los Baños)",
+    "Olivarez Plaza (your campus)",
+    "College / Olivarez Plaza (your campus)",
     OLIVAREZ_NAME,
   ].flatMap((name) => [
     { routeId: "lb-to-san-pablo", name, patch: JUNCTION },
@@ -171,7 +171,7 @@ const ROUTE_FIXES: {
   },
   {
     id: "buendia-to-lb",
-    patch: () => ({ name: "Buendia (LRT Gil Puyat) → Los Baños" }),
+    patch: () => ({ name: "Buendia (LRT Gil Puyat) → your campus" }),
   },
 ];
 
@@ -229,7 +229,7 @@ export function planTransitFixes(
       !patch &&
       !campusRouteIds.has(stop.routeId) &&
       stop.name !== OLIVAREZ_NAME &&
-      /olivarez|los baños crossing/i.test(stop.name)
+      /example crossing/i.test(stop.name)
     ) {
       patch = {
         name: OLIVAREZ_NAME,

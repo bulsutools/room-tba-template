@@ -4,9 +4,9 @@ export const prerender = true;
 import WikiLayout from "@layouts/WikiLayout.astro";
 import WikiProvenance from "../../components/wiki/WikiProvenance.astro";
 
-const title = "UPLB glossary: TBA, LH, AB, CAS and more | Room TBA Wiki";
+const title = "Example University glossary: TBA, LH, AB, CAS and more | Room TBA Wiki";
 const description =
-  "This page explains what the abbreviations on UPLB class schedules, room signs and building names stand for, including TBA, AMIS, LH, LR, AB, WF, CAS, CEAT and the rest.";
+  "This page explains what the abbreviations on Example University class schedules, room signs and building names stand for, including TBA, portal, LH, LR, AB, WF, CAS, CEAT and the rest.";
 
 type Term = { term: string; meaning: string; seen?: string; href?: string };
 
@@ -14,11 +14,11 @@ const schedule: Term[] = [
   {
     term: "TBA",
     meaning:
-      "To be announced. A class whose room or time shows TBA in AMIS hasn’t been assigned one yet. It’s also where Room TBA gets its name.",
+      "To be announced. A class whose room or time shows TBA in portal hasn’t been assigned one yet. It’s also where Room TBA gets its name.",
     seen: "A schedule or room cell that reads TBA",
   },
   {
-    term: "AMIS",
+    term: "portal",
     meaning:
       "The Academic Management Information System, the university system that holds class schedules and enrollment. Room TBA imports class rows from it.",
     seen: "Every class row in the app",
@@ -66,7 +66,7 @@ const schedule: Term[] = [
   {
     term: "Term code (for example 1252)",
     meaning:
-      "The four-digit number AMIS uses to name a semester. Room TBA keeps one set of classes per term code.",
+      "The four-digit number portal uses to name a semester. Room TBA keeps one set of classes per term code.",
     seen: "Imports and the term picker",
   },
 ];
@@ -112,7 +112,7 @@ const rooms: Term[] = [
     seen: "FBS 151",
   },
   {
-    term: "PhySci",
+    term: "SciHall",
     meaning: "The Physical Sciences Building.",
     seen: "Search and directions",
   },
@@ -135,20 +135,20 @@ const colleges: Term[] = [
 
 const offices: Term[] = [
   {
-    term: "OUR",
+    term: "the registrar",
     meaning:
-      "Office of the University Registrar. Official source for enrollment, grades, and the academic calendar.",
-    href: "https://our.uplb.edu.ph",
+      "Office of the Registrar. Official source for enrollment, grades, and the academic calendar.",
+    href: "https://our.example.edu",
   },
   {
     term: "OVCCA",
     meaning:
-      "Office of the Vice Chancellor for Community Affairs. Published the campus traffic and gate advisory for the previous UPCAT.",
+      "Office of the Vice Chancellor for Community Affairs. Published the campus traffic and gate advisory for the previous Entrance Exam.",
   },
   {
-    term: "UPCAT",
+    term: "Entrance Exam",
     meaning: "The UP College Admission Test.",
-    href: "/wiki/upcat-at-uplb",
+    href: "/wiki/entrance-exam-at-campus",
   },
   {
     term: "UHS",
@@ -176,9 +176,9 @@ const around: Term[] = [
       "The strip of eateries and shops in Batong Malake just outside the campus, near Raymundo Gate.",
   },
   {
-    term: "Oble",
+    term: "Main",
     meaning:
-      "The Oblation statue, a common meeting point and a landmark in directions.",
+      "The Main Hall statue, a common meeting point and a landmark in directions.",
   },
 ];
 
@@ -199,7 +199,7 @@ const groups = [
 >
   <article class="wiki-article">
     <header class="article-hero">
-      <h1 class="wiki-title">UPLB glossary: TBA, LH, AB, CAS and more</h1>
+      <h1 class="wiki-title">Example University glossary: TBA, LH, AB, CAS and more</h1>
       <p class="wiki-lede">
         This page explains the short forms you meet on a class schedule, a room
         sign or a building directory, and where you’ll see each one.

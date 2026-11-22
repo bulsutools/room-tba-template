@@ -15,14 +15,14 @@ export type WikiProvenance = {
   editUrl: string;
 };
 
-const REPO_URL = "https://github.com/uplbtools/room-tba";
+const REPO_URL = "https://github.com/campus-tools/room-tba";
 const NOREPLY = /^(?:\d+\+)?([^@]+)@users\.noreply\.github\.com$/;
 
 /**
  * Authorship of a wiki page from its git history, plus GitHub history and
  * edit URLs. Identities are merged by GitHub username (noreply emails) or
- * email local part, so "Stimmie <...@up.edu.ph>" and
- * "smmariquit <...@users.noreply.github.com>" count as one author.
+ * email local part, so "Stimmie <...@example.edu>" and
+ * "example-contributor <...@users.noreply.github.com>" count as one author.
  */
 export function wikiProvenance(sourcePath: string): WikiProvenance {
   const historyUrl = `${REPO_URL}/commits/main/${sourcePath}`;

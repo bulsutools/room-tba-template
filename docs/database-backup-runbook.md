@@ -1,6 +1,6 @@
 # Production database backup runbook
 
-Parent: [#281](https://github.com/uplbtools/room-tba/issues/281). Staging mirror (not a backup): [#289](https://github.com/uplbtools/room-tba/issues/289).
+Parent: [#281](https://github.com/campus-tools/room-tba/issues/281). Staging mirror (not a backup): [#289](https://github.com/campus-tools/room-tba/issues/289).
 
 Room TBA runtime data lives in **Supabase Postgres** (`DATABASE_URL` on Vercel production). Nightly dumps complement Supabase dashboard backups; they are restorable snapshots of the `public` schema (rooms, buildings, classes, proposals, editor history, sync metadata, and related tables).
 
@@ -11,7 +11,7 @@ Room TBA runtime data lives in **Supabase Postgres** (`DATABASE_URL` on Vercel p
 | Workflow | [`.github/workflows/backup.yml`](../.github/workflows/backup.yml) |
 | Cron | 02:00 UTC daily |
 | Manual run | GitHub Actions → **Database backup** → **Run workflow** |
-| Source DB | Production only via Actions secret `PROD_DATABASE_URL` (session pooler; project `ccdqtmscmnixjbynwdvb`) |
+| Source DB | Production only via Actions secret `PROD_DATABASE_URL` (session pooler; project `your-prod-project-ref`) |
 | Client | `pg_dump` from `postgres:17-alpine` (Supabase runs Postgres 17) |
 
 ## Where backups live
@@ -66,7 +66,7 @@ pg_restore --verbose --no-owner --no-acl -d "$TARGET_URL" room-tba-YYYYMMDD-HHMM
 
 ### Restore to staging Supabase (maintainers only)
 
-Point `TARGET_URL` at an isolated staging project (see [#289](https://github.com/uplbtools/room-tba/issues/289)). **Never** restore over production unless executing a deliberate disaster recovery with a written rollback plan.
+Point `TARGET_URL` at an isolated staging project (see [#289](https://github.com/campus-tools/room-tba/issues/289)). **Never** restore over production unless executing a deliberate disaster recovery with a written rollback plan.
 
 ## Verify after restore
 
@@ -80,7 +80,7 @@ UNION ALL SELECT 'editor_history', COUNT(*) FROM editor_history;
 
 Compare counts to production (read-only query on prod). Spot-check one building slug and one room code in the restored DB.
 
-Log the verification date on [#281](https://github.com/uplbtools/room-tba/issues/281) when completing the formal restore test.
+Log the verification date on [#281](https://github.com/campus-tools/room-tba/issues/281) when completing the formal restore test.
 
 ## Supabase-native backups vs repo dumps
 

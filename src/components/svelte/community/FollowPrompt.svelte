@@ -27,7 +27,7 @@
 </script>
 
 {#if !retired}
-  <aside class="follow-prompt" aria-label="Follow UPLB Tools">
+  <aside class="follow-prompt" aria-label="Follow campus-tools">
     <div class="follow-prompt__body">
       <FollowUpdates {note} onfollow={() => retire("followed")} />
     </div>

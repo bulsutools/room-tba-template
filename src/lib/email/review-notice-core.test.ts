@@ -37,7 +37,7 @@ describe("buildStaffReviewEmail", () => {
       outcome: "approved",
       entityLabel: "Humanities Building",
       submitterName: "Ana",
-      reviewedBy: "stimmie",
+      reviewedBy: "example-contributor",
       contributorNotified: true,
     });
     expect(told.subject).toBe("Review approved: Humanities Building");
@@ -46,7 +46,7 @@ describe("buildStaffReviewEmail", () => {
       outcome: "needs_changes",
       entityLabel: null,
       submitterName: null,
-      reviewedBy: "stimmie",
+      reviewedBy: "example-contributor",
       note: "Add the floor",
       contributorNotified: false,
     });
@@ -62,7 +62,7 @@ describe("buildReviewEmail", () => {
       outcome: "approved",
       entityLabel: "Humanities Building",
       submitterName: "Ana",
-      reviewedBy: "stimmie",
+      reviewedBy: "example-contributor",
     });
     expect(subject).toBe(
       "Your Room TBA edit was approved: Humanities Building",
@@ -74,7 +74,7 @@ describe("buildReviewEmail", () => {
       outcome: "rejected",
       entityLabel: null,
       submitterName: null,
-      reviewedBy: "stimmie",
+      reviewedBy: "example-contributor",
     });
     expect(subject).toContain("a map entry");
     expect(text).toContain("Hi there,");
@@ -85,7 +85,7 @@ describe("buildReviewEmail", () => {
       outcome: "needs_changes",
       entityLabel: "CAS Annex",
       submitterName: "Ana",
-      reviewedBy: "stimmie",
+      reviewedBy: "example-contributor",
       note: "  Room code looks like a typo.  ",
     });
     expect(withNote.text).toContain(
@@ -96,7 +96,7 @@ describe("buildReviewEmail", () => {
       outcome: "needs_changes",
       entityLabel: "CAS Annex",
       submitterName: "Ana",
-      reviewedBy: "stimmie",
+      reviewedBy: "example-contributor",
       note: "   ",
     });
     expect(blankNote.text).not.toContain("Reviewer note:");

@@ -65,14 +65,14 @@ describe("modal scroll chrome", () => {
       "https://upsked.com/",
     );
     expect(screen.getByText(/John Paul Poliquit/)).toBeVisible();
-    expect(screen.getByRole("link", { name: "UPLB Trail" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Example University Trail" })).toHaveAttribute(
       "href",
-      "https://uplb-trail.vercel.app/",
+      "https://directory.campus.tools/",
     );
     expect(screen.getByText(/Bernard Jezua Tandang/)).toBeVisible();
-    expect(screen.getByRole("link", { name: "AMISSU" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "the campus mountaineering club" })).toHaveAttribute(
       "href",
-      "https://chromewebstore.google.com/detail/amissu/mkdgckblaojfigmbnknehcmnjpkcehcj",
+      "https://chromewebstore.google.com/detail/portalsu/mkdgckblaojfigmbnknehcmnjpkcehcj",
     );
     expect(screen.getByText(/Garth Hendrich Lapitan/)).toBeVisible();
   });

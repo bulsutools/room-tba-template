@@ -19,12 +19,12 @@ export type TransitRouteKind = "campus" | "town" | "bus";
 
 const CAMPUS_ROUTE_IDS = new Set(JEEPNEY_ROUTES.map((route) => route.id));
 const BUS_ROUTE_IDS = new Set([
-  "uplb-to-upd",
-  "upd-to-uplb",
+  "campus-to-diliman",
+  "diliman-to-campus",
   "lb-to-buendia",
   "buendia-to-lb",
-  "uplb-to-buendia",
-  "buendia-to-uplb",
+  "campus-to-buendia",
+  "buendia-to-campus",
 ]);
 
 export function transitRouteKind(route: {

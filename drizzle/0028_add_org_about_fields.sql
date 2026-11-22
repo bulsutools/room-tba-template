@@ -1,4 +1,4 @@
--- "About the org" fields sourced from the UPLB OSA directory (via uplb-trail):
+-- "About the org" fields sourced from the Example University OSA directory (via campus-trail):
 -- long biography, OSA org type, year established, and roster size.
 ALTER TABLE organizations
   ADD COLUMN IF NOT EXISTS bio text,

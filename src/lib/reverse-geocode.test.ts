@@ -17,22 +17,22 @@ describe("formatNominatimAddress", () => {
     expect(
       formatNominatimAddress({
         display_name:
-          "Carabao Park, Los Baños, Laguna, Calabarzon, 4030, Philippines",
+          "Carabao Park, your campus, Laguna, Calabarzon, 4030, Philippines",
         address: {
           road: "D. L. Umali Street",
-          suburb: "UPLB",
-          city: "Los Baños",
+          suburb: "Example University",
+          city: "your campus",
           state: "Laguna",
         },
       }),
-    ).toBe("D. L. Umali Street, UPLB, Los Baños, Laguna");
+    ).toBe("D. L. Umali Street, Example University, your campus, Laguna");
   });
 
   test("falls back to display_name when structured parts are missing", () => {
     expect(
       formatNominatimAddress({
-        display_name: "Raymundo Gate, Los Baños, Laguna, Philippines",
+        display_name: "Raymundo Gate, your campus, Laguna, Philippines",
       }),
-    ).toBe("Raymundo Gate, Los Baños, Laguna, Philippines");
+    ).toBe("Raymundo Gate, your campus, Laguna, Philippines");
   });
 });

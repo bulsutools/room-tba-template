@@ -1,5 +1,5 @@
 /**
- * Printable transit map PDF for the UPLB jeep and bus routes.
+ * Printable transit map PDF for the Example University jeep and bus routes.
  *
  * The frame is fitted to the campus stops and the place the map was opened
  * from, not to the full route extent: stops that fall outside it (the malls,
@@ -599,7 +599,7 @@ const WINANSI_REPLACEMENTS: [RegExp, string][] = [
 ];
 
 /** Standard PDF fonts are WinAnsi; live data (route names like
- *  "Buendia → Los Baños") carries characters it cannot encode. Map the
+ *  "Buendia → your campus") carries characters it cannot encode. Map the
  *  common typography and drop whatever is left rather than failing the print. */
 export function toWinAnsi(text: string): string {
   let out = text;
@@ -1341,10 +1341,10 @@ export async function renderTransitMapPdf(input: {
   const palette = TRANSIT_MAP_PALETTES[input.palette ?? "paper"];
 
   const pdf = await PDFDocument.create();
-  pdf.setTitle("UPLB Jeeps & Buses");
+  pdf.setTitle("Example University Jeeps & Buses");
   pdf.setAuthor("Room TBA");
-  pdf.setSubject("Printable map of UPLB jeep and bus routes and stops");
-  pdf.setCreator("Room TBA (room-tba.uplb.tools)");
+  pdf.setSubject("Printable map of Example University jeep and bus routes and stops");
+  pdf.setCreator("Room TBA (room-tba.campus.tools)");
   pdf.setLanguage("en-PH");
   pdf.setCreationDate(generatedAt);
 
@@ -1421,7 +1421,7 @@ export async function renderTransitMapPdf(input: {
   const titleW = drawSignboard(
     page,
     pageH,
-    ["UPLB", "JEEPS & BUSES"],
+    ["Example University", "JEEPS & BUSES"],
     MARGIN,
     pageH - SAFE - 14,
     26,
@@ -1485,8 +1485,8 @@ export async function renderTransitMapPdf(input: {
     height: 22,
   });
   const brandLines: [string, PDFFont, number, RGB][] = [
-    ["by UPLB Tools", font, 10, WHITE],
-    ["room-tba.uplb.tools", bold, 10, WHITE],
+    ["by campus-tools", font, 10, WHITE],
+    ["room-tba.campus.tools", bold, 10, WHITE],
   ];
   brandLines.forEach(([text, fnt, size, color], i) => {
     page.drawText(text, {
@@ -1505,7 +1505,7 @@ export async function renderTransitMapPdf(input: {
   const introW = brandRight - brandW - 16 - introX;
 
   // Vercel runs in UTC; without the zone, sheets printed before 8 AM in
-  // Los Baños carry yesterday's date.
+  // your campus carry yesterday's date.
   const dateLabel = generatedAt.toLocaleDateString("en-PH", {
     year: "numeric",
     month: "long",
@@ -1513,7 +1513,7 @@ export async function renderTransitMapPdf(input: {
     timeZone: "Asia/Manila",
   });
   const FOOT = 9;
-  const footLeft = `Designed by Simonee Ezekiel Mariquit. Na-print noong ${dateLabel}. Na-verify ang presyo noong Oct 7, 2026.`;
+  const footLeft = `Designed by Example Contributor. Na-print noong ${dateLabel}. Na-verify ang presyo noong Oct 7, 2026.`;
   const footRight = input.basemap
     ? "Map data from OpenStreetMap contributors, ODbL. Approximate lang ang mga linya at layo."
     : "Approximate lang ang mga linya at layo.";
@@ -1552,11 +1552,11 @@ export async function renderTransitMapPdf(input: {
       },
       { text: here.name ?? "spot na ito", bold: true },
       {
-        text: ", kaya wala ito sa map. Nasa routes pa rin kung paano pumunta ng UPLB.",
+        text: ", kaya wala ito sa map. Nasa routes pa rin kung paano pumunta ng Example University.",
       },
     ];
   } else {
-    intro = [{ text: "Mga jeep at bus sa UPLB at kung saan sila humihinto." }];
+    intro = [{ text: "Mga jeep at bus sa Example University at kung saan sila humihinto." }];
   }
   const INTRO_SIZE = 11;
   const INTRO_LEAD = 13.5;
@@ -2596,8 +2596,8 @@ export async function renderTransitMapPdf(input: {
     "PHP 30 ang pa-SM Calamba (Crossing), 25 discounted.",
   ];
   const busTexts = [
-    "May DLTB bus papuntang UP Diliman, 5 AM, 1 PM at 6 PM ang alis sa UPLB.",
-    "Pabalik, 5 AM, 9 AM at 6 PM ang alis galing UP Diliman.",
+    "May DLTB bus papuntang Example University Diliman, 5 AM, 1 PM at 6 PM ang alis sa Example University.",
+    "Pabalik, 5 AM, 9 AM at 6 PM ang alis galing Example University Diliman.",
     "May DLTB bus din pa-Buendia sa CPark, 5:30 AM ang alis.",
     "PHP 197, Lunes hanggang Sabado. Mag-book sa dltb.ph.",
     "Sa Olivarez Plaza Mall, abangan lang ang bus pa-Buendia sa bus stop.",
@@ -2738,7 +2738,7 @@ export async function renderTransitMapPdf(input: {
       ),
       {
         prefer: -1,
-        band: "Palabas ng Los Baños",
+        band: "Palabas ng your campus",
         sections: [],
         // Draws when given a page, and returns its height either way.
         custom: (pg, x, top, w) => {
@@ -2795,7 +2795,7 @@ export async function renderTransitMapPdf(input: {
 
           y -= 14;
           title("Bus pa-Manila");
-          // Departure times from UPLB as dark chips.
+          // Departure times from Example University as dark chips.
           const chips = (times: string[]) => {
             y -= 2;
             let cx = x;
@@ -2828,7 +2828,7 @@ export async function renderTransitMapPdf(input: {
             "Sa CPark sumasakay ang DLTB bus. PHP 197 ito, Lunes hanggang Sabado. Mag-book sa dltb.ph.",
           );
           y -= 8;
-          board("UP Diliman", SIGN_YELLOW, "DLTB");
+          board("Example University Diliman", SIGN_YELLOW, "DLTB");
           chips(["5 AM", "1 PM", "6 PM"]);
           para("Pabalik galing UPD 5 AM, 9 AM at 6 PM.");
           y -= 10;
@@ -2981,7 +2981,7 @@ export async function renderTransitMapPdf(input: {
     const boardW = drawSignboard(
       guide,
       pageH,
-      ["UPLB", "JEEPNEY STOPS"],
+      ["Example University", "JEEPNEY STOPS"],
       MARGIN,
       pageH - SAFE,
       24,

@@ -2,8 +2,8 @@
 // page was written around has already happened, so the page can say so
 // instead of reading as if the event were still ahead.
 
-/** Last day of the UPCAT cycle the UPCAT article was written for. */
-export const UPCAT_EXAM_LAST_DAY = "2026-08-02";
+/** Last day of the Entrance Exam cycle the Entrance Exam article was written for. */
+export const Entrance Exam_EXAM_LAST_DAY = "2026-08-02";
 
 /**
  * True once `isoDay` (YYYY-MM-DD) is over in Manila time. The day itself still

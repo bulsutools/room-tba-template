@@ -18,27 +18,27 @@ describe("transitRouteKind", () => {
 
   test("DLTB and provincial buses are buses", () => {
     expect(
-      transitRouteKind({ id: "lb-to-buendia", name: "Los Baños → Buendia" }),
+      transitRouteKind({ id: "lb-to-buendia", name: "your campus → Buendia" }),
     ).toBe("bus");
     expect(
       transitRouteKind({ id: "new-route", name: "X → Y (Commuter Bus)" }),
     ).toBe("bus");
-    expect(transitRouteNoun({ id: "uplb-to-upd", name: "UPLB → UPD" })).toBe(
+    expect(transitRouteNoun({ id: "campus-to-diliman", name: "Example University → Diliman" })).toBe(
       "bus route",
     );
-    expect(transitStopNoun({ id: "uplb-to-upd", name: "UPLB → UPD" })).toBe(
+    expect(transitStopNoun({ id: "campus-to-diliman", name: "Example University → Diliman" })).toBe(
       "Bus stop",
     );
   });
 
-  test("the bundled UPLB <-> Buendia DLTB buses are buses with no quoted fare", () => {
+  test("the bundled Example University <-> Buendia DLTB buses are buses with no quoted fare", () => {
     const route = {
-      id: "buendia-to-uplb",
-      name: "LRT Buendia → UPLB (DLTB bus)",
+      id: "buendia-to-campus",
+      name: "LRT Buendia → Example University (DLTB bus)",
     };
     expect(transitRouteKind(route)).toBe("bus");
     expect(routeFareInfo(route).kind).toBe("unverified");
-    expect(routeFareInfo({ ...route, id: "uplb-to-buendia" }).kind).toBe(
+    expect(routeFareInfo({ ...route, id: "campus-to-buendia" }).kind).toBe(
       "ticketed",
     );
     expect(perBoardingFare(route)).toBeNull();
@@ -48,13 +48,13 @@ describe("transitRouteKind", () => {
     expect(
       transitRouteKind({
         id: "lb-to-san-pablo",
-        name: "Los Baños → San Pablo",
+        name: "your campus → San Pablo",
       }),
     ).toBe("town");
     expect(
       transitRouteNoun({
         id: "lb-to-san-pablo",
-        name: "Los Baños → San Pablo",
+        name: "your campus → San Pablo",
       }),
     ).toBe("jeepney route");
   });
@@ -105,7 +105,7 @@ describe("routeFareInfo", () => {
   test("Calamba quotes the whole-route fare and the minimum for shorter rides", () => {
     const info = routeFareInfo({
       id: "lb-to-calamba",
-      name: "Los Baños → Calamba",
+      name: "your campus → Calamba",
     });
     expect(info.kind).toBe("end-to-end");
     if (info.kind !== "end-to-end") return;
@@ -114,12 +114,12 @@ describe("routeFareInfo", () => {
     expect(info.note).toContain("₱14 minimum");
     expect(info.note).toContain("October 7, 2026");
     expect(
-      perBoardingFare({ id: "lb-to-calamba", name: "Los Baños → Calamba" }),
+      perBoardingFare({ id: "lb-to-calamba", name: "your campus → Calamba" }),
     ).toBeNull();
   });
 
   test("the SNODLOB e-jeep has the verified campus fare", () => {
-    const route = { id: "snodlob", name: "UPLB Loop (SNODLOB e-jeep)" };
+    const route = { id: "snodlob", name: "Example University Loop (SNODLOB e-jeep)" };
     expect(routeFareInfo(route)).toMatchObject({
       kind: "fixed",
       fare: { regular: 14, discounted: 12 },
@@ -130,7 +130,7 @@ describe("routeFareInfo", () => {
   test("other town jeeps give only the minimum", () => {
     const info = routeFareInfo({
       id: "lb-to-san-pablo",
-      name: "Los Baños → San Pablo",
+      name: "your campus → San Pablo",
     });
     expect(info).toMatchObject({
       kind: "distance",
@@ -140,10 +140,10 @@ describe("routeFareInfo", () => {
 
   test("DLTB links to tickets; unverified buses quote nothing", () => {
     expect(
-      routeFareInfo({ id: "uplb-to-upd", name: "UPLB → UP Diliman" }).kind,
+      routeFareInfo({ id: "campus-to-diliman", name: "Example University → Example University Diliman" }).kind,
     ).toBe("ticketed");
     expect(
-      routeFareInfo({ id: "lb-to-buendia", name: "Los Baños → Buendia" }).kind,
+      routeFareInfo({ id: "lb-to-buendia", name: "your campus → Buendia" }).kind,
     ).toBe("unverified");
   });
 });

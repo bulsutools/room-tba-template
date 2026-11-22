@@ -21,7 +21,7 @@ const stop = (over: Partial<StopRow>): StopRow => ({
 
 const route = (over: Partial<RouteRow>): RouteRow => ({
   id: "lb-to-san-pablo",
-  name: "Los Baños → San Pablo",
+  name: "your campus → San Pablo",
   description:
     "Jeepney toward San Pablo City, via Bay and Alaminos to San Pablo.",
   fareRegular: 50,
@@ -55,12 +55,12 @@ describe("planTransitFixes", () => {
     const fixes = planTransitFixes(
       [],
       [
-        stop({ id: 2, routeId: "buendia-to-lb", name: "Los Baños Crossing" }),
+        stop({ id: 2, routeId: "buendia-to-lb", name: "your campus Crossing" }),
         stop({ id: 3, routeId: "kaliwa-kanan", name: "Olivarez Plaza Mall" }),
         stop({
           id: 4,
           routeId: "lb-to-calamba",
-          name: "Olivarez Plaza / College (Los Baños)",
+          name: "Olivarez Plaza / College (your campus)",
         }),
       ],
       campus,
@@ -68,18 +68,18 @@ describe("planTransitFixes", () => {
     expect(fixes.map((f) => f.id)).toEqual([2, 4]);
     expect(fixes.every((f) => f.after.name === OLIVAREZ_NAME)).toBe(true);
     expect(fixes[0]?.after).toMatchObject({
-      description: expect.stringContaining("Los Baños Crossing"),
+      description: expect.stringContaining("your campus Crossing"),
     });
   });
 
   test("evens out the paired Buendia bus names", () => {
     const fixes = planTransitFixes(
-      [route({ id: "buendia-to-lb", name: "Buendia → Los Baños" })],
+      [route({ id: "buendia-to-lb", name: "Buendia → your campus" })],
       [],
       campus,
     );
     expect(fixes[0]?.after).toEqual({
-      name: "Buendia (LRT Gil Puyat) → Los Baños",
+      name: "Buendia (LRT Gil Puyat) → your campus",
     });
   });
 
@@ -90,15 +90,15 @@ describe("planTransitFixes", () => {
         stop({
           id: 11,
           routeId: "lb-to-sta-cruz",
-          name: "College / Olivarez Plaza (Los Baños)",
+          name: "College / Olivarez Plaza (your campus)",
         }),
         stop({ id: 12, routeId: "lb-to-san-pablo", name: OLIVAREZ_NAME }),
       ],
       campus,
     );
     expect(fixes.map((f) => f.after.name)).toEqual([
-      "Junction (Los Baños)",
-      "Junction (Los Baños)",
+      "Junction (your campus)",
+      "Junction (your campus)",
     ]);
   });
 
@@ -114,7 +114,7 @@ describe("planTransitFixes", () => {
           fareDiscounted: 16,
         }),
         // DLTB is ticketed online; its stored fare is left alone.
-        route({ id: "uplb-to-upd", fareRegular: 165, fareDiscounted: 132 }),
+        route({ id: "campus-to-diliman", fareRegular: 165, fareDiscounted: 132 }),
       ],
       [],
       campus,
@@ -153,7 +153,7 @@ describe("planTransitFixes", () => {
         route({ description: SAN_PABLO_DESCRIPTION }),
         route({
           id: "buendia-to-lb",
-          name: "Buendia (LRT Gil Puyat) → Los Baños",
+          name: "Buendia (LRT Gil Puyat) → your campus",
         }),
       ],
       [

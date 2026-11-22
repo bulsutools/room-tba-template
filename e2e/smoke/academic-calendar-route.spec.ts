@@ -23,7 +23,7 @@ test.describe("academic calendar route", () => {
     await expect(dialog).toBeVisible();
     // Disclaimer is part of the MVP acceptance criteria (#408).
     await expect(
-      dialog.getByText(/official UPLB academic calendar/),
+      dialog.getByText(/official Example University academic calendar/),
     ).toBeVisible();
     // The seeded E2E term (1252) must appear as a term card. Cards are
     // native disclosures and only the in-session term starts open, so

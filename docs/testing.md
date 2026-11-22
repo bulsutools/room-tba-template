@@ -106,13 +106,13 @@ Do **not** switch to the transaction pooler (port 6543) to raise the ceiling: `S
 
 - **E2E advisory**: axe, touch drag, offline, jeepney, etc. (gated like blocking)
 - **Bundle advisory**: PWA JS size budget (gated like blocking)
-- **Staging smoke**: read-only Playwright against live `staging.room-tba.uplb.tools` (non-blocking)
+- **Staging smoke**: read-only Playwright against live `staging.room-tba.campus.tools` (non-blocking)
 
 ## Databases
 
 | DB | Use in tests |
 | ---------------------------- | -------------------------------------------------- |
-| E2E (`yhzinxlakcewqjaqbbaj`) | CI build, integration, Playwright: **mutating** |
+| E2E (`your-e2e-project-ref`) | CI build, integration, Playwright: **mutating** |
 | Staging | Local dev, staging smoke: read-only in automation |
 | Production | **Never** automated writes |
 
@@ -125,14 +125,14 @@ cp .env.example .env.staging  # optional: staging smoke / preview DB only
 
 GitHub Actions uses secrets `E2E_DATABASE_URL`, `E2E_ADMIN_PASSWORD`, `E2E_ADMIN_SESSION_SECRET`.
 
-## AMIS: never in CI
+## portal: never in CI
 
-Do **not** run `import:amis-classes, fetch` in CI. The script exits when `CI=true` and `, fetch` is passed. Unit tests use fixture JSON only.
+Do **not** run `import:portal-classes, fetch` in CI. The script exits when `CI=true` and `, fetch` is passed. Unit tests use fixture JSON only.
 
 ## Manual only
 
 - Subjective visual polish
-- AMIS live fetch (maintainer runbook)
+- portal live fetch (maintainer runbook)
 - Mobile drag “feel”
 - Post-deploy prod spot-check
 - Contributor proposal staging QA: [contributor-proposal-qa.md](contributor-proposal-qa.md). It is read-only except for deliberately submitted throwaway proposals that are promptly withdrawn or rejected.

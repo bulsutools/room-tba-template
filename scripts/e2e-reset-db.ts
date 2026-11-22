@@ -16,7 +16,7 @@ import { campusTestFixtures } from "../src/campus.config";
 
 loadEnv();
 
-const E2E_PROJECT_REF = "yhzinxlakcewqjaqbbaj";
+const E2E_PROJECT_REF = "your-e2e-project-ref";
 const DEFAULT_E2E_PASSWORD = "e2e-test-password-change-me";
 
 export const E2E_FIXTURES = {

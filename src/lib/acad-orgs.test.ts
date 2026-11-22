@@ -10,7 +10,7 @@ describe("decodeAcadOrg (#846)", () => {
     });
   });
 
-  it("matches mixed-case AMIS codes case-insensitively", () => {
+  it("matches mixed-case portal codes case-insensitively", () => {
     expect(decodeAcadOrg("LBIoP")?.name).toBe("Institute of Physics");
     expect(decodeAcadOrg("lbics")?.name).toBe("Institute of Computer Science");
   });

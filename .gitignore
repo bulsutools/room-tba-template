@@ -44,8 +44,8 @@ classes.json
 .vercel/
 server/**/*
 
-data/AMIS subjects.json
-data/amis-*.json
+data/portal-subjects.json
+data/portal-*.json
 data/final-exams-*.json
 data/transit-geometry-cache/
 !data/final-exams-sample.json

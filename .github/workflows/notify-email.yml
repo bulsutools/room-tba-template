@@ -3,7 +3,7 @@ name: Email on community contribution
 # Instant email to the maintainer when someone outside the collaborator
 # circle opens an issue or a PR. Complements the Discord triage nagger
 # (which catches staleness) with immediacy. Uses Resend with the org's
-# verified uplbtools.me domain; missing secret degrades to a log line.
+# verified campus-tools.me domain; missing secret degrades to a log line.
 
 on:
   issues:
@@ -38,8 +38,8 @@ jobs:
           case "$ASSOC" in
             OWNER|MEMBER|COLLABORATOR) echo "Author is $ASSOC; no email."; exit 0;;
           esac
-          jq -n --arg from "Room TBA <digest@uplbtools.me>" \
-                --arg to "${NOTIFY_EMAILS:-semariquit@gmail.com}" \
+          jq -n --arg from "Room TBA <digest@campus.tools>" \
+                --arg to "${NOTIFY_EMAILS:-you@example.com}" \
                 --arg subject "[room-tba] $KIND #$NUM from $AUTHOR: $TITLE" \
                 --arg html "<p><strong>$AUTHOR</strong> opened $KIND <a href=\"$URL\">#$NUM</a>:</p><p>$TITLE</p><p>The Discord triage nagger will chase this if it goes stale. First response within 72h keeps the SLA green.</p>" \
                 '{from: $from, to: ($to | split(",") | map(gsub("^\\s+|\\s+$";""))), subject: $subject, html: $html}' \

@@ -8,7 +8,7 @@ import { slugifySegment } from "../site";
 export type ForkConfig = {
   /** Full campus name, e.g. "University of the Philippines Diliman". */
   name: string;
-  /** Where the fork will be hosted, e.g. "https://upd-room-tba.vercel.app". */
+  /** Where the fork will be hosted, e.g. "https://your-campus-room-tba.vercel.app". */
   siteUrl: string;
   /** Campus center as [lng, lat]. */
   center: [number, number];
@@ -25,7 +25,7 @@ export function campusSlug(name: string): string {
   return slugifySegment(name);
 }
 
-const UPSTREAM_REPO_URL = "https://github.com/uplbtools/room-tba";
+const UPSTREAM_REPO_URL = "https://github.com/campus-tools/room-tba";
 
 /** Vercel "Deploy" clone URL prefilled with the fork's env prompts. */
 export function vercelDeployUrl(slug: string): string {

@@ -3,12 +3,12 @@ import { afterEach, describe, expect, test, vi } from "vitest";
 import BuildingPhoto from "@ui/controls/BuildingPhoto.svelte";
 import { resetStreetViewLookupCache } from "@lib/street-view-lookup";
 
-// "building:Veterinary Teaching Hospital" ships in the committed manifest (three Street View
+// "building:Veterinary Clinic" ships in the committed manifest (three Street View
 // headings plus Commons photos), so the real manifest is the fixture. Street
 // View stays off: PUBLIC_GOOGLE_MAPS_API_KEY is not set in vitest, which is
 // also the keyless production behavior the gallery must survive.
 const VET_HOSPITAL = {
-  name: "Veterinary Teaching Hospital",
+  name: "Veterinary Clinic",
   lat: 14.1617660159005,
   lon: 121.241457649492,
   panoId: "pano",
@@ -44,13 +44,13 @@ describe("BuildingPhoto", () => {
 
     // Contributor photo first, uncredited.
     const first = screen.getByRole("img", {
-      name: "Veterinary Teaching Hospital",
+      name: "Veterinary Clinic",
     });
     expect(first.getAttribute("src")).toContain("r2.example");
 
     await fireEvent.click(
       screen.getByRole("button", {
-        name: /next photo of Veterinary Teaching Hospital/i,
+        name: /next photo of Veterinary Clinic/i,
       }),
     );
 
@@ -68,12 +68,12 @@ describe("BuildingPhoto", () => {
     // Wraps back around to the contributor photo.
     await fireEvent.click(
       screen.getByRole("button", {
-        name: /previous photo of Veterinary Teaching Hospital/i,
+        name: /previous photo of Veterinary Clinic/i,
       }),
     );
     expect(
       screen
-        .getByRole("img", { name: "Veterinary Teaching Hospital" })
+        .getByRole("img", { name: "Veterinary Clinic" })
         .getAttribute("src"),
     ).toContain("r2.example");
   });
@@ -187,24 +187,24 @@ describe("BuildingPhoto", () => {
     // Committed manifest entries with Commons photos (Street View is off
     // without a key in vitest).
     const { unmount } = render(BuildingPhoto, {
-      props: { kind: "place", name: "Church Among the Palms" },
+      props: { kind: "place", name: "Chapel on the Green" },
     });
     const churchSrc =
       screen
-        .getByRole("img", { name: /Church Among the Palms.*Commons/i })
+        .getByRole("img", { name: /Chapel on the Green.*Commons/i })
         .getAttribute("src") ?? "";
     expect(new URL(churchSrc).hostname.endsWith(".wikimedia.org")).toBe(true);
     unmount();
 
     render(BuildingPhoto, {
-      props: { kind: "organization", name: "UP Open University (UPOU)" },
+      props: { kind: "organization", name: "Example Research Institute" },
     });
-    expect(screen.getByRole("img", { name: /UPOU.*Commons/i })).toBeTruthy();
+    expect(screen.getByRole("img", { name: /Example.*Commons/i })).toBeTruthy();
   });
 
   test("a name under the wrong kind finds nothing", () => {
     const { container } = render(BuildingPhoto, {
-      props: { kind: "dorm", name: "Church Among the Palms" },
+      props: { kind: "dorm", name: "Chapel on the Green" },
     });
     expect(container.querySelector("img")).toBeNull();
   });
@@ -281,7 +281,7 @@ describe("BuildingPhoto runtime Street View", () => {
   test("manifest entries skip the request", () => {
     const fetchMock = stubMetadata({ status: "OK", pano_id: "x" });
     render(BuildingPhoto, {
-      props: { kind: "place", name: "Church Among the Palms", lat: 1, lon: 1 },
+      props: { kind: "place", name: "Chapel on the Green", lat: 1, lon: 1 },
     });
     expect(fetchMock).not.toHaveBeenCalled();
   });

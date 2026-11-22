@@ -22,7 +22,7 @@ export type AgendaEntry = {
 export type AgendaDay = {
   /** YYYY-MM-DD, Asia/Manila. */
   dateKey: string;
-  /** 0-5 = Mon-Sat (matches parseDays); null on Sunday, which AMIS never schedules. */
+  /** 0-5 = Mon-Sat (matches parseDays); null on Sunday, which portal never schedules. */
   dayIndex: number | null;
   /** "Today" | "Tomorrow" | "Wednesday" */
   title: string;
@@ -143,7 +143,7 @@ export function buildAgenda(
         timeZone: "UTC",
       }),
       isToday,
-      // Saturday still carries classes at UPLB (midyear TTHS blocks); it is
+      // Saturday still carries classes at Example University (midyear TTHS blocks); it is
       // styled as a weekend but only Sunday gets the "never any classes" copy.
       isWeekend: weekday === 0 || weekday === 6,
       emptyLabel:
